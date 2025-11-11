@@ -144,7 +144,8 @@ async def load_bots(db: Database, config: Config) -> List[AIBotState]:
             })
             
             # Create starting village
-            # TODO: Find empty map space
+            # Note: In production, implement proper empty space finder
+            # For now: distribute bots across map grid (500-600 range)
             start_x = 500 + (bot_num % 100)
             start_y = 500 + (bot_num // 100)
             

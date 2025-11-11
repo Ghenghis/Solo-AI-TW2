@@ -58,6 +58,30 @@ class Config:
     max_build_queue_length: int
     min_action_interval: int
     
+    # Guardrails Configuration
+    enable_sleep_windows: bool
+    min_sleep_hours: int
+    max_sleep_hours: int
+    max_attacks_per_village_per_tick: int
+    max_attacks_per_player_per_tick: int
+    max_attacks_per_player_per_hour: int
+    harassment_window_hours: int
+    max_attacks_per_player_per_harassment_window: int
+    dogpile_threshold: int
+    min_reaction_delay_minutes: int
+    max_reaction_delay_minutes: int
+    enable_session_rhythm: bool
+    min_session_duration_minutes: int
+    max_session_duration_minutes: int
+    min_session_cooldown_minutes: int
+    max_session_cooldown_minutes: int
+    failed_attack_cooldown_minutes: int
+    max_system_attacks_per_minute: int
+    turtle_attack_multiplier: float
+    diplomat_attack_multiplier: float
+    warmonger_attack_multiplier: float
+    diplomat_support_multiplier: float
+    
     @classmethod
     def from_env(cls) -> 'Config':
         """Load configuration from environment variables"""
@@ -121,6 +145,30 @@ class Config:
             max_attacks_per_hour=int(os.getenv('MAX_ATTACKS_PER_HOUR', 50)),
             max_build_queue_length=int(os.getenv('MAX_BUILD_QUEUE_LENGTH', 5)),
             min_action_interval=int(os.getenv('MIN_ACTION_INTERVAL', 5)),
+            
+            # Guardrails
+            enable_sleep_windows=os.getenv('ENABLE_SLEEP_WINDOWS', 'true').lower() == 'true',
+            min_sleep_hours=int(os.getenv('MIN_SLEEP_HOURS', 3)),
+            max_sleep_hours=int(os.getenv('MAX_SLEEP_HOURS', 5)),
+            max_attacks_per_village_per_tick=int(os.getenv('MAX_ATTACKS_PER_VILLAGE_PER_TICK', 2)),
+            max_attacks_per_player_per_tick=int(os.getenv('MAX_ATTACKS_PER_PLAYER_PER_TICK', 4)),
+            max_attacks_per_player_per_hour=int(os.getenv('MAX_ATTACKS_PER_PLAYER_PER_HOUR', 10)),
+            harassment_window_hours=int(os.getenv('HARASSMENT_WINDOW_HOURS', 1)),
+            max_attacks_per_player_per_harassment_window=int(os.getenv('MAX_ATTACKS_PER_PLAYER_PER_HARASSMENT_WINDOW', 5)),
+            dogpile_threshold=int(os.getenv('DOGPILE_THRESHOLD', 5)),
+            min_reaction_delay_minutes=int(os.getenv('MIN_REACTION_DELAY_MINUTES', 5)),
+            max_reaction_delay_minutes=int(os.getenv('MAX_REACTION_DELAY_MINUTES', 15)),
+            enable_session_rhythm=os.getenv('ENABLE_SESSION_RHYTHM', 'true').lower() == 'true',
+            min_session_duration_minutes=int(os.getenv('MIN_SESSION_DURATION_MINUTES', 10)),
+            max_session_duration_minutes=int(os.getenv('MAX_SESSION_DURATION_MINUTES', 30)),
+            min_session_cooldown_minutes=int(os.getenv('MIN_SESSION_COOLDOWN_MINUTES', 5)),
+            max_session_cooldown_minutes=int(os.getenv('MAX_SESSION_COOLDOWN_MINUTES', 15)),
+            failed_attack_cooldown_minutes=int(os.getenv('FAILED_ATTACK_COOLDOWN_MINUTES', 15)),
+            max_system_attacks_per_minute=int(os.getenv('MAX_SYSTEM_ATTACKS_PER_MINUTE', 100)),
+            turtle_attack_multiplier=float(os.getenv('TURTLE_ATTACK_MULTIPLIER', 0.4)),
+            diplomat_attack_multiplier=float(os.getenv('DIPLOMAT_ATTACK_MULTIPLIER', 0.6)),
+            warmonger_attack_multiplier=float(os.getenv('WARMONGER_ATTACK_MULTIPLIER', 1.15)),
+            diplomat_support_multiplier=float(os.getenv('DIPLOMAT_SUPPORT_MULTIPLIER', 1.3)),
         )
     
     @property

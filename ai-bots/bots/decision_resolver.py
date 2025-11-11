@@ -112,24 +112,15 @@ class DecisionResolver:
         iron_needed = 0
         
         if decision.action_type == 'build':
-            # TODO: Get from costs.py when implemented
+            from core.costs import get_build_cost
             building = decision.details.get('building', '')
             level = decision.details.get('level', 1)
-            # Placeholder costs
-            wood_needed = 100 * level
-            clay_needed = 100 * level
-            iron_needed = 50 * level
+            wood_needed, clay_needed, iron_needed = get_build_cost(building, level)
         
         elif decision.action_type == 'recruit':
-            # TODO: Get from costs.py when implemented
+            from core.costs import get_recruit_cost
             units = decision.details.get('units', {})
-            # Placeholder costs per unit
-            unit_costs = {'spear': 50, 'sword': 100, 'axe': 100, 'light': 250}
-            for unit, count in units.items():
-                cost = unit_costs.get(unit, 100)
-                wood_needed += cost * count
-                clay_needed += cost * count
-                iron_needed += cost * count // 2
+            wood_needed, clay_needed, iron_needed = get_recruit_cost(units)
         
         elif decision.action_type == 'trade':
             # ✅ FIX: Handle trade resource validation
