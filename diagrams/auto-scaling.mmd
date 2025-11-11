@@ -1,0 +1,47 @@
+graph TB
+    subgraph "Metrics Collection"
+        CPU_METRIC[CPU Usage]
+        MEM_METRIC[Memory Usage]
+        REQ_METRIC[Request Rate]
+        QUEUE_METRIC[Queue Length]
+    end
+    
+    subgraph "Scaling Decision"
+        RULES[Scaling Rules]
+        THRESHOLD[Thresholds]
+        COOLDOWN[Cooldown Period]
+        PREDICT[Predictive Scaling]
+    end
+    
+    subgraph "Scaling Actions"
+        SCALE_UP[Scale Up]
+        SCALE_OUT[Scale Out]
+        SCALE_IN[Scale In]
+        SCALE_DOWN[Scale Down]
+    end
+    
+    subgraph "Target Resources"
+        PODS[Kubernetes Pods]
+        CONTAINERS[Docker Containers]
+        VMS[Virtual Machines]
+        INSTANCES[Cloud Instances]
+    end
+    
+    CPU_METRIC --> RULES
+    MEM_METRIC --> RULES
+    REQ_METRIC --> RULES
+    QUEUE_METRIC --> RULES
+    
+    RULES --> THRESHOLD
+    THRESHOLD --> COOLDOWN
+    COOLDOWN --> PREDICT
+    
+    PREDICT --> SCALE_UP
+    PREDICT --> SCALE_OUT
+    PREDICT --> SCALE_IN
+    PREDICT --> SCALE_DOWN
+    
+    SCALE_UP --> PODS
+    SCALE_OUT --> CONTAINERS
+    SCALE_IN --> VMS
+    SCALE_DOWN --> INSTANCES

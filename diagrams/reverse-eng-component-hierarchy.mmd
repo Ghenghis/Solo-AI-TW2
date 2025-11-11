@@ -1,0 +1,56 @@
+graph TB
+    subgraph "TWLan 2.A3 Original Architecture"
+        subgraph "Presentation Layer"
+            HTML[HTML Templates]
+            CSS[CSS Styles]
+            JS[JavaScript]
+            IMG[Image Assets]
+        end
+        
+        subgraph "Application Layer"
+            PHP5[PHP 5.x Engine]
+            GAME[Game Logic]
+            AUTH[Authentication]
+            ADMIN[Admin Panel]
+            API[Internal APIs]
+        end
+        
+        subgraph "Data Layer"
+            MYSQL[MySQL 5.x]
+            SESSIONS[Session Storage]
+            CACHE[File Cache]
+        end
+        
+        subgraph "System Layer"
+            APACHE[Apache 2.2]
+            EMBEDDED_PHP[Embedded PHP]
+            EMBEDDED_MYSQL[Embedded MySQL]
+            LAUNCHER[Custom Launcher]
+        end
+    end
+    
+    HTML --> PHP5
+    CSS --> HTML
+    JS --> HTML
+    IMG --> HTML
+    
+    PHP5 --> GAME
+    PHP5 --> AUTH
+    PHP5 --> ADMIN
+    PHP5 --> API
+    
+    GAME --> MYSQL
+    AUTH --> MYSQL
+    AUTH --> SESSIONS
+    GAME --> CACHE
+    
+    APACHE --> PHP5
+    EMBEDDED_PHP --> PHP5
+    EMBEDDED_MYSQL --> MYSQL
+    LAUNCHER --> APACHE
+    LAUNCHER --> EMBEDDED_MYSQL
+    
+    style LAUNCHER fill:#ffcdd2
+    style APACHE fill:#fff9c4
+    style MYSQL fill:#c8e6c9
+    style PHP5 fill:#b3e5fc

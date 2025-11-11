@@ -1,0 +1,20 @@
+graph LR
+    subgraph "Write Operations"
+        APP[Application] --> MASTER[(Master DB)]
+    end
+    
+    subgraph "Read Operations"
+        APP --> LB_READ[Read Load Balancer]
+        LB_READ --> SLAVE1[(Slave 1)]
+        LB_READ --> SLAVE2[(Slave 2)]
+        LB_READ --> SLAVE3[(Slave N)]
+    end
+    
+    MASTER --> SLAVE1
+    MASTER --> SLAVE2
+    MASTER --> SLAVE3
+    
+    style MASTER fill:#ffcccc
+    style SLAVE1 fill:#d4f1d4
+    style SLAVE2 fill:#d4f1d4
+    style SLAVE3 fill:#d4f1d4

@@ -1,0 +1,1 @@
+<?php require 'summary_'.(($village->visual > 0) ? 'visual' : 'classical').'.php';?>

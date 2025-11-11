@@ -273,3 +273,144 @@ class GameClient:
                         village_id=village_id,
                         error=str(e))
             return None
+    
+    async def send_scout(self, session: GameSession, from_village: int,
+                        to_village: int, spy_count: int):
+        """
+        Send scout/spy to gather intelligence
+        POST to: game.php?village=X&screen=place&action=command
+        """
+        try:
+            url = urljoin(self.base_url, 'game.php')
+            params = {
+                'village': from_village,
+                'screen': 'place',
+                'try': 'confirm'
+            }
+            
+            data = {
+                'x': to_village % 1000,
+                'y': to_village // 1000,
+                'spy': spy_count,
+                'attack': 'true'  # Scouts go with attack flag
+            }
+            
+            response = await session.client.post(url, params=params, data=data)
+            
+            logger.info("scout_sent",
+                       from_village=from_village,
+                       to_village=to_village,
+                       spy_count=spy_count,
+                       status=response.status_code)
+            
+            return response.status_code == 200
+            
+        except Exception as e:
+            logger.error("scout_failed",
+                        from_village=from_village,
+                        to_village=to_village,
+                        error=str(e))
+            return False
+    
+    async def trade_resources(self, session: GameSession, village_id: int,
+                             sell: str, buy: str, amount: int):
+        """
+        Trade resources at market
+        POST to: game.php?village=X&screen=market&action=call_merchant
+        """
+        try:
+            url = urljoin(self.base_url, 'game.php')
+            params = {
+                'village': village_id,
+                'screen': 'market',
+                'action': 'call_merchant'
+            }
+            
+            # Market trade format: sell X, buy Y
+            data = {
+                f'sell_{sell}': amount,
+                f'buy_{buy}': amount,
+                'max_merchants': '1'
+            }
+            
+            response = await session.client.post(url, params=params, data=data)
+            
+            logger.info("trade_executed",
+                       village_id=village_id,
+                       sell=sell,
+                       buy=buy,
+                       amount=amount,
+                       status=response.status_code)
+            
+            return response.status_code == 200
+            
+        except Exception as e:
+            logger.error("trade_failed",
+                        village_id=village_id,
+                        error=str(e))
+            return False
+    
+    async def send_resources(self, session: GameSession, from_village: int,
+                            to_village: int, resources: Dict[str, int]):
+        """
+        Send resources to another village
+        POST to: game.php?village=X&screen=market&action=send
+        """
+        try:
+            url = urljoin(self.base_url, 'game.php')
+            params = {
+                'village': from_village,
+                'screen': 'market',
+                'action': 'send'
+            }
+            
+            data = {
+                'x': to_village % 1000,
+                'y': to_village // 1000,
+                'wood': resources.get('wood', 0),
+                'clay': resources.get('clay', 0),
+                'iron': resources.get('iron', 0)
+            }
+            
+            response = await session.client.post(url, params=params, data=data)
+            
+            logger.info("resources_sent",
+                       from_village=from_village,
+                       to_village=to_village,
+                       resources=resources,
+                       status=response.status_code)
+            
+            return response.status_code == 200
+            
+        except Exception as e:
+            logger.error("send_resources_failed",
+                        from_village=from_village,
+                        to_village=to_village,
+                        error=str(e))
+            return False
+    
+    async def execute_with_retry(self, func, *args, max_retries=3, **kwargs):
+        """
+        Execute any GameClient method with automatic retry logic
+        Implements exponential backoff for failed requests
+        """
+        for attempt in range(max_retries):
+            try:
+                result = await func(*args, **kwargs)
+                return result
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    wait_time = (2 ** attempt) + random.uniform(0, 1)
+                    logger.warning("request_failed_retrying",
+                                  attempt=attempt + 1,
+                                  max_retries=max_retries,
+                                  wait_time=wait_time,
+                                  error=str(e))
+                    await asyncio.sleep(wait_time)
+                else:
+                    logger.error("request_failed_max_retries",
+                               max_retries=max_retries,
+                               error=str(e))
+                    raise
+        
+        return None

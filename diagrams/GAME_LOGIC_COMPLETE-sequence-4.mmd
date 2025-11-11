@@ -1,0 +1,28 @@
+sequenceDiagram
+    participant Player
+    participant Village
+    participant Building
+    participant Queue
+    participant Resources
+    participant Units
+    
+    Player->>Village: Train Units Request
+    Village->>Building: Check Requirements
+    
+    alt Building Available
+        Building->>Resources: Check Costs
+        alt Resources Available
+            Resources->>Resources: Deduct Costs
+            Resources->>Queue: Add to Training Queue
+            Queue->>Queue: Calculate Completion Time
+            
+            Note over Queue: Training in Progress
+            
+            Queue->>Units: Units Complete
+            Units->>Village: Add to Village Units
+        else Not Enough Resources
+            Resources-->>Player: Insufficient Resources
+        end
+    else Building Not Ready
+        Building-->>Player: Building Requirements Not Met
+    end

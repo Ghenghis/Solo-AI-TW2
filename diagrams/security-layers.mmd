@@ -1,0 +1,39 @@
+graph TD
+    subgraph "Perimeter Security"
+        FW[Firewall]
+        WAF[Web Application Firewall]
+        DDOS[DDoS Protection]
+    end
+    
+    subgraph "Application Security"
+        AUTH[Authentication]
+        AUTHZ[Authorization]
+        CSRF[CSRF Protection]
+        XSS[XSS Prevention]
+        SQLi[SQL Injection Prevention]
+    end
+    
+    subgraph "Data Security"
+        ENCRYPT[Encryption at Rest]
+        TLS[TLS in Transit]
+        HASH[Password Hashing]
+        TOKEN[Token Management]
+    end
+    
+    subgraph "Infrastructure Security"
+        ISOLATE[Container Isolation]
+        SECRET[Secret Management]
+        AUDIT[Audit Logging]
+        PATCH[Security Patches]
+    end
+    
+    FW --> WAF
+    WAF --> AUTH
+    AUTH --> AUTHZ
+    AUTHZ --> CSRF
+    
+    ENCRYPT --> TLS
+    TLS --> HASH
+    
+    ISOLATE --> SECRET
+    SECRET --> AUDIT

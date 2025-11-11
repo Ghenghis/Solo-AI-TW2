@@ -1,0 +1,86 @@
+#debugt-toolbar {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    position: absolute;
+    background: #ffffff;
+    top: 0px;
+    right: 0px;
+    max-width: 10%;
+    height: auto;
+    z-index: 11000;
+}
+
+.debugt-nav-entry {
+    color: #555;
+    position: relative;
+    display: block;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    font-size: 26px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 20px
+}
+.debugt-toggle {
+    display: block;
+    background-color: white;
+    position: absolute;
+    top: 0px;
+    z-index: 10000;
+    text-decoration: none;
+}
+
+.debugt-nav-entry small {
+    font-size: 15px;
+    color: #777;
+    box-sizing: border-box;
+    position: relative;
+    top: 5px;
+}
+.debugt-nav-entry.active small {
+    color: #000
+}
+
+.debugt-nav-entry:hover {
+    color: #555;
+    background-color: #f5f5f5;
+}
+
+.debugt-nav-entry.active {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #428bca;
+}
+.debugt-logo {
+    padding: 0px;
+    border: 0px;
+}
+.debugt-logo img {
+    width: 100%
+}
+.debugt-panel {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 11%;
+    z-index: 10000000;
+    min-height: 100%
+}
+.debugt-panel-body {
+    background: #fff;
+    min-height: 100%;
+}
+.syntaxhighlighter-wrap {
+
+}
+.debugt-panel-elem {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+.debugt-panel-heading {
+    text-align: center;
+    font-size: 60px;
+}

@@ -1,0 +1,38 @@
+graph TB
+    subgraph "Cloud Provider"
+        subgraph "Region 1"
+            LB1[Load Balancer]
+            subgraph "Kubernetes Cluster"
+                subgraph "Node Pool 1"
+                    POD1[TWLan Pod 1]
+                    POD2[TWLan Pod 2]
+                end
+                subgraph "Node Pool 2"
+                    POD3[TWLan Pod 3]
+                    POD4[TWLan Pod 4]
+                end
+            end
+        end
+        
+        subgraph "Managed Services"
+            RDS[(Managed Database)]
+            ELASTICACHE[(Managed Redis)]
+            S3[Object Storage]
+        end
+    end
+    
+    INTERNET[Internet] --> LB1
+    LB1 --> POD1
+    LB1 --> POD2
+    LB1 --> POD3
+    LB1 --> POD4
+    
+    POD1 --> RDS
+    POD2 --> RDS
+    POD3 --> RDS
+    POD4 --> RDS
+    
+    POD1 --> ELASTICACHE
+    POD2 --> ELASTICACHE
+    
+    POD1 --> S3

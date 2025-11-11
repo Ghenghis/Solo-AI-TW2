@@ -1,0 +1,66 @@
+graph TB
+    subgraph "Client Layer"
+        B[Browser]
+        M[Mobile App]
+        API[API Clients]
+    end
+    
+    subgraph "Gateway Layer"
+        LB[Load Balancer<br/>Port Manager]
+        RP[Reverse Proxy<br/>Nginx]
+    end
+    
+    subgraph "Application Layer"
+        subgraph "Modern Stack"
+            WEB[Web Server<br/>Nginx]
+            PHP[PHP 8.4 FPM]
+            WORKER[Background Workers]
+        end
+        
+        subgraph "Legacy Stack"
+            LEGACY[TWLan 2.A3<br/>Original Binary]
+        end
+    end
+    
+    subgraph "Data Layer"
+        DB[(MariaDB 10.11)]
+        REDIS[(Redis 7)]
+        FS[File Storage]
+    end
+    
+    subgraph "Infrastructure Layer"
+        DOCKER[Docker Engine]
+        MONITOR[Monitoring<br/>Prometheus/Grafana]
+        BACKUP[Backup Service]
+    end
+    
+    B --> LB
+    M --> LB
+    API --> LB
+    
+    LB --> RP
+    RP --> WEB
+    RP --> LEGACY
+    
+    WEB --> PHP
+    PHP --> DB
+    PHP --> REDIS
+    PHP --> FS
+    
+    WORKER --> DB
+    WORKER --> REDIS
+    
+    LEGACY --> DB
+    
+    MONITOR --> DOCKER
+    BACKUP --> DB
+    BACKUP --> FS
+    
+    style B fill:#e1f5ff
+    style M fill:#e1f5ff
+    style API fill:#e1f5ff
+    style PHP fill:#d4f1d4
+    style WEB fill:#d4f1d4
+    style LEGACY fill:#ffe4b5
+    style DB fill:#ffcccc
+    style REDIS fill:#ffcccc

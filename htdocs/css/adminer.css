@@ -1,0 +1,128 @@
+body
+{
+    background: none;
+}
+
+h1, h2
+{
+    background: url('/graphic/start/nav-bg.jpg') repeat-x;
+    color: #CCC;
+    border-bottom: none;
+}
+
+#tables a
+{
+    background: none;
+}
+
+#breadcrumb
+{
+    background: rgba(50, 50, 50, 0.25);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#menu p
+{
+    border-bottom: 1px solid rgba(50, 50, 50, 0.25);
+}
+
+fieldset
+{
+    border-radius: 5px;
+}
+
+td, th
+{
+    background: rgba(200, 200, 200, 0.25);
+}
+
+.odd > td, .odd > th, *:nth-child(2n) > td, *:nth-child(2n) > th
+{
+    background: rgba(150, 150, 150, 0.25);
+}
+
+tbody tr:hover td, tbody tr:hover th
+{
+    background: rgba(255, 255, 255, 0.25);
+}
+
+thead td, thead th
+{
+    background: rgba(50, 50, 50, 0.25);
+}
+
+#schema .table
+{
+    background: rgba(50, 50, 50, 0.25);
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px #999;
+}
+
+pre[contenteditable="true"]
+{
+    background: #FFF;
+}
+
+code
+{
+    background: rgba(200, 200, 200, 0.25);
+    padding: 2px 6px;
+    border-radius: 5px;
+    border: solid 1px #999;
+}
+
+code.jush-sql:hover
+{
+    background: rgba(255, 255, 255, 0.25);
+}
+
+input[type="submit"].default
+{
+    box-shadow: none;
+}
+
+input[type="submit"]
+{
+    background: url('/graphic/start/main-sprite.png') no-repeat;
+    display: inline-block;
+    max-width: 174px;
+    background-position: -5px -160px;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    color: #FFF;
+    height: 34px;
+    text-decoration: none;
+    padding: 0px 12px;
+}
+
+input[type="submit"]:hover
+{
+    background-position: -5px -126px;
+}
+
+.logout
+{
+    margin: 2px 20px;
+}
+
+input:not([type]), input[type="text"], input[type="number"], input[type="search"]
+{
+    padding: 2px 6px;
+    border: none;
+    font-size: 12px;
+    background: url('/graphic/start/sprite-home.png') no-repeat 0 -190px/294px 243px #FFF;
+    width: 192px;
+    height: 20px;
+}
+
+input[type="search"]
+{
+    padding-left: 2px;
+    width: 204px;
+    height: 24px;
+    background-position: 0 -190px;
+    background-size: 294px 243px;
+}

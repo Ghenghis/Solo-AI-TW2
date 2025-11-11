@@ -1,0 +1,98 @@
+graph TB
+    subgraph "Internet Layer"
+        INTERNET[Internet<br/>Public Network]
+        CDN[CDN<br/>CloudFlare]
+    end
+    
+    subgraph "Edge Layer"
+        subgraph "Security Perimeter"
+            FW[Firewall<br/>iptables/nftables]
+            WAF[Web Application<br/>Firewall]
+            DDoS[DDoS Protection]
+            IDS[Intrusion Detection<br/>System]
+        end
+    end
+    
+    subgraph "Load Balancing Layer"
+        LB1[Primary Load Balancer<br/>HAProxy/Nginx]
+        LB2[Secondary Load Balancer<br/>Backup]
+        VRRP[VRRP<br/>Keepalived]
+    end
+    
+    subgraph "Application Network - 172.25.0.0/16"
+        subgraph "DMZ Subnet - 172.25.1.0/24"
+            WEB1[Web Server 1<br/>172.25.1.10]
+            WEB2[Web Server 2<br/>172.25.1.11]
+            WEB3[Web Server N<br/>172.25.1.12]
+        end
+        
+        subgraph "App Subnet - 172.25.2.0/24"
+            PHP1[PHP-FPM 1<br/>172.25.2.10]
+            PHP2[PHP-FPM 2<br/>172.25.2.11]
+            PHP3[PHP-FPM N<br/>172.25.2.12]
+            WORKER1[Worker 1<br/>172.25.2.20]
+            WORKER2[Worker N<br/>172.25.2.21]
+        end
+        
+        subgraph "Data Subnet - 172.25.3.0/24"
+            DB_MASTER[MariaDB Master<br/>172.25.3.10]
+            DB_SLAVE1[MariaDB Slave 1<br/>172.25.3.11]
+            DB_SLAVE2[MariaDB Slave 2<br/>172.25.3.12]
+            REDIS_MASTER[Redis Master<br/>172.25.3.20]
+            REDIS_SLAVE[Redis Slave<br/>172.25.3.21]
+        end
+        
+        subgraph "Management Subnet - 172.25.4.0/24"
+            MONITOR[Monitoring<br/>172.25.4.10]
+            BACKUP[Backup Server<br/>172.25.4.11]
+            ADMIN[Admin Panel<br/>172.25.4.12]
+            LOG[Log Server<br/>172.25.4.13]
+        end
+    end
+    
+    INTERNET --> CDN
+    CDN --> FW
+    FW --> WAF
+    WAF --> DDoS
+    DDoS --> IDS
+    IDS --> LB1
+    IDS --> LB2
+    LB1 <--> VRRP
+    LB2 <--> VRRP
+    
+    LB1 --> WEB1
+    LB1 --> WEB2
+    LB1 --> WEB3
+    
+    WEB1 --> PHP1
+    WEB2 --> PHP2
+    WEB3 --> PHP3
+    
+    PHP1 --> DB_MASTER
+    PHP2 --> DB_MASTER
+    PHP3 --> DB_MASTER
+    
+    PHP1 --> REDIS_MASTER
+    PHP2 --> REDIS_MASTER
+    
+    DB_MASTER --> DB_SLAVE1
+    DB_MASTER --> DB_SLAVE2
+    REDIS_MASTER --> REDIS_SLAVE
+    
+    MONITOR --> WEB1
+    MONITOR --> PHP1
+    MONITOR --> DB_MASTER
+    
+    BACKUP --> DB_MASTER
+    BACKUP --> REDIS_MASTER
+    
+    style INTERNET fill:#e1f5ff
+    style CDN fill:#b3e5fc
+    style FW fill:#ffcdd2
+    style WAF fill:#ffcdd2
+    style DDoS fill:#ffcdd2
+    style IDS fill:#ffcdd2
+    style LB1 fill:#c8e6c9
+    style LB2 fill:#c8e6c9
+    style DB_MASTER fill:#fff9c4
+    style REDIS_MASTER fill:#fff9c4

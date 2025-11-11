@@ -1,0 +1,1145 @@
+{
+    "main": {
+        "minLevel": 1,
+        "maxLevel": 30,
+        "startLevel": 5,
+        "points": {
+            "base": 10,
+            "factor": 1.1999971560929
+        },
+        "buildCosts": {
+            "time": {
+                "base": 900,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 5,
+                "factor": 1.17
+            },
+            "wood": {
+                "base": 90,
+                "factor": 1.26
+            },
+            "stone": {
+                "base": 80,
+                "factor": 1.275
+            },
+            "iron": {
+                "base": 70,
+                "factor": 1.26
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+
+        },
+        "shape": "373,187,417,129,407,72,329,65,306,99,311,150",
+        "img": {
+            "level": {
+                "1": "1",
+                "5": "2",
+                "15": "3"
+            },
+            "misc": {
+                "p_main_flag": {
+                    "1": "mainflag1.gif",
+                    "5": "mainflag2.gif",
+                    "15": "mainflag3.gif"
+                }
+            },
+            "active": {
+
+            }
+        },
+        "destroyRequired": "15",
+        "destroyMin": "15"
+    },
+    "barracks": {
+        "minLevel": 0,
+        "maxLevel": 25,
+        "startLevel": 0,
+        "points": {
+            "base": 16,
+            "factor": 1.2000019829319
+        },
+        "buildCosts": {
+            "time": {
+                "base": 1800,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 7,
+                "factor": 1.17
+            },
+            "wood": {
+                "base": 200,
+                "factor": 1.26
+            },
+            "stone": {
+                "base": 170,
+                "factor": 1.28
+            },
+            "iron": {
+                "base": 90,
+                "factor": 1.26
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+            "main": 3
+        },
+        "shape": "392,289,444,313,506,283,481,235,442,216,392,252",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1",
+                "5": "2",
+                "20": "3"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        }
+    },
+    "stable": {
+        "minLevel": 0,
+        "maxLevel": 20,
+        "startLevel": 0,
+        "points": {
+            "base": 20,
+            "factor": 1.2000039538005
+        },
+        "buildCosts": {
+            "time": {
+                "base": 6000,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 8,
+                "factor": 1.17
+            },
+            "wood": {
+                "base": 270,
+                "factor": 1.26
+            },
+            "stone": {
+                "base": 240,
+                "factor": 1.28
+            },
+            "iron": {
+                "base": 260,
+                "factor": 1.26
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+            "main": 10,
+            "barracks": 5,
+            "smith": 5
+        },
+        "shape": "64,241,70,265,150,307,189,289,184,232,99,202",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1",
+                "5": "2",
+                "10": "3"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        }
+    },
+    "garage": {
+        "minLevel": 0,
+        "maxLevel": 15,
+        "startLevel": 0,
+        "points": {
+            "base": 24,
+            "factor": 1.1999609284227
+        },
+        "buildCosts": {
+            "time": {
+                "base": 6000,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 8,
+                "factor": 1.17
+            },
+            "wood": {
+                "base": 300,
+                "factor": 1.26
+            },
+            "stone": {
+                "base": 240,
+                "factor": 1.28
+            },
+            "iron": {
+                "base": 260,
+                "factor": 1.26
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+            "main": 10,
+            "smith": 10
+        },
+        "shape": "284,358,362,361,402,321,369,283,346,278,291,320",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1",
+                "5": "2",
+                "10": "3"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        }
+    },
+    "church_f": {
+        "minLevel": 0,
+        "maxLevel": 1,
+        "startLevel": 1,
+        "points": {
+            "base": 10,
+            "factor": 1.1832159566199
+        },
+        "buildCosts": {
+            "time": {
+                "base": 8160,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 5,
+                "factor": 1.55
+            },
+            "wood": {
+                "base": 160,
+                "factor": 1.26
+            },
+            "stone": {
+                "base": 200,
+                "factor": 1.28
+            },
+            "iron": {
+                "base": 50,
+                "factor": 1.26
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+
+        },
+        "shape": "410,198,434,216,525,193,505,135,439,99,410,161",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        },
+        "enableIfTrue": "church",
+        "destroyMin": "1"
+    },
+    "church": {
+        "minLevel": 0,
+        "maxLevel": 3,
+        "startLevel": 0,
+        "points": {
+            "base": 10,
+            "factor": 1.1832159566199
+        },
+        "buildCosts": {
+            "time": {
+                "base": 184980,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 5000,
+                "factor": 1.55
+            },
+            "wood": {
+                "base": 16000,
+                "factor": 1.26
+            },
+            "stone": {
+                "base": 20000,
+                "factor": 1.28
+            },
+            "iron": {
+                "base": 5000,
+                "factor": 1.26
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+            "main": 5,
+            "farm": 5
+        },
+        "shape": "410,198,434,216,525,193,505,135,439,99,410,161",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1",
+                "2": "2",
+                "3": "3"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        },
+        "enableIfTrue": "church"
+    },
+    "snob": {
+        "minLevel": 0,
+        "maxLevel": 1,
+        "startLevel": 0,
+        "points": {
+            "base": 512,
+            "factor": 1.1997721137783
+        },
+        "buildCosts": {
+            "time": {
+                "base": 586800,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 80,
+                "factor": 1.17
+            },
+            "wood": {
+                "base": 15000,
+                "factor": 2
+            },
+            "stone": {
+                "base": 25000,
+                "factor": 2
+            },
+            "iron": {
+                "base": 10000,
+                "factor": 2
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+            "main": 20,
+            "smith": 20,
+            "market": 10
+        },
+        "shape": "206,149,257,125,229,60,185,80,156,111",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        }
+    },
+    "smith": {
+        "minLevel": 0,
+        "maxLevel": 20,
+        "startLevel": 0,
+        "points": {
+            "base": 19,
+            "factor": 1.1999987515464
+        },
+        "buildCosts": {
+            "time": {
+                "base": 6000,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 20,
+                "factor": 1.17
+            },
+            "wood": {
+                "base": 220,
+                "factor": 1.26
+            },
+            "stone": {
+                "base": 180,
+                "factor": 1.275
+            },
+            "iron": {
+                "base": 240,
+                "factor": 1.26
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+            "main": 5,
+            "barracks": 1
+        },
+        "shape": "174,335,222,361,271,342,283,301,216,262",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1",
+                "5": "2",
+                "15": "3"
+            },
+            "misc": {
+
+            },
+            "active": {
+                "smith_anim": "smith_anim.gif"
+            }
+        }
+    },
+    "place": {
+        "minLevel": 0,
+        "maxLevel": 1,
+        "startLevel": 1,
+        "points": {
+            "base": 0,
+            "factor": 0
+        },
+        "buildCosts": {
+            "time": {
+                "base": 10860,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 0,
+                "factor": 1.17
+            },
+            "wood": {
+                "base": 10,
+                "factor": 1.26
+            },
+            "stone": {
+                "base": 40,
+                "factor": 1.275
+            },
+            "iron": {
+                "base": 30,
+                "factor": 1.26
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+
+        },
+        "shape": "315,271,379,275,401,229,375,206,343,207",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        }
+    },
+    "statue": {
+        "minLevel": 0,
+        "maxLevel": 1,
+        "startLevel": 0,
+        "points": {
+            "base": 24,
+            "factor": 1.25
+        },
+        "buildCosts": {
+            "time": {
+                "base": 1500,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 10,
+                "factor": 1.17
+            },
+            "wood": {
+                "base": 220,
+                "factor": 1.26
+            },
+            "stone": {
+                "base": 220,
+                "factor": 1.275
+            },
+            "iron": {
+                "base": 220,
+                "factor": 1.26
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+
+        },
+        "shape": "277,231,256,265,266,285,292,287,306,266",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        },
+        "enableIfTrue": "world.knightActive"
+    },
+    "market": {
+        "minLevel": 0,
+        "maxLevel": 25,
+        "startLevel": 0,
+        "points": {
+            "base": 10,
+            "factor": 1.1999971560929
+        },
+        "buildCosts": {
+            "time": {
+                "base": 2700,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 20,
+                "factor": 1.17
+            },
+            "wood": {
+                "base": 100,
+                "factor": 1.26
+            },
+            "stone": {
+                "base": 100,
+                "factor": 1.275
+            },
+            "iron": {
+                "base": 100,
+                "factor": 1.26
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+            "main": 3,
+            "storage": 2
+        },
+        "shape": "214,149,234,228,313,230,330,169,273,122",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1",
+                "5": "2",
+                "20": "3"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        },
+        "formula": "$level <= 10 ? $level : (($level - 10) ** 2 + 10)"
+    },
+    "wood": {
+        "minLevel": 0,
+        "maxLevel": 30,
+        "startLevel": 5,
+        "points": {
+            "base": 6,
+            "factor": 1.2000041287667
+        },
+        "buildCosts": {
+            "time": {
+                "base": 900,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 5,
+                "factor": 1.155
+            },
+            "wood": {
+                "base": 50,
+                "factor": 1.25
+            },
+            "stone": {
+                "base": 60,
+                "factor": 1.275
+            },
+            "iron": {
+                "base": 40,
+                "factor": 1.245
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+                "wood": {
+                    "zero": "5",
+                    "base": "30",
+                    "factor": "1.1631180425543"
+                }
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+
+        },
+        "shape": "472,379,523,417,583,373,528,330",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1",
+                "10": "2",
+                "20": "3"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        }
+    },
+    "stone": {
+        "minLevel": 0,
+        "maxLevel": 30,
+        "startLevel": 5,
+        "points": {
+            "base": 6,
+            "factor": 1.2000041287667
+        },
+        "buildCosts": {
+            "time": {
+                "base": 900,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 10,
+                "factor": 1.14
+            },
+            "wood": {
+                "base": 65,
+                "factor": 1.27
+            },
+            "stone": {
+                "base": 50,
+                "factor": 1.265
+            },
+            "iron": {
+                "base": 40,
+                "factor": 1.24
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+                "stone": {
+                    "zero": "5",
+                    "base": "30",
+                    "factor": "1.1631180425543"
+                }
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+
+        },
+        "shape": "34,300,0,349,15,399,67,417,91,402,92,341",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1",
+                "10": "2",
+                "20": "3"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        }
+    },
+    "iron": {
+        "minLevel": 0,
+        "maxLevel": 30,
+        "startLevel": 5,
+        "points": {
+            "base": 6,
+            "factor": 1.2000041287667
+        },
+        "buildCosts": {
+            "time": {
+                "base": 1080,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 10,
+                "factor": 1.17
+            },
+            "wood": {
+                "base": 75,
+                "factor": 1.252
+            },
+            "stone": {
+                "base": 65,
+                "factor": 1.275
+            },
+            "iron": {
+                "base": 70,
+                "factor": 1.24
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+                "iron": {
+                    "zero": "5",
+                    "base": "30",
+                    "factor": "1.1631180425543"
+                }
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+
+        },
+        "shape": "0,55,45,90,93,58,89,6,39,9",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1",
+                "10": "2",
+                "20": "3"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        }
+    },
+    "farm": {
+        "minLevel": 1,
+        "maxLevel": 30,
+        "startLevel": 5,
+        "points": {
+            "base": 5,
+            "factor": 1.1999971560929
+        },
+        "buildCosts": {
+            "time": {
+                "base": 1200,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 0,
+                "factor": 1
+            },
+            "wood": {
+                "base": 45,
+                "factor": 1.3
+            },
+            "stone": {
+                "base": 40,
+                "factor": 1.32
+            },
+            "iron": {
+                "base": 30,
+                "factor": 1.29
+            }
+        },
+        "res": {
+            "max": {
+                "population": {
+                    "base": "240",
+                    "factor": "1.1721022975335"
+                }
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+
+        },
+        "shape": "456,0,477,41,526,75,583,88,597,18,597,0",
+        "img": {
+            "level": {
+                "1": false,
+                "10": "2",
+                "20": "3"
+            },
+            "misc": {
+                "p_farm_field": {
+                    "20": "farm3_field.png"
+                }
+            },
+            "active": {
+                "npc_farmer": "farmer.gif"
+            }
+        }
+    },
+    "storage": {
+        "minLevel": 1,
+        "maxLevel": 30,
+        "startLevel": 5,
+        "points": {
+            "base": 6,
+            "factor": 1.2000041287667
+        },
+        "buildCosts": {
+            "time": {
+                "base": 1020,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 0,
+                "factor": 1.15
+            },
+            "wood": {
+                "base": 60,
+                "factor": 1.265
+            },
+            "stone": {
+                "base": 50,
+                "factor": 1.27
+            },
+            "iron": {
+                "base": 40,
+                "factor": 1.245
+            }
+        },
+        "res": {
+            "max": {
+                "wood": {
+                    "base": "1000",
+                    "factor": "1.2294934136946"
+                },
+                "stone": {
+                    "base": "1000",
+                    "factor": "1.2294934136946"
+                },
+                "iron": {
+                    "base": "1000",
+                    "factor": "1.2294934136946"
+                }
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+
+        },
+        "shape": "96,192,153,218,195,215,193,148,133,121",
+        "img": {
+            "level": {
+                "1": "1",
+                "10": "2",
+                "20": "3"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        }
+    },
+    "hide": {
+        "minLevel": 0,
+        "maxLevel": 10,
+        "startLevel": 1,
+        "points": {
+            "base": 5,
+            "factor": 1.201035728641
+        },
+        "buildCosts": {
+            "time": {
+                "base": 1800,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 2,
+                "factor": 1.17
+            },
+            "wood": {
+                "base": 50,
+                "factor": 1.25
+            },
+            "stone": {
+                "base": 60,
+                "factor": 1.25
+            },
+            "iron": {
+                "base": 50,
+                "factor": 1.25
+            }
+        },
+        "res": {
+            "max": {
+                "wood": {
+                    "base": "50",
+                    "factor": "1.2501754918161"
+                },
+                "stone": {
+                    "base": "60",
+                    "factor": "1.249989176514"
+                },
+                "iron": {
+                    "base": "50",
+                    "factor": "1.2501754918161"
+                }
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 150,
+                "factor": 1.333500530983
+            }
+        },
+        "requirements": {
+
+        },
+        "shape": "241,80,261,113,294,93,268,63",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        }
+    },
+    "wall": {
+        "minLevel": 0,
+        "maxLevel": 20,
+        "startLevel": 0,
+        "points": {
+            "base": 8,
+            "factor": 1.2001027195781
+        },
+        "buildCosts": {
+            "time": {
+                "base": 3600,
+                "factor": 1.2
+            },
+            "population": {
+                "base": 5,
+                "factor": 1.17
+            },
+            "wood": {
+                "base": 50,
+                "factor": 1.26
+            },
+            "stone": {
+                "base": 100,
+                "factor": 1.275
+            },
+            "iron": {
+                "base": 20,
+                "factor": 1.26
+            }
+        },
+        "res": {
+            "max": {
+
+            },
+            "prod": {
+
+            },
+            "hide": {
+                "base": 0,
+                "factor": 0
+            }
+        },
+        "requirements": {
+            "barracks": 1
+        },
+        "shape": "464,12,444,70,534,112,566,49",
+        "img": {
+            "level": {
+                "0": "0",
+                "1": "1",
+                "5": "2",
+                "15": "3"
+            },
+            "misc": {
+
+            },
+            "active": {
+
+            }
+        }
+    }
+}

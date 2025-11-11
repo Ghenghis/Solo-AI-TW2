@@ -1,0 +1,19 @@
+graph LR
+    subgraph "Performance Issues"
+        DB[Database<br/>No indexes]
+        PHP[PHP<br/>No caching]
+        FS[File System<br/>Session files]
+        NET[Network<br/>Polling overhead]
+    end
+    
+    subgraph "Solutions"
+        IDX[Add Indexes]
+        CACHE[Redis Cache]
+        MEM[Memory Sessions]
+        WS[WebSockets]
+    end
+    
+    DB --> IDX
+    PHP --> CACHE
+    FS --> MEM
+    NET --> WS

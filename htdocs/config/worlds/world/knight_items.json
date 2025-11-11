@@ -1,0 +1,43 @@
+{
+    "systems": {
+        "simple": {
+            "spear": {"att": 1.3, "def": 1.2, "special": 1},
+            "sword": {"att": 1.3, "def": 1.2, "special": 1},
+            "axe": {"att": 1.3, "def": 1.2, "special": 1},
+            "archer": {"att": 1.3, "def": 1.2, "special": 1},
+            "spy": {"att": 1, "def": 1, "special": 1},
+            "light": {"att": 1.3, "def": 1.2, "special": 1},
+            "heavy": {"att": 1.3, "def": 1.2, "special": 1},
+            "marcher": {"att": 1.3, "def": 1.2, "special": 1},
+            "ram": {"att": 1, "def": 1, "special": 2, "special_format": "100%"},
+            "catapult": {"att": 1, "def": 1, "special": 2, "special_format": "100%"},
+            "snob": {"att": 1, "def": 1, "special": 30}
+        },
+        "extended": {
+            "spear": {"att": 1.3, "def": 1.2, "special": 1},
+            "sword": {"att": 1.4, "def": 1.3, "special": 1},
+            "axe": {"att": 1.4, "def": 1.3, "special": 1},
+            "archer": {"att": 1.3, "def": 1.2, "special": 1},
+            "spy": {"att": 1, "def": 1, "special": 1},
+            "light": {"att": 1.3, "def": 1.2, "special": 1},
+            "heavy": {"att": 1.3, "def": 1.2, "special": 1},
+            "marcher": {"att": 1.3, "def": 1.2, "special": 1},
+            "ram": {"att": 2, "def": 1, "special": 2, "special_format": "100%"},
+            "catapult": {"att": 1, "def": 10, "special": 2, "special_format": "100%"},
+            "snob": {"att": 1, "def": 1, "special": 30}
+        }
+    },
+    "poly": {
+        "spear": "125,47,104,114,114,409,127,409,129,217,159,77",
+        "sword": "370,204,384,223,486,230,485,238,386,236,366,251,333,228",
+        "axe": "132,256,190,258,191,316,170,316,169,409,154,408,154,314,132,314",
+        "archer": "195,160,221,189,239,251,238,321,226,371,196,402",
+        "spy": "335,268,409,262,408,270,345,290",
+        "light": "252,48,244,191,254,316,264,313,265,105",
+        "heavy": "101,18,78,79,76,352,89,419,101,355",
+        "marcher": "533,222,514,383,487,351,485,336,498,303,492,265,501,247",
+        "ram": "362,153,449,156,452,224,429,224,432,172,360,169",
+        "catapult": "55,0,23,106,41,167,80,42",
+        "snob": "441,273,396,281,403,291,484,304,484,290"
+    }
+}

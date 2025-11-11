@@ -1,0 +1,16 @@
+stateDiagram-v2
+    [*] --> Producing
+    
+    Producing --> StorageFull: Reached Max
+    Producing --> Consuming: Build/Train
+    
+    StorageFull --> Producing: Resources Used
+    StorageFull --> Overflow: Production Continues
+    
+    Consuming --> Producing: Action Complete
+    Consuming --> Insufficient: Not Enough
+    
+    Insufficient --> Producing: Wait/Trade
+    
+    Overflow --> Waste: Resources Lost
+    Waste --> Producing: Storage Available

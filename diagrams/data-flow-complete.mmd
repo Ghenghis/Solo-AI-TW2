@@ -1,0 +1,70 @@
+graph TB
+    subgraph "User Actions"
+        USER[User Input]
+        BROWSER[Browser Cache]
+    end
+    
+    subgraph "CDN Layer"
+        CDN_CACHE[CDN Cache]
+        CDN_RULES[Cache Rules]
+    end
+    
+    subgraph "Application Flow"
+        subgraph "Request Pipeline"
+            REQ[HTTP Request]
+            ROUTE[Router]
+            MW[Middleware Stack]
+            CTRL[Controller]
+        end
+        
+        subgraph "Business Logic"
+            SVC[Service Layer]
+            REPO[Repository]
+            ENTITY[Entity Manager]
+            EVENT[Event Dispatcher]
+        end
+        
+        subgraph "Data Access"
+            CACHE[Cache Layer]
+            ORM[ORM/Database]
+            QUEUE[Queue System]
+        end
+    end
+    
+    subgraph "Response Pipeline"
+        RENDER[View Renderer]
+        TRANSFORM[Response Transformer]
+        COMPRESS[Compression]
+        RESP[HTTP Response]
+    end
+    
+    USER --> BROWSER
+    BROWSER --> CDN_CACHE
+    CDN_CACHE --> CDN_RULES
+    
+    CDN_RULES -->|Cache Miss| REQ
+    REQ --> ROUTE
+    ROUTE --> MW
+    MW --> CTRL
+    
+    CTRL --> SVC
+    SVC --> REPO
+    REPO --> ENTITY
+    
+    REPO --> CACHE
+    CACHE -->|Miss| ORM
+    ORM --> DB[(Database)]
+    
+    SVC --> EVENT
+    EVENT --> QUEUE
+    QUEUE --> WORKER[Background Worker]
+    
+    SVC --> RENDER
+    RENDER --> TRANSFORM
+    TRANSFORM --> COMPRESS
+    COMPRESS --> RESP
+    RESP --> CDN_CACHE
+    CDN_CACHE --> BROWSER
+    
+    WORKER --> DB
+    WORKER --> CACHE

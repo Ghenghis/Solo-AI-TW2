@@ -1,0 +1,377 @@
+{
+    "admin": {
+        "logout": "Kirjaudu ulos"
+    },
+    "admin.configeditor": {
+        "reload": "Lataa uudestaan",
+        "save": "Tallenna asetukset"
+    },
+    "admin.login": {
+        "login": "Kirjaudu sisään",
+        "password": "Salasana"
+    },
+    "buildingBarracks": {
+        "name": "Kasarmi"
+    },
+    "buildingChurch": {
+        "name": "Kirkko"
+    },
+    "buildingFarm": {
+        "name": "Maatila"
+    },
+    "buildingGarage": {
+        "name": "Työpaja"
+    },
+    "buildingIron": {
+        "name": "Rautakaivos"
+    },
+    "buildingMain": {
+        "build": "Rakenna",
+        "buildTime": "Rakennusaika",
+        "building": "Rakennukset",
+        "cancel": "Peruu",
+        "changeName": "Vaihda kylän nimeä",
+        "eventTime": "Kesto",
+        "modeBuild": "Rakenna",
+        "modeDestroy": "Purkaminen",
+        "name": "Päämaja"
+    },
+    "buildingMarket": {
+        "name": "Kauppapaikka"
+    },
+    "buildingPlace": {
+        "all": "Kaikki",
+        "arrival": "Saapuminen",
+        "arrivalIn": "Saapuminen kohteeseen",
+        "attack": "hyökkää",
+        "attacker": "Hyökkääjä",
+        "attackingArmy": "Hyökkääjä",
+        "church": "Kirkko",
+        "defender": "Puolustaja",
+        "defendingArmy": "Puolustaja",
+        "duration": "Kesto",
+        "losses": "Haavoittuneet",
+        "moral": "Moraali",
+        "support": "tue",
+        "target": "Kohde",
+        "total": "Yhteensä",
+        "units": "Yksiköt",
+        "wall": "Muuri",
+        "withdraw": "Vedä takaisin"
+    },
+    "buildingPlaceNavi": {
+        "command": "Komennot"
+    },
+    "buildingRes": {
+        "prod": "Tuotanto"
+    },
+    "buildingSmith": {
+        "eventTime": "Kesto"
+    },
+    "buildingSnob": {
+        "overall": "Yhteensä"
+    },
+    "buildingSnobNavi": {
+        "train": "Luo"
+    },
+    "buildingStable": {
+        "name": "Talli"
+    },
+    "buildingStatue": {
+        "doCancel": "Cancel",
+        "modeIndex": "Paladiini",
+        "modeInventory": "Inventaario",
+        "name": "Patsas",
+        "palaName": "Nimi"
+    },
+    "buildingStone": {
+        "name": "Savikuoppa"
+    },
+    "buildingStorage": {
+        "capacity": "Varaston kapasiteetti",
+        "name": "Varasto",
+        "tableHead": "Varasto täynnä"
+    },
+    "buildingWall": {
+        "basicDefense": "Peruspuolustus",
+        "name": "Muuri"
+    },
+    "buildingWood": {
+        "name": "Saha"
+    },
+    "createVillage": {
+        "submit": "Vahvista"
+    },
+    "game": {
+        "None": "Ei mitään",
+        "booty": "Ryöstö",
+        "buddies": "Ystävät",
+        "cancel": "Peruu",
+        "confirm": "Vahvista",
+        "costs": "Kustannukset",
+        "current": "Nykyinen",
+        "iron": "Rauta",
+        "ok": "OK",
+        "options": "Vaihtoehtoja",
+        "points": "Pisteet",
+        "resources": "Resurssit",
+        "save": "Tallenna",
+        "send": "Lähetä",
+        "speed": "Nopeus",
+        "stone": "Savi",
+        "storage": "Varaston kapasiteetti",
+        "support": "Tuki",
+        "text": "Teksti",
+        "unit": "Yksikkö",
+        "village": "Kylä",
+        "wood": "Puu"
+    },
+    "game.ally": {
+        "date": "Päivämäärä",
+        "doFound": "Avaa heimo",
+        "invitations": "Kutsut",
+        "leave": "Lähde heimosta",
+        "nameOfTribe": "Heimon nimi",
+        "reject": "Hylkää",
+        "tribe": "Heimo"
+    },
+    "game.ally.diplomaty": {
+        "enemy": "Viholliset",
+        "partner": "Liittolaiset"
+    },
+    "game.ally.forum": {
+        "add": "Lisää",
+        "author": "Tekijä",
+        "close": "Sulje",
+        "confirm": "Vahvista",
+        "create": "Luo",
+        "delete": "Poista",
+        "forum": "Foorumi",
+        "lastPost": "Viimeinen viesti",
+        "newpoll": "Uusi kysely",
+        "replies": "Vastaa",
+        "reply": "Vastaus",
+        "title": "Otsikko"
+    },
+    "game.ally.forum.admin": {
+        "action": "Toiminto",
+        "loading": "Ladataan"
+    },
+    "game.ally.invite": {
+        "invitations": "Kutsut",
+        "invite": "Kutsu",
+        "name": "Nimi",
+        "redraw": "Vedä takaisin"
+    },
+    "game.ally.navi": {
+        "contracts": "Diplomatia",
+        "forum": "Heimon foorumi",
+        "invite": "Rekrytoi",
+        "members": "Jäsenet",
+        "overview": "Yleiskatsaus",
+        "profile": "Profiili",
+        "reservations": "Aatelissuunnittelija"
+    },
+    "game.bbcode": {
+        "ally": "Heimo",
+        "bold": "Lihavoitu",
+        "color": "Väri",
+        "coords": "Koordinaatit",
+        "italic": "Kursivoitu",
+        "main": "Rakennukset",
+        "player": "Pelaaja",
+        "report": "Raportti",
+        "spoiler": "Spoileri",
+        "underline": "Alleviivattu",
+        "units": "Yksiköt"
+    },
+    "game.groups": {
+        "all": "Kaikki",
+        "delete": "Poista ryhmä"
+    },
+    "game.mail": {
+        "msgs": "Viestit"
+    },
+    "game.mail.modes": {
+        "in": "Viestit"
+    },
+    "game.map": {
+        "enemys": "Viholliset",
+        "partners": "Liittolaiset"
+    },
+    "game.market": {
+        "traders": "Kauppiaat"
+    },
+    "game.menu": {
+        "logout": "Kirjaudu ulos"
+    },
+    "game.menu.ally": {
+        "contracts": "Diplomatia",
+        "forum": "Heimon foorumi",
+        "members": "Jäsenet",
+        "overview": "Yleiskatsaus",
+        "profile": "Profiili",
+        "reservations": "Aatelissuunnittelija",
+        "title": "Heimo"
+    },
+    "game.menu.mails": {
+        "iNew": "Uusi viesti",
+        "in": "Viestit",
+        "title": "Viestit"
+    },
+    "game.menu.overview": {
+        "buildings": "Rakennukset",
+        "combined": "Yhdistetty",
+        "commands": "Komennot",
+        "groups": "Ryhmät",
+        "prod": "Tuotanto",
+        "title": "Yleiskatsaukset"
+    },
+    "game.menu.profile": {
+        "friends": "Ystävät",
+        "inventory": "Inventaario",
+        "title": "Profiili"
+    },
+    "game.menu.ranking": {
+        "ally": "Heimot",
+        "killPlayer": "Lyödyt vastustajat",
+        "player": "Pelaaja",
+        "title": "Sijoitukset"
+    },
+    "game.menu.reports": {
+        "attack": "Hyökkäykset",
+        "defense": "Puolusta",
+        "filter": "Suodatin",
+        "forwarded": "Lähetetty edelleen",
+        "other": "Sekal.",
+        "support": "Tuki",
+        "title": "Raportit",
+        "trade": "Kauppa"
+    },
+    "game.menu.settings": {
+        "changePasswd": "Vaihda salasana",
+        "poll": "Kyselyt",
+        "profile": "Profiili",
+        "settings": "Asetukset",
+        "title": "Asetukset"
+    },
+    "game.overview": {
+        "build": "Laajenna rakennus"
+    },
+    "game.overview.widgets": {
+        "buildqueue": "Jono",
+        "newbie": "Hyökkäyssuoja",
+        "prod": "Tuotanto",
+        "summary": "Rakennukset",
+        "units": "Yksiköt"
+    },
+    "game.report": {
+        "attacker": "Hyökkääjä",
+        "badluck": "Epäonni",
+        "defender": "Puolustaja",
+        "from": "kohteesta",
+        "losses": "Haavoittuneet",
+        "normalLuck": "Onni",
+        "origin": "Alkuperä",
+        "target": "Kohde",
+        "title": "Raportit",
+        "units": "Yksiköt"
+    },
+    "game.report.navi": {
+        "all": "Kaikki",
+        "attack": "Hyökkäykset",
+        "defense": "Puolusta",
+        "filter": "Suodatin",
+        "trade": "Kauppa"
+    },
+    "game.title": {
+        "close": "Sulje",
+        "village": "Kylä"
+    },
+    "game.train": {
+        "modeTrain": "Rekrytoi"
+    },
+    "game.train.queue": {
+        "cancel": "Peruu",
+        "duration": "Kesto",
+        "train": "Rekrytoi"
+    },
+    "game.unit": {
+        "attackStrength": "Hyökkäysvoima"
+    },
+    "game.village": {
+        "nameLeft": "Barbaarikylä"
+    },
+    "index": {
+        "availableWorlds": "Avoimet maailmat",
+        "login": "Kirjaudu sisään",
+        "logout": "Kirjaudu ulos",
+        "password": "Salasana",
+        "username": "Käyttäjätunnus"
+    },
+    "knight": {
+        "archer": "Nimrodin pitkäjousi",
+        "axe": "Thorgardin taistelukirves",
+        "catapult": "Aletheian nuotio",
+        "heavy": "Baptisten banneri",
+        "light": "Mieszkon keihäs",
+        "marcher": "Nimrodin yhdistelmäjousi",
+        "ram": "Carolin aamutähti",
+        "snob": "Vascon valtikka",
+        "spear": "Guan Yun hilpari",
+        "sword": "Paracelsuksen pitkämiekka"
+    },
+    "logout": {
+        "title": "Kirjaudu ulos"
+    },
+    "register": {
+        "password": "Salasana",
+        "passwordConfirm": "Toista salasana",
+        "register": "Rekisteröidy",
+        "title": "Rekisteröidy"
+    },
+    "sidWrong": {
+        "index": "Koti"
+    },
+    "unitArcher": {
+        "name": "Jousimies",
+        "short": "Jousimies"
+    },
+    "unitAxe": {
+        "name": "Kirvestaistelija",
+        "plural": "Kirvestaistelija",
+        "short": "Kirves"
+    },
+    "unitCatapult": {
+        "name": "Katapultti"
+    },
+    "unitHeavy": {
+        "name": "Raskas ratsuväki",
+        "plural": "Raskas ratsuväki"
+    },
+    "unitKnight": {
+        "name": "Paladiini"
+    },
+    "unitLight": {
+        "name": "Kevyt ratsuväki",
+        "plural": "Kevyt ratsuväki"
+    },
+    "unitMarcher": {
+        "name": "Ratsastava jousimies"
+    },
+    "unitRam": {
+        "name": "Muurinmurtaja",
+        "short": "Muurinmurtaja"
+    },
+    "unitSnob": {
+        "name": "Aatelinen"
+    },
+    "unitSpear": {
+        "short": "Keihäs"
+    },
+    "unitSword": {
+        "name": "Miekkamies",
+        "plural": "Miekkamies",
+        "short": "Miekka"
+    }
+}

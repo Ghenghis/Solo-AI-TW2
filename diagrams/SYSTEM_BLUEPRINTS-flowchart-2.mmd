@@ -1,0 +1,48 @@
+graph LR
+    subgraph "External Ports"
+        P80[80/HTTP]
+        P443[443/HTTPS]
+        P8080[8080/Alt-HTTP]
+        P8443[8443/Alt-HTTPS]
+    end
+    
+    subgraph "Internal Services"
+        subgraph "Web Tier"
+            W80[Nginx:80]
+            W443[Nginx:443]
+        end
+        
+        subgraph "Application Tier"
+            PHP9000[PHP-FPM:9000]
+            PHP9001[PHP-FPM:9001]
+        end
+        
+        subgraph "Database Tier"
+            DB3306[MariaDB:3306]
+            DB3307[MariaDB:3307]
+        end
+        
+        subgraph "Cache Tier"
+            R6379[Redis:6379]
+            R6380[Redis-Slave:6380]
+        end
+        
+        subgraph "Monitoring"
+            PROM9090[Prometheus:9090]
+            GRAF3000[Grafana:3000]
+        end
+    end
+    
+    P80 --> W80
+    P443 --> W443
+    P8080 --> W80
+    P8443 --> W443
+    
+    W80 --> PHP9000
+    W443 --> PHP9000
+    
+    PHP9000 --> DB3306
+    PHP9000 --> R6379
+    
+    PROM9090 --> DB3306
+    PROM9090 --> R6379

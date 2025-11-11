@@ -1,0 +1,38 @@
+graph TB
+    subgraph "Resource Generation"
+        BASE[Base Production: 30/hour]
+        BUILDING[Building Level]
+        SPEED[World Speed]
+        BONUS[Map Bonus]
+    end
+    
+    subgraph "Production Formula"
+        CALC[Production = BASE × 1.163118^Level × Speed × Bonus]
+    end
+    
+    subgraph "Resource Flow"
+        PRODUCE[Production Rate]
+        STORAGE[Storage Capacity]
+        CURRENT[Current Resources]
+        UPDATE[Update Cycle]
+    end
+    
+    subgraph "Consumption"
+        BUILD_COST[Building Costs]
+        UNIT_COST[Unit Costs]
+        TRADE[Trading]
+    end
+    
+    BASE --> CALC
+    BUILDING --> CALC
+    SPEED --> CALC
+    BONUS --> CALC
+    
+    CALC --> PRODUCE
+    PRODUCE --> UPDATE
+    UPDATE --> CURRENT
+    CURRENT --> STORAGE
+    
+    CURRENT --> BUILD_COST
+    CURRENT --> UNIT_COST
+    CURRENT --> TRADE

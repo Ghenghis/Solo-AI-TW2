@@ -1,0 +1,35 @@
+sequenceDiagram
+    participant Client
+    participant Server
+    participant PHP
+    participant MySQL
+    participant Game Engine
+    
+    Client->>Server: HTTP GET /index.php
+    Server->>PHP: Process Request
+    PHP->>PHP: Session Check
+    
+    alt Not Authenticated
+        PHP-->>Client: Login Form
+        Client->>Server: POST Credentials
+        Server->>PHP: Validate
+        PHP->>MySQL: Check User
+        MySQL-->>PHP: User Data
+        PHP->>PHP: Create Session
+        PHP-->>Client: Game Interface
+    else Authenticated
+        PHP->>Game Engine: Load State
+        Game Engine->>MySQL: Query Data
+        MySQL-->>Game Engine: Game State
+        Game Engine-->>PHP: Rendered View
+        PHP-->>Client: Game HTML
+    end
+    
+    Note over Client,Server: Continuous Polling
+    loop Every 2 seconds
+        Client->>Server: AJAX Check Updates
+        Server->>PHP: Process
+        PHP->>Game Engine: Check Changes
+        Game Engine-->>PHP: Updates
+        PHP-->>Client: JSON Response
+    end

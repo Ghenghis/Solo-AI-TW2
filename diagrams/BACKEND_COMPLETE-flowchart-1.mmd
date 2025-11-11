@@ -1,0 +1,75 @@
+graph TB
+    subgraph "Backend Architecture"
+        subgraph "Entry Points"
+            INDEX[index.php]
+            GAME[game.php]
+            AJAX[ajax.php]
+            ADMIN[admin.php]
+            API[api.php]
+            CRON[cron.php]
+        end
+        
+        subgraph "Core System"
+            CONFIG[config.php]
+            BOOTSTRAP[bootstrap.php]
+            AUTOLOAD[autoload.php]
+            ERROR[error_handler.php]
+        end
+        
+        subgraph "Libraries"
+            DB[Database.class.php]
+            SESSION[Session.class.php]
+            AUTH[Auth.class.php]
+            CACHE[Cache.class.php]
+            TEMPLATE[Template.class.php]
+        end
+        
+        subgraph "Game Classes"
+            VILLAGE[Village.class.php]
+            BUILDING[Building.class.php]
+            UNIT[Unit.class.php]
+            MOVEMENT[Movement.class.php]
+            COMBAT[Combat.class.php]
+            REPORT[Report.class.php]
+        end
+        
+        subgraph "Managers"
+            RESOURCE_MGR[ResourceManager.php]
+            BUILD_MGR[BuildingManager.php]
+            UNIT_MGR[UnitManager.php]
+            COMBAT_MGR[CombatManager.php]
+            EVENT_MGR[EventManager.php]
+        end
+        
+        subgraph "Data Layer"
+            MYSQL[MySQL Database]
+            REDIS[Redis Cache]
+            FILES[File Storage]
+        end
+    end
+    
+    INDEX --> BOOTSTRAP
+    GAME --> BOOTSTRAP
+    AJAX --> BOOTSTRAP
+    ADMIN --> BOOTSTRAP
+    
+    BOOTSTRAP --> CONFIG
+    BOOTSTRAP --> AUTOLOAD
+    BOOTSTRAP --> ERROR
+    
+    AUTOLOAD --> DB
+    AUTOLOAD --> SESSION
+    AUTOLOAD --> AUTH
+    
+    GAME --> VILLAGE
+    GAME --> BUILDING
+    GAME --> UNIT
+    
+    VILLAGE --> DB
+    BUILDING --> DB
+    UNIT --> DB
+    COMBAT --> DB
+    
+    RESOURCE_MGR --> MYSQL
+    BUILD_MGR --> MYSQL
+    COMBAT_MGR --> MYSQL

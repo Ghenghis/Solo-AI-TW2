@@ -1,0 +1,44 @@
+graph TD
+    subgraph "Core Buildings"
+        MAIN[Main Building<br/>Required: None]
+        FARM[Farm<br/>Required: None]
+        STORAGE[Storage<br/>Required: None]
+        PLACE[Rally Point<br/>Required: None]
+    end
+    
+    subgraph "Resource Buildings"
+        TIMBER[Timber Camp<br/>Required: None]
+        CLAY[Clay Pit<br/>Required: None]
+        IRON[Iron Mine<br/>Required: None]
+    end
+    
+    subgraph "Military Buildings"
+        BARRACKS[Barracks<br/>Required: Main 3]
+        STABLE[Stable<br/>Required: Main 10, Barracks 5, Smithy 5]
+        GARAGE[Garage<br/>Required: Main 10, Smithy 10]
+        SMITHY[Smithy<br/>Required: Main 5, Barracks 1]
+        WALL[Wall<br/>Required: Barracks 1]
+    end
+    
+    subgraph "Advanced Buildings"
+        ACADEMY[Academy<br/>Required: Main 20, Smithy 20, Market 10]
+        MARKET[Market<br/>Required: Main 3, Storage 2]
+        STATUE[Statue<br/>Required: Main 1]
+        CHURCH[Church<br/>Required: Main 5, Farm 5]
+    end
+    
+    MAIN --> BARRACKS
+    MAIN --> SMITHY
+    MAIN --> MARKET
+    MAIN --> STATUE
+    MAIN --> CHURCH
+    
+    BARRACKS --> STABLE
+    BARRACKS --> WALL
+    SMITHY --> STABLE
+    SMITHY --> GARAGE
+    SMITHY --> ACADEMY
+    
+    MARKET --> ACADEMY
+    STORAGE --> MARKET
+    FARM --> CHURCH

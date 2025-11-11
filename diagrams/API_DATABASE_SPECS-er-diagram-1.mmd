@@ -1,0 +1,114 @@
+erDiagram
+    users ||--o{ villages : owns
+    users ||--o{ reports : receives
+    users ||--o{ messages : "sends/receives"
+    users ||--o{ user_achievements : earns
+    users ||--o{ login_history : has
+    users }o--|| tribes : belongs_to
+    
+    villages ||--o{ buildings : contains
+    villages ||--o{ village_units : stations
+    villages ||--o{ build_queue : has
+    villages ||--o{ train_queue : has
+    villages ||--o{ movements : "from/to"
+    villages ||--|| village_resources : has
+    villages ||--|| village_config : has
+    
+    tribes ||--o{ tribe_members : has
+    tribes ||--o{ tribe_invites : sends
+    tribes ||--o{ diplomacy : participates
+    tribes ||--|| tribe_profile : has
+    
+    movements ||--o{ movement_units : contains
+    movements ||--o{ battle_reports : generates
+    
+    users {
+        bigint id PK "AUTO_INCREMENT"
+        varchar username UK "NOT NULL"
+        varchar email UK "NOT NULL"
+        varchar password_hash "NOT NULL"
+        varchar totp_secret "NULL"
+        boolean two_factor_enabled "DEFAULT FALSE"
+        int points "DEFAULT 0"
+        int rank "DEFAULT 0"
+        bigint tribe_id FK "NULL"
+        timestamp last_activity "DEFAULT NOW()"
+        timestamp created_at "DEFAULT NOW()"
+        timestamp updated_at "ON UPDATE NOW()"
+        boolean is_active "DEFAULT TRUE"
+        boolean is_banned "DEFAULT FALSE"
+        json settings "DEFAULT '{}'"
+    }
+    
+    villages {
+        bigint id PK "AUTO_INCREMENT"
+        varchar name "NOT NULL"
+        int x_coord "NOT NULL"
+        int y_coord "NOT NULL"
+        bigint user_id FK "NOT NULL"
+        int continent "GENERATED"
+        int points "DEFAULT 26"
+        int loyalty "DEFAULT 100"
+        timestamp last_update "DEFAULT NOW()"
+        timestamp created_at "DEFAULT NOW()"
+        boolean is_capital "DEFAULT FALSE"
+    }
+    
+    buildings {
+        bigint id PK "AUTO_INCREMENT"
+        bigint village_id FK "NOT NULL"
+        enum building_type "NOT NULL"
+        int level "DEFAULT 0"
+        timestamp upgrade_started "NULL"
+        timestamp upgrade_completes "NULL"
+        UNIQUE KEY "village_building" "(village_id, building_type)"
+    }
+    
+    village_units {
+        bigint id PK "AUTO_INCREMENT"
+        bigint village_id FK "NOT NULL"
+        enum unit_type "NOT NULL"
+        int count_home "DEFAULT 0"
+        int count_away "DEFAULT 0"
+        int count_support "DEFAULT 0"
+        int count_total "GENERATED"
+        UNIQUE KEY "village_unit" "(village_id, unit_type)"
+    }
+    
+    movements {
+        bigint id PK "AUTO_INCREMENT"
+        enum movement_type "NOT NULL"
+        bigint from_village_id FK "NOT NULL"
+        bigint to_village_id FK "NOT NULL"
+        bigint from_user_id FK "NOT NULL"
+        bigint to_user_id FK "NOT NULL"
+        timestamp departure_time "NOT NULL"
+        timestamp arrival_time "NOT NULL"
+        timestamp return_time "NULL"
+        json units "NOT NULL"
+        json resources "DEFAULT '{}'"
+        boolean is_processed "DEFAULT FALSE"
+        boolean is_cancelled "DEFAULT FALSE"
+    }
+    
+    reports {
+        bigint id PK "AUTO_INCREMENT"
+        bigint user_id FK "NOT NULL"
+        enum report_type "NOT NULL"
+        varchar title "NOT NULL"
+        json content "NOT NULL"
+        boolean is_read "DEFAULT FALSE"
+        boolean is_archived "DEFAULT FALSE"
+        timestamp created_at "DEFAULT NOW()"
+        INDEX "user_created" "(user_id, created_at DESC)"
+    }
+    
+    village_resources {
+        bigint village_id PK FK
+        decimal wood "DEFAULT 500"
+        decimal clay "DEFAULT 500"
+        decimal iron "DEFAULT 500"
+        int population_used "DEFAULT 0"
+        int population_max "DEFAULT 0"
+        timestamp last_update "DEFAULT NOW()"
+    }

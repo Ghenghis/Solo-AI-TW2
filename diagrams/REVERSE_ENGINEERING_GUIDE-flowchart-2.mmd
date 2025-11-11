@@ -1,0 +1,23 @@
+flowchart LR
+    subgraph "PHP Binary Structure"
+        ELF[ELF Header]
+        TEXT[.text Section<br/>Executable Code]
+        DATA[.data Section<br/>Initialized Data]
+        BSS[.bss Section<br/>Uninitialized Data]
+        RODATA[.rodata Section<br/>Constants]
+        
+        ELF --> TEXT
+        ELF --> DATA
+        ELF --> BSS
+        ELF --> RODATA
+        
+        subgraph "Embedded Components"
+            ZEND[Zend Engine]
+            EXT[Extensions]
+            SAPI[SAPI Layer]
+        end
+        
+        TEXT --> ZEND
+        TEXT --> EXT
+        TEXT --> SAPI
+    end

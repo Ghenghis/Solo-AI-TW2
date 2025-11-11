@@ -1,0 +1,25 @@
+graph TD
+    CRON[Cron Scheduler]
+    QUEUE[Job Queue]
+    
+    CRON --> CALCULATE[Calculate Resources]
+    CRON --> BATTLE[Process Battles]
+    CRON --> BUILD[Update Buildings]
+    CRON --> RANK[Update Rankings]
+    
+    CALCULATE --> QUEUE
+    BATTLE --> QUEUE
+    BUILD --> QUEUE
+    RANK --> QUEUE
+    
+    QUEUE --> WORKER1[Worker 1]
+    QUEUE --> WORKER2[Worker 2]
+    QUEUE --> WORKER3[Worker N]
+    
+    WORKER1 --> DB[(Database)]
+    WORKER2 --> DB
+    WORKER3 --> DB
+    
+    DB --> EVENTS[Event Stream]
+    EVENTS --> WEBSOCKET[WebSocket Server]
+    WEBSOCKET --> CLIENT[Game Clients]

@@ -1,0 +1,377 @@
+{
+    "admin": {
+        "logout": "Wyloguj"
+    },
+    "admin.configeditor": {
+        "reload": "Odśwież",
+        "save": "Zapisz ustawienia"
+    },
+    "admin.login": {
+        "login": "Zaloguj",
+        "password": "Hasło"
+    },
+    "buildingBarracks": {
+        "name": "Koszary"
+    },
+    "buildingChurch": {
+        "name": "Kościół"
+    },
+    "buildingFarm": {
+        "name": "Farma"
+    },
+    "buildingGarage": {
+        "name": "Warsztat"
+    },
+    "buildingIron": {
+        "name": "Huta żelaza"
+    },
+    "buildingMain": {
+        "build": "Wybuduj",
+        "buildTime": "Czas budowy",
+        "building": "Budynki",
+        "cancel": "Anuluj",
+        "changeName": "Zmień nazwę wioski",
+        "eventTime": "Czas trwania",
+        "modeBuild": "Wybuduj",
+        "modeDestroy": "Wyburzanie",
+        "name": "Ratusz"
+    },
+    "buildingMarket": {
+        "name": "Rynek"
+    },
+    "buildingPlace": {
+        "all": "Wszystkie",
+        "arrival": "Przybycie",
+        "arrivalIn": "Przybycie za",
+        "attack": "zaatakuj",
+        "attacker": "Najeźdźca",
+        "attackingArmy": "Najeźdźca",
+        "church": "Kościół",
+        "defender": "Obrońca",
+        "defendingArmy": "Obrońca",
+        "duration": "Czas trwania",
+        "losses": "Straty",
+        "moral": "Morale",
+        "support": "wesprzyj",
+        "target": "Cel",
+        "total": "Ogółem",
+        "units": "Jednostki",
+        "wall": "Mury obronne",
+        "withdraw": "Wycofaj"
+    },
+    "buildingPlaceNavi": {
+        "command": "Rozkazy"
+    },
+    "buildingRes": {
+        "prod": "Produkcja"
+    },
+    "buildingSmith": {
+        "eventTime": "Czas trwania"
+    },
+    "buildingSnob": {
+        "overall": "Ogółem"
+    },
+    "buildingSnobNavi": {
+        "train": "Utwórz"
+    },
+    "buildingStable": {
+        "name": "Stajnia"
+    },
+    "buildingStatue": {
+        "doCancel": "Cancel",
+        "modeIndex": "Rycerz",
+        "modeInventory": "Ekwipunek",
+        "name": "Piedestał",
+        "palaName": "Nazwa"
+    },
+    "buildingStone": {
+        "name": "Kopalnia gliny"
+    },
+    "buildingStorage": {
+        "capacity": "Przestrzeń magazynowa",
+        "name": "Magazyn",
+        "tableHead": "Zapełnienie magazynu"
+    },
+    "buildingWall": {
+        "basicDefense": "Podstawowa obrona",
+        "name": "Mury obronne"
+    },
+    "buildingWood": {
+        "name": "Tartak"
+    },
+    "createVillage": {
+        "submit": "Zatwierdź"
+    },
+    "game": {
+        "None": "Brak",
+        "booty": "Łup",
+        "buddies": "Znajomi",
+        "cancel": "Anuluj",
+        "confirm": "Zatwierdź",
+        "costs": "Koszt",
+        "current": "Aktualnie",
+        "iron": "Żelazo",
+        "ok": "OK",
+        "options": "Opcje",
+        "points": "Punkty",
+        "resources": "Surowce",
+        "save": "Zapisz",
+        "send": "Wyślij",
+        "speed": "Szybkość",
+        "stone": "Glina",
+        "storage": "Przestrzeń magazynowa",
+        "support": "Pomoc techniczna",
+        "text": "Tekst",
+        "unit": "Jednostka",
+        "village": "Wioska",
+        "wood": "Drewno"
+    },
+    "game.ally": {
+        "date": "Data",
+        "doFound": "Otwórz okno plemienia",
+        "invitations": "Zaproszenia",
+        "leave": "Opuść Plemię",
+        "nameOfTribe": "Nazwa Plemienia",
+        "reject": "Odrzuć",
+        "tribe": "Plemię"
+    },
+    "game.ally.diplomaty": {
+        "enemy": "Wrogowie",
+        "partner": "Sojusznicy"
+    },
+    "game.ally.forum": {
+        "add": "Dodaj",
+        "author": "Autor",
+        "close": "Zamknij",
+        "confirm": "Zatwierdź",
+        "create": "Utwórz",
+        "delete": "Usuń",
+        "forum": "Forum",
+        "lastPost": "Ostatni post",
+        "newpoll": "Nowa ankieta",
+        "replies": "Odpowiedz",
+        "reply": "Odpowiedź",
+        "title": "Tytuł"
+    },
+    "game.ally.forum.admin": {
+        "action": "Działanie",
+        "loading": "Ładowanie"
+    },
+    "game.ally.invite": {
+        "invitations": "Zaproszenia",
+        "invite": "Zaproś",
+        "name": "Nazwa",
+        "redraw": "Wycofaj"
+    },
+    "game.ally.navi": {
+        "contracts": "Dyplomacja",
+        "forum": "Forum plemienia",
+        "invite": "Rekrutacja",
+        "members": "Współplemieńcy",
+        "overview": "Przegląd",
+        "profile": "Profil",
+        "reservations": "Szlachetny planista"
+    },
+    "game.bbcode": {
+        "ally": "Plemię",
+        "bold": "Pogrubienie",
+        "color": "Kolor",
+        "coords": "Współrzędne",
+        "italic": "Kursywa",
+        "main": "Budynki",
+        "player": "Gracz",
+        "report": "Raport",
+        "spoiler": "Spoiler",
+        "underline": "Podkreślenie",
+        "units": "Jednostki"
+    },
+    "game.groups": {
+        "all": "Wszystkie",
+        "delete": "Usuń grupę"
+    },
+    "game.mail": {
+        "msgs": "Wiadomości"
+    },
+    "game.mail.modes": {
+        "in": "Wiadomości"
+    },
+    "game.map": {
+        "enemys": "Wrogowie",
+        "partners": "Sojusznicy"
+    },
+    "game.market": {
+        "traders": "Kupcy"
+    },
+    "game.menu": {
+        "logout": "Wyloguj"
+    },
+    "game.menu.ally": {
+        "contracts": "Dyplomacja",
+        "forum": "Forum plemienia",
+        "members": "Współplemieńcy",
+        "overview": "Przegląd",
+        "profile": "Profil",
+        "reservations": "Szlachetny planista",
+        "title": "Plemię"
+    },
+    "game.menu.mails": {
+        "iNew": "Nowa wiadomość",
+        "in": "Wiadomości",
+        "title": "Wiadomości"
+    },
+    "game.menu.overview": {
+        "buildings": "Budynki",
+        "combined": "Połączono",
+        "commands": "Rozkazy",
+        "groups": "Grupy",
+        "prod": "Produkcja",
+        "title": "Przegląd"
+    },
+    "game.menu.profile": {
+        "friends": "Znajomi",
+        "inventory": "Ekwipunek",
+        "title": "Profil"
+    },
+    "game.menu.ranking": {
+        "ally": "Plemiona",
+        "killPlayer": "Pokonani przeciwnicy",
+        "player": "Gracz",
+        "title": "Ranking"
+    },
+    "game.menu.reports": {
+        "attack": "Ataki",
+        "defense": "Obrona",
+        "filter": "Filtr",
+        "forwarded": "Przesłano dalej",
+        "other": "Różne",
+        "support": "Wsparcie",
+        "title": "Raporty",
+        "trade": "Handel"
+    },
+    "game.menu.settings": {
+        "changePasswd": "Zmień hasło",
+        "poll": "Ankiety",
+        "profile": "Profil",
+        "settings": "Ustawienia",
+        "title": "Ustawienia"
+    },
+    "game.overview": {
+        "build": "Ulepsz budynek"
+    },
+    "game.overview.widgets": {
+        "buildqueue": "Kolejka",
+        "newbie": "Ochrona przed Atakiem",
+        "prod": "Produkcja",
+        "summary": "Budynki",
+        "units": "Jednostki"
+    },
+    "game.report": {
+        "attacker": "Najeźdźca",
+        "badluck": "Pech",
+        "defender": "Obrońca",
+        "from": "z",
+        "losses": "Straty",
+        "normalLuck": "Szczęście",
+        "origin": "Pochodzenie",
+        "target": "Cel",
+        "title": "Raporty",
+        "units": "Jednostki"
+    },
+    "game.report.navi": {
+        "all": "Wszystkie",
+        "attack": "Ataki",
+        "defense": "Obrona",
+        "filter": "Filtr",
+        "trade": "Handel"
+    },
+    "game.title": {
+        "close": "Zamknij",
+        "village": "Wioska"
+    },
+    "game.train": {
+        "modeTrain": "Rekrutacja"
+    },
+    "game.train.queue": {
+        "cancel": "Anuluj",
+        "duration": "Czas trwania",
+        "train": "Rekrutacja"
+    },
+    "game.unit": {
+        "attackStrength": "Siła Ataku"
+    },
+    "game.village": {
+        "nameLeft": "Wioska barbarzyńska"
+    },
+    "index": {
+        "availableWorlds": "Otwarte światy",
+        "login": "Zaloguj",
+        "logout": "Wyloguj",
+        "password": "Hasło",
+        "username": "Nazwa użytkownika"
+    },
+    "knight": {
+        "archer": "Długi łuk Nimroda",
+        "axe": "Bojowy topór Thorgarda",
+        "catapult": "Pochodnia Aletei",
+        "heavy": "Chorągiew Baptystów",
+        "light": "Lanca Mieszka",
+        "marcher": "Kompozytowy łuk Nimroda",
+        "ram": "Gwiazda poranna Karola",
+        "snob": "Berło Vasca",
+        "spear": "Halabarda Guan Yu",
+        "sword": "Długi miecz Paracelsusa"
+    },
+    "logout": {
+        "title": "Wyloguj"
+    },
+    "register": {
+        "password": "Hasło",
+        "passwordConfirm": "Powtórz hasło",
+        "register": "Zarejestruj",
+        "title": "Zarejestruj"
+    },
+    "sidWrong": {
+        "index": "Strona główna"
+    },
+    "unitArcher": {
+        "name": "Łucznik",
+        "short": "Łucznik"
+    },
+    "unitAxe": {
+        "name": "Topornik",
+        "plural": "Topornik",
+        "short": "Topór"
+    },
+    "unitCatapult": {
+        "name": "Katapulta"
+    },
+    "unitHeavy": {
+        "name": "Ciężki kawalerzysta",
+        "plural": "Ciężki kawalerzysta"
+    },
+    "unitKnight": {
+        "name": "Rycerz"
+    },
+    "unitLight": {
+        "name": "Lekki kawalerzysta",
+        "plural": "Lekki kawalerzysta"
+    },
+    "unitMarcher": {
+        "name": "Łucznik na koniu"
+    },
+    "unitRam": {
+        "name": "Taran",
+        "short": "Taran"
+    },
+    "unitSnob": {
+        "name": "Szlachcic"
+    },
+    "unitSpear": {
+        "short": "Pika"
+    },
+    "unitSword": {
+        "name": "Miecznik",
+        "plural": "Miecznik",
+        "short": "Miecz"
+    }
+}

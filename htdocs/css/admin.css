@@ -1,0 +1,205 @@
+html, body
+{
+    width: 100%;
+    height: 100%;
+}
+
+body
+{
+    display: table;
+    margin: 0px;
+    font-family: Helvetica, Verdana, Arial, sans-serif;
+}
+
+#container
+{
+    display: table-row;
+}
+
+#container > div
+{
+    display: table-cell;
+    min-height: 100%;
+}
+
+#nav
+{
+    width: 250px;
+    background: #0c0c0c;
+    padding: 0px;
+}
+
+#main
+{
+    background: url('/graphic/start/inner-bg-aside.jpg');
+}
+
+#nav a, .button, button, input[type="submit"]
+{
+    color: #FFF;
+    height: 34px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#nav a, .button
+{
+    cursor: pointer;
+}
+
+#nav a::before, .button::before, button::before, input[type="submit"]::before, #nav .section::before, .headline::before, .head::before
+{
+    content: '';
+    display: block;
+    height: calc((100% - 1em) / 2);
+}
+
+#nav a
+{
+    background: url('/graphic/start/buttons-sprite.png') repeat-x;
+    display: block;
+    margin: 5px 0px;
+    background-position: 0px -34px;
+    padding-left: 10px;
+}
+
+#nav a:hover
+{
+    background-position: 0px -0px;
+}
+
+#nav a.active
+{
+    background-position: 0px -102px;
+}
+
+#nav a.active:hover
+{
+    background-position: 0px -68px;
+}
+
+#nav .section
+{
+    background: url('/graphic/start/container-aside-extension-bg.jpg') repeat-x;
+    display: block;
+    margin: 5px 0px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: #FFF;
+    height: 50px;
+    text-decoration: none;
+}
+
+#main > .content
+{
+    text-align: center;
+}
+
+span.grey {
+    color: grey;
+    font-weight: bold;
+}
+
+.content
+{
+    overflow-y: auto;
+    height: calc(100vh - 57px);
+}
+
+.button, button, input[type="submit"]
+{
+    background: url('/graphic/start/main-sprite.png') no-repeat;
+    display: inline-block;
+    width: 184px;
+    background-position: 0px -160px;
+    text-align: center;
+    font-size: 15px;
+}
+
+input[type="submit"]
+{
+    border: none;
+}
+
+.button:hover, button:hover, input[type="submit"]:hover
+{
+    background-position: 0px -126px;
+}
+
+.headline
+{
+    background: url('/graphic/start/nav-bg.jpg') repeat-x;
+    width: 100%;
+    height: 57px;
+    color: #FFF;
+    text-align: center;
+    font-weight: bold;
+}
+
+.vertical-separator
+{
+    content: '';
+    width: 8px;
+    border-right: solid 1px #000;
+    border-left: solid 1px #000;
+    background: url('/graphic/start/container-sides-dialog.jpg') -14px 0px repeat-y;
+}
+
+input[type="text"]
+{
+    padding: 5px 10px;
+    border: none;
+    font-size: 15px;
+    background: url('/graphic/start/sprite-home.png') no-repeat 0 -253px #FFF;
+    width: 252px;
+    height: 22px;
+}
+
+.head
+{
+    background: url('/graphic/start/section-divider.jpg') repeat-x;
+    height: 27px;
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+table
+{
+    border-collapse: collapse;
+}
+
+td
+{
+    padding: 1px;
+    vertical-align: top;
+}
+
+table table td, td[colspan="100%"]
+{
+    vertical-align: middle;
+}
+
+.box
+{
+    margin: 10px auto;
+}
+
+label
+{
+    cursor: pointer;
+}
+
+input[readonly]
+{
+    color: #AAA;
+}
+
+iframe
+{
+    border: none;
+}

@@ -1,0 +1,55 @@
+graph TB
+    subgraph "Frontend File System - htdocs/"
+        ROOT[index.php - Entry Point]
+        
+        subgraph "Core PHP Files"
+            GAME[game.php - Main Game Controller]
+            AJAX[ajax.php - AJAX Handler]
+            ADMIN[admin.php - Admin Interface]
+            MAP[map.php - Map Renderer]
+            FORUM[forum.php - Forum System]
+            STATS[stats.php - Statistics]
+            RANKING[ranking.php - Rankings]
+        end
+        
+        subgraph "Template System"
+            HEADER[header.tpl - Page Header]
+            FOOTER[footer.tpl - Page Footer]
+            NAV[navigation.tpl - Navigation Bar]
+            VILLAGE[village_overview.tpl]
+            BUILD[building_queue.tpl]
+            UNITS[unit_production.tpl]
+            REPORTS[report_list.tpl]
+        end
+        
+        subgraph "JavaScript Files"
+            MAIN_JS[main.js - Core Functions]
+            MAP_JS[map.js - Map Controls]
+            VILLAGE_JS[village.js - Village Management]
+            COMBAT_JS[combat.js - Battle Calculator]
+            TIMER_JS[timer.js - Countdown Timers]
+            AJAX_JS[ajax.js - AJAX Wrapper]
+            VALIDATE_JS[validate.js - Form Validation]
+        end
+        
+        subgraph "CSS Styles"
+            MAIN_CSS[main.css - Core Styles]
+            GAME_CSS[game.css - Game UI]
+            MAP_CSS[map.css - Map Styles]
+            MOBILE_CSS[mobile.css - Responsive]
+            THEMES[themes/*.css - Color Themes]
+        end
+        
+        subgraph "Assets"
+            GRAPHICS[graphic/ - Images]
+            SPRITES[sprites/ - Game Sprites]
+            ICONS[icons/ - UI Icons]
+            SOUNDS[sound/ - Audio Files]
+        end
+    end
+    
+    ROOT --> GAME
+    ROOT --> AJAX
+    GAME --> VILLAGE
+    GAME --> MAP
+    AJAX --> AJAX_JS

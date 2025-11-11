@@ -1,0 +1,67 @@
+graph LR
+    subgraph "Development"
+        DEV[Developer]
+        LOCAL[Local Environment]
+        TESTS[Unit Tests]
+    end
+    
+    subgraph "Version Control"
+        GIT[Git Repository]
+        BRANCH[Feature Branch]
+        PR[Pull Request]
+    end
+    
+    subgraph "CI Pipeline"
+        TRIGGER[Pipeline Trigger]
+        BUILD[Build Stage]
+        TEST[Test Stage]
+        SCAN[Security Scan]
+        QUALITY[Code Quality]
+    end
+    
+    subgraph "Artifacts"
+        DOCKER[Docker Registry]
+        HELM[Helm Charts]
+        CONFIG[Config Repo]
+    end
+    
+    subgraph "CD Pipeline"
+        DEPLOY_DEV[Deploy to Dev]
+        DEPLOY_STAGE[Deploy to Staging]
+        DEPLOY_PROD[Deploy to Production]
+    end
+    
+    subgraph "Environments"
+        DEV_ENV[Development]
+        STAGE_ENV[Staging]
+        PROD_ENV[Production]
+    end
+    
+    DEV --> LOCAL
+    LOCAL --> TESTS
+    TESTS --> GIT
+    GIT --> BRANCH
+    BRANCH --> PR
+    
+    PR --> TRIGGER
+    TRIGGER --> BUILD
+    BUILD --> TEST
+    TEST --> SCAN
+    SCAN --> QUALITY
+    
+    QUALITY --> DOCKER
+    QUALITY --> HELM
+    QUALITY --> CONFIG
+    
+    DOCKER --> DEPLOY_DEV
+    DEPLOY_DEV --> DEV_ENV
+    
+    DEV_ENV --> DEPLOY_STAGE
+    DEPLOY_STAGE --> STAGE_ENV
+    
+    STAGE_ENV --> DEPLOY_PROD
+    DEPLOY_PROD --> PROD_ENV
+    
+    style DEV fill:#ffe4b5
+    style TRIGGER fill:#d4f1d4
+    style DEPLOY_PROD fill:#ffcccc

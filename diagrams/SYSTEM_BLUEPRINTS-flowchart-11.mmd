@@ -1,0 +1,50 @@
+graph TB
+    subgraph "Backup Sources"
+        LIVE_DB[Live Database]
+        LIVE_FILES[Application Files]
+        LIVE_CONFIG[Configuration]
+        LIVE_VOLUMES[Docker Volumes]
+    end
+    
+    subgraph "Backup Types"
+        FULL[Full Backup<br/>Weekly]
+        INCR[Incremental<br/>Daily]
+        SNAP[Snapshots<br/>Hourly]
+        REPL[Replication<br/>Real-time]
+    end
+    
+    subgraph "Backup Storage"
+        LOCAL[Local Storage]
+        NAS[Network Storage]
+        S3[AWS S3]
+        GLACIER[S3 Glacier]
+    end
+    
+    subgraph "Recovery Options"
+        HOT[Hot Standby]
+        WARM[Warm Standby]
+        COLD[Cold Backup]
+        RESTORE[Point-in-Time]
+    end
+    
+    LIVE_DB --> FULL
+    LIVE_DB --> INCR
+    LIVE_DB --> SNAP
+    LIVE_DB --> REPL
+    
+    LIVE_FILES --> FULL
+    LIVE_CONFIG --> FULL
+    LIVE_VOLUMES --> SNAP
+    
+    FULL --> LOCAL
+    INCR --> LOCAL
+    SNAP --> NAS
+    REPL --> HOT
+    
+    LOCAL --> S3
+    S3 --> GLACIER
+    
+    HOT --> INSTANT[Instant Failover]
+    WARM --> QUICK[Quick Recovery<br/>< 1 hour]
+    COLD --> SLOW[Full Recovery<br/>< 24 hours]
+    RESTORE --> CUSTOM[Custom Recovery]

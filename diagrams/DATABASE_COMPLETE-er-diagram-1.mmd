@@ -1,0 +1,326 @@
+erDiagram
+    users ||--o{ villages : owns
+    users ||--o{ reports : receives
+    users ||--o{ messages : "sends/receives"
+    users ||--o{ login_attempts : has
+    users ||--o{ user_achievements : earns
+    users ||--o{ user_logs : generates
+    users }o--|| tribes : belongs
+    users ||--o{ forum_posts : writes
+    users ||--o{ player_notes : creates
+    
+    villages ||--o{ buildings : contains
+    villages ||--o{ village_units : has
+    villages ||--o{ build_queue : processes
+    villages ||--o{ train_queue : processes
+    villages ||--o{ research_queue : processes
+    villages ||--o{ movements : "from/to"
+    villages ||--|| village_resources : tracks
+    villages ||--o{ village_support : "sends/receives"
+    villages ||--o{ village_notes : has
+    
+    tribes ||--o{ tribe_members : contains
+    tribes ||--o{ tribe_invites : sends
+    tribes ||--o{ tribe_diplomacy : manages
+    tribes ||--o{ tribe_forums : has
+    tribes ||--o{ tribe_wars : participates
+    tribes ||--|| tribe_profile : describes
+    
+    movements ||--o{ movement_units : transports
+    movements ||--o{ movement_resources : carries
+    movements ||--o{ battle_reports : generates
+    
+    buildings ||--o{ building_requirements : needs
+    units ||--o{ unit_requirements : needs
+    research ||--o{ tech_requirements : needs
+    
+    users {
+        int id PK "AUTO_INCREMENT"
+        varchar username UK "NOT NULL"
+        varchar email UK "NOT NULL"
+        varchar password_hash "NOT NULL"
+        varchar salt "NOT NULL"
+        varchar activation_code
+        boolean activated "DEFAULT 0"
+        int points "DEFAULT 0"
+        int rank "DEFAULT 0"
+        int villages_count "DEFAULT 0"
+        int tribe_id FK
+        timestamp last_activity
+        timestamp vacation_start
+        timestamp vacation_end
+        timestamp deletion_time
+        timestamp ban_until
+        varchar ban_reason
+        boolean sitting_enabled "DEFAULT 0"
+        varchar sitting_key
+        int premium_points "DEFAULT 0"
+        timestamp premium_until
+        json settings
+        varchar session_id
+        varchar ip_address
+        varchar user_agent
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    villages {
+        int id PK "AUTO_INCREMENT"
+        varchar name "NOT NULL"
+        int x UK1 "NOT NULL"
+        int y UK1 "NOT NULL"
+        int continent "GENERATED"
+        int user_id FK "NOT NULL"
+        int points "DEFAULT 26"
+        float wood "DEFAULT 500"
+        float clay "DEFAULT 500"
+        float iron "DEFAULT 500"
+        int wood_max "DEFAULT 1000"
+        int clay_max "DEFAULT 1000"
+        int iron_max "DEFAULT 1000"
+        int population "DEFAULT 0"
+        int population_max "DEFAULT 240"
+        int loyalty "DEFAULT 100"
+        int wall_level "DEFAULT 0"
+        boolean is_capital "DEFAULT 0"
+        timestamp last_update
+        timestamp created_at
+        int group_id FK
+        varchar notes
+    }
+    
+    buildings {
+        int id PK "AUTO_INCREMENT"
+        int village_id FK "NOT NULL"
+        enum building_type "NOT NULL"
+        int level "DEFAULT 0"
+        timestamp upgrade_started
+        timestamp upgrade_completes
+        boolean is_queued "DEFAULT 0"
+        UNIQUE KEY uk_village_building "(village_id, building_type)"
+    }
+    
+    village_units {
+        int id PK "AUTO_INCREMENT"
+        int village_id FK "NOT NULL"
+        enum unit_type "NOT NULL"
+        int count_home "DEFAULT 0"
+        int count_away "DEFAULT 0"
+        int count_support "DEFAULT 0"
+        int count_total "GENERATED"
+        timestamp last_update
+        UNIQUE KEY uk_village_unit "(village_id, unit_type)"
+    }
+    
+    movements {
+        int id PK "AUTO_INCREMENT"
+        enum type "NOT NULL"
+        int from_village FK "NOT NULL"
+        int to_village FK "NOT NULL"
+        int from_user FK "NOT NULL"  
+        int to_user FK "NOT NULL"
+        timestamp departure_time
+        timestamp arrival_time
+        timestamp return_time
+        json units "NOT NULL"
+        json resources
+        boolean is_cancelled "DEFAULT 0"
+        boolean is_returned "DEFAULT 0"
+        boolean is_processed "DEFAULT 0"
+        varchar command_id
+        int source_movement FK
+    }
+    
+    reports {
+        int id PK "AUTO_INCREMENT"
+        int user_id FK "NOT NULL"
+        enum report_type "NOT NULL"
+        varchar title "NOT NULL"
+        json attacker_units
+        json defender_units
+        json losses_attacker
+        json losses_defender
+        json loot
+        int attacker_village FK
+        int defender_village FK
+        int attacker_user FK
+        int defender_user FK
+        float luck
+        int morale
+        boolean night_bonus
+        int wall_before
+        int wall_after
+        int loyalty_before
+        int loyalty_after
+        boolean is_read "DEFAULT 0"
+        boolean is_archived "DEFAULT 0"
+        boolean is_forwarded "DEFAULT 0"
+        timestamp created_at
+        INDEX idx_user_created "(user_id, created_at)"
+    }
+    
+    messages {
+        int id PK "AUTO_INCREMENT"
+        int sender_id FK "NOT NULL"
+        int recipient_id FK "NOT NULL"
+        int parent_id FK
+        varchar subject "NOT NULL"
+        text message_text "NOT NULL"
+        boolean is_read "DEFAULT 0"
+        boolean is_archived "DEFAULT 0"
+        boolean sender_deleted "DEFAULT 0"
+        boolean recipient_deleted "DEFAULT 0"
+        timestamp sent_at
+        INDEX idx_recipient "(recipient_id, is_read)"
+    }
+    
+    tribes {
+        int id PK "AUTO_INCREMENT"
+        varchar name UK "NOT NULL"
+        varchar tag UK "NOT NULL"
+        int founder_id FK
+        int leader_id FK
+        text description
+        text internal_announcement
+        text external_announcement
+        int points "DEFAULT 0"
+        int rank "DEFAULT 0"
+        int member_count "DEFAULT 0"
+        int village_count "DEFAULT 0"
+        json diplomacy_settings
+        json recruitment_settings
+        varchar homepage_url
+        varchar irc_channel
+        varchar image_url
+        timestamp created_at
+        timestamp disbanded_at
+    }
+    
+    tribe_members {
+        int tribe_id FK "NOT NULL"
+        int user_id FK "NOT NULL"
+        enum rank "NOT NULL"
+        json privileges
+        timestamp joined_at
+        varchar title
+        PRIMARY KEY "(tribe_id, user_id)"
+    }
+    
+    build_queue {
+        int id PK "AUTO_INCREMENT"
+        int village_id FK "NOT NULL"
+        enum building_type "NOT NULL"
+        int target_level "NOT NULL"
+        timestamp started_at
+        timestamp completes_at
+        int position "NOT NULL"
+        boolean is_active "DEFAULT 0"
+        INDEX idx_completion "(completes_at)"
+    }
+    
+    train_queue {
+        int id PK "AUTO_INCREMENT"
+        int village_id FK "NOT NULL"
+        enum unit_type "NOT NULL"
+        int amount "NOT NULL"
+        int amount_completed "DEFAULT 0"
+        timestamp started_at
+        timestamp completes_at
+        enum building_source "NOT NULL"
+        boolean is_active "DEFAULT 0"
+        INDEX idx_completion "(completes_at)"
+    }
+    
+    events {
+        int id PK "AUTO_INCREMENT"
+        enum event_type "NOT NULL"
+        timestamp execute_time "NOT NULL"
+        json event_data
+        int processed "DEFAULT 0"
+        timestamp processed_at
+        varchar error_message
+        int retry_count "DEFAULT 0"
+        INDEX idx_execute "(execute_time, processed)"
+    }
+    
+    world_config {
+        varchar config_key PK
+        varchar config_value
+        enum value_type
+        varchar description
+        timestamp updated_at
+    }
+    
+    map_sectors {
+        int x PK
+        int y PK
+        enum terrain_type
+        int bonus_type
+        float resource_modifier
+        boolean is_occupied
+        int village_id FK
+        INDEX idx_coords "(x, y)"
+    }
+    
+    rankings {
+        int id PK "AUTO_INCREMENT"
+        enum ranking_type "NOT NULL"
+        int entity_id "NOT NULL"
+        int rank "NOT NULL"
+        int points "NOT NULL"
+        int villages "DEFAULT 0"
+        int members "DEFAULT 0"
+        timestamp calculated_at
+        UNIQUE KEY uk_type_entity "(ranking_type, entity_id)"
+        INDEX idx_type_rank "(ranking_type, rank)"
+    }
+    
+    login_attempts {
+        int id PK "AUTO_INCREMENT"
+        varchar username
+        varchar ip_address
+        boolean success
+        varchar failure_reason
+        timestamp attempted_at
+        INDEX idx_ip_time "(ip_address, attempted_at)"
+    }
+    
+    sessions {
+        varchar session_id PK
+        int user_id FK
+        varchar ip_address
+        varchar user_agent
+        json session_data
+        timestamp last_activity
+        timestamp expires_at
+        INDEX idx_user "(user_id)"
+        INDEX idx_expires "(expires_at)"
+    }
+    
+    research {
+        int id PK "AUTO_INCREMENT"
+        int village_id FK "NOT NULL"
+        enum tech_type "NOT NULL"
+        int level "DEFAULT 0"
+        timestamp research_started
+        timestamp research_completes
+        UNIQUE KEY uk_village_tech "(village_id, tech_type)"
+    }
+    
+    market_offers {
+        int id PK "AUTO_INCREMENT"
+        int village_id FK "NOT NULL"
+        int user_id FK "NOT NULL"
+        enum offer_type
+        int offer_wood
+        int offer_clay
+        int offer_iron
+        int request_wood
+        int request_clay
+        int request_iron
+        int max_distance
+        int merchants_needed
+        timestamp created_at
+        timestamp expires_at
+        INDEX idx_village "(village_id)"
+    }

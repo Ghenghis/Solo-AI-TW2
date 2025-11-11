@@ -1,0 +1,20 @@
+graph LR
+    subgraph "Test Pyramid"
+        UNIT[Unit Tests<br/>70%]
+        INTEGRATION[Integration Tests<br/>20%]
+        E2E[E2E Tests<br/>10%]
+    end
+    
+    subgraph "Test Areas"
+        GAME_TEST[Game Logic]
+        DB_TEST[Database]
+        API_TEST[API Endpoints]
+        SEC_TEST[Security]
+        PERF_TEST[Performance]
+    end
+    
+    UNIT --> GAME_TEST
+    UNIT --> DB_TEST
+    INTEGRATION --> API_TEST
+    E2E --> SEC_TEST
+    E2E --> PERF_TEST

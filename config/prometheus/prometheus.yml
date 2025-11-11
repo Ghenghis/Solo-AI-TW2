@@ -1,0 +1,87 @@
+# TWLan 2.A3 - Prometheus Configuration
+# Monitoring for all TWLan services
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  # Data retention: 15 days (configurable via --storage.tsdb.retention.time)
+  external_labels:
+    cluster: 'twlan'
+    environment: 'production'
+
+# Alerting configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+          # Add alertmanager:9093 when configured
+
+# Load alert rules
+rule_files:
+  - '/etc/prometheus/alerts.yml'
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Load rules once and periodically evaluate them
+rule_files:
+  # - "rules/*.yml"
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  
+  # TWLan Web Server (Nginx)
+  - job_name: 'twlan-web'
+    static_configs:
+      - targets: ['twlan-web:80']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+  
+  # TWLan PHP-FPM
+  - job_name: 'twlan-php'
+    static_configs:
+      - targets: ['twlan-php:9000']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+  
+  # TWLan Database (MariaDB)
+  - job_name: 'twlan-db'
+    static_configs:
+      - targets: ['twlan-db:3306']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+  
+  # TWLan Redis
+  - job_name: 'twlan-redis'
+    static_configs:
+      - targets: ['twlan-redis:6379']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+  
+  # Docker Container Metrics
+  - job_name: 'docker'
+    static_configs:
+      - targets: ['docker-host:9323']
+    scrape_interval: 30s
+  
+  # Node Exporter (system metrics)
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node-exporter:9100']
+    scrape_interval: 30s
+
+# Remote write configuration (for long-term storage)
+# remote_write:
+#   - url: "http://remote-storage:9201/write"
+
+# Remote read configuration
+# remote_read:
+#   - url: "http://remote-storage:9201/read"

@@ -1,0 +1,87 @@
+erDiagram
+    USERS ||--o{ VILLAGES : owns
+    USERS ||--o{ MESSAGES : sends
+    USERS ||--o{ REPORTS : receives
+    USERS {
+        int id PK
+        string username UK
+        string password
+        string email
+        int points
+        int rank
+        timestamp last_activity
+        int tribe_id FK
+    }
+    
+    VILLAGES ||--o{ BUILDINGS : contains
+    VILLAGES ||--o{ UNITS : stations
+    VILLAGES {
+        int id PK
+        string name
+        int x_coord
+        int y_coord
+        int user_id FK
+        int points
+        int wood
+        int clay
+        int iron
+        int population
+        timestamp last_update
+    }
+    
+    BUILDINGS {
+        int id PK
+        int village_id FK
+        string building_type
+        int level
+        timestamp build_time
+    }
+    
+    UNITS ||--o{ MOVEMENTS : participates
+    UNITS {
+        int id PK
+        int village_id FK
+        string unit_type
+        int count
+        int in_village
+        int total
+    }
+    
+    TRIBES ||--o{ USERS : has_members
+    TRIBES {
+        int id PK
+        string name UK
+        string tag UK
+        int points
+        int rank
+        int leader_id FK
+    }
+    
+    MOVEMENTS {
+        int id PK
+        int from_village FK
+        int to_village FK
+        string type
+        timestamp arrival_time
+        json units
+        json resources
+    }
+    
+    REPORTS {
+        int id PK
+        int user_id FK
+        string type
+        text content
+        boolean read
+        timestamp created_at
+    }
+    
+    MESSAGES {
+        int id PK
+        int sender_id FK
+        int recipient_id FK
+        string subject
+        text content
+        boolean read
+        timestamp sent_at
+    }

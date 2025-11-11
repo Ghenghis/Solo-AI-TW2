@@ -1,0 +1,92 @@
+# TWLan Prometheus Alert Rules
+# Basic alerting for critical services
+
+groups:
+  - name: twlan_alerts
+    interval: 30s
+    rules:
+      # Database Alerts
+      - alert: DatabaseDown
+        expr: up{job="twlan-db"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "MariaDB is down"
+          description: "TWLan database has been down for more than 1 minute"
+
+      - alert: DatabaseHighConnections
+        expr: mysql_global_status_threads_connected > 180
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High database connections"
+          description: "Database has {{ $value }} connections (limit: 200)"
+
+      # Redis Alerts
+      - alert: RedisDown
+        expr: up{job="twlan-redis"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis is down"
+          description: "TWLan cache server has been down for more than 1 minute"
+
+      - alert: RedisMemoryHigh
+        expr: redis_memory_used_bytes / redis_memory_max_bytes > 0.9
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Redis memory usage high"
+          description: "Redis using {{ $value | humanizePercentage }} of max memory"
+
+      # Web Server Alerts
+      - alert: WebServerDown
+        expr: up{job="twlan-web"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Nginx is down"
+          description: "Web server has been down for more than 1 minute"
+
+      - alert: HighErrorRate
+        expr: rate(nginx_http_requests_total{status=~"5.."}[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High HTTP 5xx error rate"
+          description: "Error rate is {{ $value | humanizePercentage }}"
+
+      # PHP-FPM Alerts
+      - alert: PHPFPMDown
+        expr: up{job="twlan-php"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "PHP-FPM is down"
+          description: "PHP service has been down for more than 1 minute"
+
+      # Disk Space Alerts
+      - alert: DiskSpaceLow
+        expr: (node_filesystem_avail_bytes / node_filesystem_size_bytes) < 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low disk space"
+          description: "Less than 10% disk space remaining"
+
+      - alert: DiskSpaceCritical
+        expr: (node_filesystem_avail_bytes / node_filesystem_size_bytes) < 0.05
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical disk space"
+          description: "Less than 5% disk space remaining"

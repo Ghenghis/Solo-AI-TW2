@@ -1,0 +1,29 @@
+graph LR
+    subgraph "Cache Layers"
+        L1[Browser Cache<br/>1-7 days]
+        L2[CDN Cache<br/>1-24 hours]
+        L3[Varnish Cache<br/>5-60 minutes]
+        L4[Redis Cache<br/>1-60 minutes]
+        L5[OPcache<br/>Until restart]
+        L6[Query Cache<br/>5-30 seconds]
+    end
+    
+    subgraph "Cache Invalidation"
+        TTL[TTL Expiry]
+        TAGS[Cache Tags]
+        EVENT[Event-based]
+        MANUAL[Manual Purge]
+    end
+    
+    REQUEST[Request] --> L1
+    L1 -->|Miss| L2
+    L2 -->|Miss| L3
+    L3 -->|Miss| L4
+    L4 -->|Miss| L5
+    L5 -->|Miss| L6
+    L6 -->|Miss| DB[(Database)]
+    
+    TTL --> L1
+    TAGS --> L2
+    EVENT --> L4
+    MANUAL --> L3

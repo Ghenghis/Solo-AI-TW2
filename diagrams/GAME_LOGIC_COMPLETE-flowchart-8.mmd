@@ -1,0 +1,43 @@
+graph TB
+    subgraph "Noble Attack"
+        NOBLE[Noble Survives Battle]
+        LOYALTY_HIT[Loyalty -20 to -35]
+        CHECK[Check Loyalty]
+    end
+    
+    subgraph "Loyalty States"
+        HIGH[Loyalty > 35<br/>Village Safe]
+        MID[Loyalty 20-35<br/>At Risk]
+        LOW[Loyalty < 20<br/>Critical]
+        ZERO[Loyalty ≤ 0<br/>Conquered]
+    end
+    
+    subgraph "Conquest"
+        TRANSFER[Transfer Ownership]
+        RESET[Reset to 25 Loyalty]
+        CLEAR[Clear Troops/Support]
+        NOTIFY[Send Reports]
+    end
+    
+    subgraph "Recovery"
+        RISE[+1 Loyalty/Hour]
+        MAX[Max 100 Loyalty]
+    end
+    
+    NOBLE --> LOYALTY_HIT
+    LOYALTY_HIT --> CHECK
+    
+    CHECK --> HIGH
+    CHECK --> MID
+    CHECK --> LOW
+    CHECK --> ZERO
+    
+    ZERO --> TRANSFER
+    TRANSFER --> RESET
+    RESET --> CLEAR
+    CLEAR --> NOTIFY
+    
+    HIGH --> RISE
+    MID --> RISE
+    LOW --> RISE
+    RISE --> MAX

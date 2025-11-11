@@ -1,0 +1,39 @@
+# docker/Dockerfile.backup
+# TWLan 2.A3 Backup Service - Automated backups for database and files
+
+FROM alpine:3.19
+
+# Metadata labels
+LABEL maintainer="TWLan DevOps <devops@twlan.local>" \
+      version="1.0" \
+      description="TWLan backup service with automated scheduling" \
+      org.opencontainers.image.title="TWLan Backup Service" \
+      org.opencontainers.image.version="1.0" \
+      org.opencontainers.image.vendor="TWLan Project"
+
+# Install backup tools
+RUN apk add --no-cache \
+        bash \
+        mariadb-client \
+        redis \
+        tar \
+        gzip \
+        curl \
+        dcron \
+    && rm -rf /var/cache/apk/*
+
+# Create backup script
+COPY docker/scripts/backup.sh /usr/local/bin/backup.sh
+RUN chmod +x /usr/local/bin/backup.sh
+
+# Create backup user
+RUN adduser -D -u 1000 backup
+
+# Setup cron
+RUN echo '${BACKUP_SCHEDULE:-0 3 * * *} /usr/local/bin/backup.sh >> /var/log/backup.log 2>&1' > /etc/crontabs/backup
+
+WORKDIR /backup
+
+USER backup
+
+CMD ["crond", "-f", "-l", "2"]

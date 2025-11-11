@@ -1,0 +1,79 @@
+# docker/Dockerfile.legacy
+# TWLan 2.A3 Legacy Container - Preserves Original Behavior
+FROM debian:12-slim
+
+# Metadata labels for enterprise compliance
+LABEL maintainer="TWLan DevOps <devops@twlan.local>" \
+      version="2.A3" \
+      description="TWLan 2.A3 Legacy Stack - Original 32-bit binaries with embedded services" \
+      org.opencontainers.image.title="TWLan Legacy" \
+      org.opencontainers.image.version="2.A3" \
+      org.opencontainers.image.vendor="TWLan Project" \
+      org.opencontainers.image.description="Containerized TWLan 2.A3 game server (legacy stack)"
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    TWLAN_DIR=/opt/twlan \
+    TWLAN_PORT=80 \
+    TZ=UTC \
+    LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8
+
+# Install runtime dependencies for 32-bit binaries on 64-bit system
+RUN dpkg --add-architecture i386 && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+        libc6:i386 \
+        libstdc++6:i386 \
+        libncurses5:i386 \
+        zlib1g:i386 \
+        libaio1t64 \
+        libncurses5 \
+        libreadline8 \
+        libstdc++6 \
+        zlib1g \
+        ca-certificates \
+        tzdata \
+        procps \
+        netcat-openbsd \
+        curl \
+        wget \
+        unzip \
+        python3 \
+        python3-pip \
+    && rm -rf /var/lib/apt/lists/* \
+    && ln -fs /usr/share/zoneinfo/UTC /etc/localtime
+
+# Create TWLan user for security
+RUN useradd -m -s /bin/bash -u 1000 twlan && \
+    mkdir -p ${TWLAN_DIR}/{tmp,logs,db,backup,config} && \
+    chown -R twlan:twlan ${TWLAN_DIR}
+
+# Copy TWLan files (will be added when extracted)
+COPY --chown=twlan:twlan TWLan-2.A3-linux64 ${TWLAN_DIR}/
+
+# Copy our enhanced scripts
+COPY --chown=twlan:twlan docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY --chown=twlan:twlan utils/port_manager.py /usr/local/bin/port_manager
+COPY --chown=twlan:twlan docker/health-check.sh /usr/local/bin/health-check
+
+# Fix line endings (Windows CRLF → Linux LF) and make scripts executable
+RUN sed -i 's/\r$//' /usr/local/bin/entrypoint.sh \
+                     /usr/local/bin/health-check \
+                     /usr/local/bin/port_manager && \
+    chmod +x /usr/local/bin/entrypoint.sh \
+              /usr/local/bin/health-check \
+              /usr/local/bin/port_manager && \
+    chmod +x ${TWLAN_DIR}/bin/* || true
+
+WORKDIR ${TWLAN_DIR}
+
+# Health check for container orchestration
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD /usr/local/bin/health-check || exit 1
+
+EXPOSE 80 3306
+
+USER twlan
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["start"]

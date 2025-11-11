@@ -1,0 +1,54 @@
+graph LR
+    subgraph "Event Sources"
+        BUILD[Building Queue]
+        TRAIN[Training Queue]
+        MOVE[Movements]
+        RESEARCH[Research]
+        LOYALTY[Loyalty Updates]
+    end
+    
+    subgraph "Event Queue"
+        QUEUE[(Event Database)]
+        PROCESSOR[Event Processor]
+        SCHEDULER[Cron Scheduler]
+    end
+    
+    subgraph "Processing"
+        LOCK[Acquire Lock]
+        FETCH[Fetch Due Events]
+        EXECUTE[Execute Handler]
+        COMPLETE[Mark Complete]
+        UNLOCK[Release Lock]
+    end
+    
+    subgraph "Handlers"
+        H1[BuildComplete]
+        H2[TrainComplete]
+        H3[MovementArrive]
+        H4[ResearchComplete]
+        H5[LoyaltyUpdate]
+    end
+    
+    BUILD --> QUEUE
+    TRAIN --> QUEUE
+    MOVE --> QUEUE
+    RESEARCH --> QUEUE
+    LOYALTY --> QUEUE
+    
+    SCHEDULER --> PROCESSOR
+    PROCESSOR --> LOCK
+    LOCK --> FETCH
+    FETCH --> EXECUTE
+    EXECUTE --> H1
+    EXECUTE --> H2
+    EXECUTE --> H3
+    EXECUTE --> H4
+    EXECUTE --> H5
+    
+    H1 --> COMPLETE
+    H2 --> COMPLETE
+    H3 --> COMPLETE
+    H4 --> COMPLETE
+    H5 --> COMPLETE
+    
+    COMPLETE --> UNLOCK

@@ -1,0 +1,33 @@
+graph TB
+    subgraph "Primary Indexes"
+        PK[Primary Keys]
+        UK[Unique Keys]
+    end
+    
+    subgraph "Search Indexes"
+        USER_SEARCH[Username/Email]
+        VILLAGE_COORDS[X,Y Coordinates]
+        RANKING[Points/Rank]
+    end
+    
+    subgraph "Join Indexes"
+        FK[Foreign Keys]
+        RELATION[Relationship Tables]
+    end
+    
+    subgraph "Performance Indexes"
+        TIME[Timestamp Indexes]
+        STATUS[Status Flags]
+        COMPUTED[Generated Columns]
+    end
+    
+    subgraph "Composite Indexes"
+        MULTI[Multi-Column]
+        COVERING[Covering Indexes]
+    end
+    
+    PK --> USER_SEARCH
+    UK --> VILLAGE_COORDS
+    FK --> RELATION
+    TIME --> STATUS
+    MULTI --> COVERING

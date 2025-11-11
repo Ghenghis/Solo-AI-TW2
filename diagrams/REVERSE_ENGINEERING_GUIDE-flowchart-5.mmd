@@ -1,0 +1,32 @@
+flowchart TD
+    START([Game Start])
+    INIT[Initialize Database]
+    LOAD[Load Configuration]
+    
+    START --> INIT
+    INIT --> LOAD
+    LOAD --> MAIN_LOOP
+    
+    subgraph "Main Game Loop"
+        MAIN_LOOP[Check Time]
+        TICK{Tick Time?}
+        RESOURCE[Calculate Resources]
+        BUILD[Process Buildings]
+        UNITS[Train Units]
+        MOVE[Process Movements]
+        BATTLE[Resolve Battles]
+        RANK[Update Rankings]
+        EVENT[Process Events]
+    end
+    
+    MAIN_LOOP --> TICK
+    TICK -->|Yes| RESOURCE
+    RESOURCE --> BUILD
+    BUILD --> UNITS
+    UNITS --> MOVE
+    MOVE --> BATTLE
+    BATTLE --> RANK
+    RANK --> EVENT
+    EVENT --> MAIN_LOOP
+    TICK -->|No| WAIT[Wait]
+    WAIT --> MAIN_LOOP

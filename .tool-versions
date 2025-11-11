@@ -1,0 +1,22 @@
+# TWLan Tool Versions
+# Documents exact versions used for reproducibility
+
+# Docker Images
+debian 12-slim
+php 8.4-fpm-bookworm
+mariadb 10.11
+redis 7-alpine
+nginx 1.27-alpine
+alpine 3.19
+prometheus v2.48.0
+grafana 10.2.2
+
+# PHP Extensions (PECL)
+redis 6.0.2
+apcu 5.1.23
+
+# System Tools
+git latest
+curl latest
+wget latest
+supervisor latest

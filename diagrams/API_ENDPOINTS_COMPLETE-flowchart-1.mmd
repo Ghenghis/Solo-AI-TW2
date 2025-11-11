@@ -1,0 +1,60 @@
+graph TB
+    subgraph "Client Layer"
+        WEB[Web Browser]
+        MOBILE[Mobile App]
+        BOT[Bot/Script]
+    end
+    
+    subgraph "API Gateway"
+        AUTH_MW[Auth Middleware]
+        RATE[Rate Limiter]
+        CSRF[CSRF Protection]
+        VALIDATE[Input Validation]
+    end
+    
+    subgraph "API Endpoints"
+        subgraph "Public"
+            LOGIN_EP[/api/auth/login]
+            REGISTER_EP[/api/auth/register]
+            STATS_EP[/api/public/stats]
+        end
+        
+        subgraph "Authenticated"
+            VILLAGE_EP[/api/villages/*]
+            BUILD_EP[/api/buildings/*]
+            UNIT_EP[/api/units/*]
+            COMBAT_EP[/api/combat/*]
+        end
+        
+        subgraph "Admin"
+            ADMIN_EP[/api/admin/*]
+            MOD_EP[/api/moderator/*]
+        end
+    end
+    
+    subgraph "Backend Services"
+        GAME[Game Engine]
+        DB[(Database)]
+        CACHE[(Redis Cache)]
+        QUEUE[(Job Queue)]
+    end
+    
+    WEB --> AUTH_MW
+    MOBILE --> AUTH_MW
+    BOT --> AUTH_MW
+    
+    AUTH_MW --> RATE
+    RATE --> CSRF
+    CSRF --> VALIDATE
+    
+    VALIDATE --> LOGIN_EP
+    VALIDATE --> VILLAGE_EP
+    VALIDATE --> ADMIN_EP
+    
+    VILLAGE_EP --> GAME
+    BUILD_EP --> GAME
+    COMBAT_EP --> GAME
+    
+    GAME --> DB
+    GAME --> CACHE
+    GAME --> QUEUE

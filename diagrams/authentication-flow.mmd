@@ -1,0 +1,29 @@
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant Auth Service
+    participant Database
+    participant Redis
+    
+    User->>Frontend: Login Request
+    Frontend->>Auth Service: POST /auth/login
+    
+    Auth Service->>Database: Verify Credentials
+    Database-->>Auth Service: User Data
+    
+    Auth Service->>Auth Service: Generate JWT
+    Auth Service->>Redis: Store Session
+    
+    Auth Service-->>Frontend: JWT + Refresh Token
+    Frontend->>Frontend: Store Tokens
+    
+    Note over User,Redis: Subsequent Requests
+    
+    User->>Frontend: Game Action
+    Frontend->>Auth Service: Request + JWT
+    
+    Auth Service->>Redis: Verify Session
+    Redis-->>Auth Service: Session Valid
+    
+    Auth Service-->>Frontend: Authorized
+    Frontend-->>User: Action Result

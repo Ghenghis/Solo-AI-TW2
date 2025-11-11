@@ -1,0 +1,32 @@
+flowchart TD
+    START([Service Start])
+    PM[Port Manager]
+    CHECK{Port Available?}
+    PREFERRED[Try Preferred Port]
+    LAST[Try Last Used Port]
+    RANDOM[Try Random Port]
+    EMERGENCY[Emergency Port Range]
+    ALLOCATE[Allocate Port]
+    PERSIST[Save to Config]
+    HEALTH[Health Check]
+    
+    START --> PM
+    PM --> PREFERRED
+    PREFERRED --> CHECK
+    
+    CHECK -->|No| LAST
+    LAST --> CHECK
+    
+    CHECK -->|No| RANDOM
+    RANDOM --> CHECK
+    
+    CHECK -->|No| EMERGENCY
+    EMERGENCY --> CHECK
+    
+    CHECK -->|Yes| ALLOCATE
+    ALLOCATE --> PERSIST
+    PERSIST --> HEALTH
+    
+    style START fill:#e1f5ff
+    style ALLOCATE fill:#d4f1d4
+    style HEALTH fill:#d4f1d4

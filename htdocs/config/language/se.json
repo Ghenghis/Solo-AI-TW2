@@ -1,0 +1,377 @@
+{
+    "admin": {
+        "logout": "Logga ut"
+    },
+    "admin.configeditor": {
+        "reload": "Ladda om",
+        "save": "Spara inställningar"
+    },
+    "admin.login": {
+        "login": "Logga in",
+        "password": "Lösenord"
+    },
+    "buildingBarracks": {
+        "name": "Kaserner"
+    },
+    "buildingChurch": {
+        "name": "Kyrka"
+    },
+    "buildingFarm": {
+        "name": "Bondgård"
+    },
+    "buildingGarage": {
+        "name": "Verkstad"
+    },
+    "buildingIron": {
+        "name": "Järngruva"
+    },
+    "buildingMain": {
+        "build": "Bygg",
+        "buildTime": "Konstruktionstid",
+        "building": "Byggnader",
+        "cancel": "Avbryt",
+        "changeName": "Byt bynamn",
+        "eventTime": "Varaktighet",
+        "modeBuild": "Bygg",
+        "modeDestroy": "Demolering",
+        "name": "Högkvarter"
+    },
+    "buildingMarket": {
+        "name": "Marknad"
+    },
+    "buildingPlace": {
+        "all": "Alla",
+        "arrival": "Ankomst",
+        "arrivalIn": "Ankomst om",
+        "attack": "Anfall",
+        "attacker": "Anfallare",
+        "attackingArmy": "Anfallare",
+        "church": "Kyrka",
+        "defender": "Försvarare",
+        "defendingArmy": "Försvarare",
+        "duration": "Varaktighet",
+        "losses": "Förluster",
+        "moral": "Moral",
+        "support": "Stöd",
+        "target": "Mål",
+        "total": "Totalt",
+        "units": "Enheter",
+        "wall": "Mur",
+        "withdraw": "Dra tillbaka"
+    },
+    "buildingPlaceNavi": {
+        "command": "Kommandon"
+    },
+    "buildingRes": {
+        "prod": "Produktion"
+    },
+    "buildingSmith": {
+        "eventTime": "Varaktighet"
+    },
+    "buildingSnob": {
+        "overall": "Totalt"
+    },
+    "buildingSnobNavi": {
+        "train": "Skapa"
+    },
+    "buildingStable": {
+        "name": "Stall"
+    },
+    "buildingStatue": {
+        "doCancel": "Cancel",
+        "modeIndex": "Paladin",
+        "modeInventory": "Inventarium",
+        "name": "Staty",
+        "palaName": "Namn"
+    },
+    "buildingStone": {
+        "name": "Lergrop"
+    },
+    "buildingStorage": {
+        "capacity": "Lagringskapacitet",
+        "name": "Lager",
+        "tableHead": "Lagret är fullt"
+    },
+    "buildingWall": {
+        "basicDefense": "Grundförsvar",
+        "name": "Mur"
+    },
+    "buildingWood": {
+        "name": "Sågverk"
+    },
+    "createVillage": {
+        "submit": "Bekräfta"
+    },
+    "game": {
+        "None": "Inget",
+        "booty": "Byte",
+        "buddies": "Vänner",
+        "cancel": "Avbryt",
+        "confirm": "Bekräfta",
+        "costs": "Kostnader",
+        "current": "Nuvarande",
+        "iron": "Järn",
+        "ok": "OK",
+        "options": "Alternativ",
+        "points": "Poäng",
+        "resources": "Resources",
+        "save": "Spara",
+        "send": "Skicka",
+        "speed": "Hastighet",
+        "stone": "Lera",
+        "storage": "Lagringskapacitet",
+        "support": "Hjälp",
+        "text": "Text",
+        "unit": "Enhet",
+        "village": "By",
+        "wood": "Trä"
+    },
+    "game.ally": {
+        "date": "Datum",
+        "doFound": "Öppna stam",
+        "invitations": "Inbjudningar",
+        "leave": "Lämna stam",
+        "nameOfTribe": "Namn på stam",
+        "reject": "Avböj",
+        "tribe": "Stam"
+    },
+    "game.ally.diplomaty": {
+        "enemy": "Fiender",
+        "partner": "Allierade"
+    },
+    "game.ally.forum": {
+        "add": "Lägg till",
+        "author": "Författare",
+        "close": "Stäng",
+        "confirm": "Bekräfta",
+        "create": "Skapa",
+        "delete": "Radera",
+        "forum": "Forum",
+        "lastPost": "Senaste inlägg",
+        "newpoll": "Ny undersökning",
+        "replies": "Svara",
+        "reply": "Svar",
+        "title": "Titel"
+    },
+    "game.ally.forum.admin": {
+        "action": "Åtgärd",
+        "loading": "Laddar"
+    },
+    "game.ally.invite": {
+        "invitations": "Inbjudningar",
+        "invite": "Bjud in",
+        "name": "Namn",
+        "redraw": "Dra tillbaka"
+    },
+    "game.ally.navi": {
+        "contracts": "Diplomati",
+        "forum": "Stamforum",
+        "invite": "Värva",
+        "members": "Medlemmar",
+        "overview": "Översikt",
+        "profile": "Profil",
+        "reservations": "Ädla planeraren"
+    },
+    "game.bbcode": {
+        "ally": "Stam",
+        "bold": "Fet",
+        "color": "Färg",
+        "coords": "Koordinater",
+        "italic": "Kursiv",
+        "main": "Byggnader",
+        "player": "Spelare",
+        "report": "Rapport",
+        "spoiler": "Spoiler",
+        "underline": "Understruken",
+        "units": "Enheter"
+    },
+    "game.groups": {
+        "all": "Alla",
+        "delete": "Radera grupp"
+    },
+    "game.mail": {
+        "msgs": "Meddelanden"
+    },
+    "game.mail.modes": {
+        "in": "Meddelanden"
+    },
+    "game.map": {
+        "enemys": "Fiender",
+        "partners": "Allierade"
+    },
+    "game.market": {
+        "traders": "Handlare"
+    },
+    "game.menu": {
+        "logout": "Logga ut"
+    },
+    "game.menu.ally": {
+        "contracts": "Diplomati",
+        "forum": "Stamforum",
+        "members": "Medlemmar",
+        "overview": "Översikt",
+        "profile": "Profil",
+        "reservations": "Ädla planeraren",
+        "title": "Stam"
+    },
+    "game.menu.mails": {
+        "iNew": "Nytt meddelande",
+        "in": "Meddelanden",
+        "title": "Meddelanden"
+    },
+    "game.menu.overview": {
+        "buildings": "Byggnader",
+        "combined": "Kombinerat",
+        "commands": "Kommandon",
+        "groups": "Grupper",
+        "prod": "Produktion",
+        "title": "Översikter"
+    },
+    "game.menu.profile": {
+        "friends": "Vänner",
+        "inventory": "Inventarium",
+        "title": "Profil"
+    },
+    "game.menu.ranking": {
+        "ally": "Stammar",
+        "killPlayer": "Motståndare besegrade",
+        "player": "Spelare",
+        "title": "Rankingar"
+    },
+    "game.menu.reports": {
+        "attack": "Anfall",
+        "defense": "Försvar",
+        "filter": "Filter",
+        "forwarded": "Vidarebefordrad",
+        "other": "Blandat",
+        "support": "Stöd",
+        "title": "Rapporter",
+        "trade": "Handel"
+    },
+    "game.menu.settings": {
+        "changePasswd": "Ändra lösenord",
+        "poll": "Undersökningar",
+        "profile": "Profil",
+        "settings": "Inställningar",
+        "title": "Inställningar"
+    },
+    "game.overview": {
+        "build": "Uppgradera byggnad"
+    },
+    "game.overview.widgets": {
+        "buildqueue": "Kö",
+        "newbie": "Anfallsskydd",
+        "prod": "Produktion",
+        "summary": "Byggnader",
+        "units": "Enheter"
+    },
+    "game.report": {
+        "attacker": "Anfallare",
+        "badluck": "Otur",
+        "defender": "Försvarare",
+        "from": "från",
+        "losses": "Förluster",
+        "normalLuck": "Tur",
+        "origin": "Ursprung",
+        "target": "Mål",
+        "title": "Rapporter",
+        "units": "Enheter"
+    },
+    "game.report.navi": {
+        "all": "Alla",
+        "attack": "Anfall",
+        "defense": "Försvar",
+        "filter": "Filter",
+        "trade": "Handel"
+    },
+    "game.title": {
+        "close": "Stäng",
+        "village": "By"
+    },
+    "game.train": {
+        "modeTrain": "Värva"
+    },
+    "game.train.queue": {
+        "cancel": "Avbryt",
+        "duration": "Varaktighet",
+        "train": "Värva"
+    },
+    "game.unit": {
+        "attackStrength": "Anfallskraft"
+    },
+    "game.village": {
+        "nameLeft": "Barbarby"
+    },
+    "index": {
+        "availableWorlds": "Öppna världar",
+        "login": "Logga in",
+        "logout": "Logga ut",
+        "password": "Lösenord",
+        "username": "Användarnamn"
+    },
+    "knight": {
+        "archer": "Nimrods långbåge",
+        "axe": "Thorgards stridsyxa",
+        "catapult": "Aletheias bål",
+        "heavy": "Baptistes fana",
+        "light": "Mieszkos lans",
+        "marcher": "Nimrods kompositbåge",
+        "ram": "Carols morgonstjärna",
+        "snob": "Vascos spira",
+        "spear": "Guan Yus hillebard",
+        "sword": "Paracelsus långsvärd"
+    },
+    "logout": {
+        "title": "Logga ut"
+    },
+    "register": {
+        "password": "Lösenord",
+        "passwordConfirm": "Repetera lösenord",
+        "register": "Registrera dig",
+        "title": "Registrera dig"
+    },
+    "sidWrong": {
+        "index": "Hem"
+    },
+    "unitArcher": {
+        "name": "Bågskytt",
+        "short": "Bågskytt"
+    },
+    "unitAxe": {
+        "name": "Yxkrigare",
+        "plural": "Yxkrigare",
+        "short": "Yxa"
+    },
+    "unitCatapult": {
+        "name": "Katapult"
+    },
+    "unitHeavy": {
+        "name": "Tungt kavalleri",
+        "plural": "Tungt kavalleri"
+    },
+    "unitKnight": {
+        "name": "Paladin"
+    },
+    "unitLight": {
+        "name": "Lätt kavalleri",
+        "plural": "Lätt kavalleri"
+    },
+    "unitMarcher": {
+        "name": "Beriden bågskytt"
+    },
+    "unitRam": {
+        "name": "Murbräcka",
+        "short": "Murbräcka"
+    },
+    "unitSnob": {
+        "name": "Adelsman"
+    },
+    "unitSpear": {
+        "short": "Spjut"
+    },
+    "unitSword": {
+        "name": "Svärdsman",
+        "plural": "Svärdsman",
+        "short": "Svärd"
+    }
+}

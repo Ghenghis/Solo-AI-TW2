@@ -1,0 +1,1 @@
+<div class="vis_item"><?php echo $village->belief ?? 1; ?></div>

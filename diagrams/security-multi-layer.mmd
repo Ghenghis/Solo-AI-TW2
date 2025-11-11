@@ -1,0 +1,64 @@
+graph TB
+    subgraph "Layer 1: Perimeter Security"
+        EDGE[Edge Protection]
+        FW_RULES[Firewall Rules]
+        GEOBLOCK[Geo-blocking]
+        RATELIMIT[Rate Limiting]
+    end
+    
+    subgraph "Layer 2: Application Security"
+        WAF_L2[WAF Rules]
+        INPUT[Input Validation]
+        OUTPUT[Output Encoding]
+        AUTHZ[Authorization]
+    end
+    
+    subgraph "Layer 3: Data Security"
+        ENCRYPT[Encryption at Rest]
+        TLS[TLS in Transit]
+        TOKENIZE[Tokenization]
+        MASK[Data Masking]
+    end
+    
+    subgraph "Layer 4: Infrastructure Security"
+        CONTAINER[Container Security]
+        SECRETS[Secret Management]
+        PATCH[Patch Management]
+        AUDIT[Audit Logging]
+    end
+    
+    subgraph "Layer 5: Monitoring & Response"
+        SIEM[SIEM System]
+        IDS_IPS[IDS/IPS]
+        INCIDENT[Incident Response]
+        FORENSICS[Forensics]
+    end
+    
+    EDGE --> FW_RULES
+    FW_RULES --> GEOBLOCK
+    GEOBLOCK --> RATELIMIT
+    
+    RATELIMIT --> WAF_L2
+    WAF_L2 --> INPUT
+    INPUT --> OUTPUT
+    OUTPUT --> AUTHZ
+    
+    AUTHZ --> ENCRYPT
+    ENCRYPT --> TLS
+    TLS --> TOKENIZE
+    TOKENIZE --> MASK
+    
+    MASK --> CONTAINER
+    CONTAINER --> SECRETS
+    SECRETS --> PATCH
+    PATCH --> AUDIT
+    
+    AUDIT --> SIEM
+    SIEM --> IDS_IPS
+    IDS_IPS --> INCIDENT
+    INCIDENT --> FORENSICS
+    
+    style EDGE fill:#ffcccc
+    style AUTHZ fill:#d4f1d4
+    style ENCRYPT fill:#e1f5ff
+    style SIEM fill:#ffe4b5

@@ -1,0 +1,27 @@
+stateDiagram-v2
+    [*] --> ArmyArrival
+    
+    ArmyArrival --> CheckDefense
+    
+    CheckDefense --> HasDefenders: Defenders > 0
+    CheckDefense --> NoDefenders: Defenders = 0
+    
+    HasDefenders --> CalculateBattle
+    
+    CalculateBattle --> AttackerWins: Attacker Strength > Defense
+    CalculateBattle --> DefenderWins: Defense >= Attacker Strength
+    
+    AttackerWins --> CalculateLosses
+    DefenderWins --> CalculateDefenderLosses
+    
+    CalculateLosses --> LootResources
+    LootResources --> GenerateReport
+    
+    CalculateDefenderLosses --> ReturnSurvivors
+    ReturnSurvivors --> GenerateReport
+    
+    NoDefenders --> LootMaximum
+    LootMaximum --> GenerateReport
+    
+    GenerateReport --> UpdateDatabase
+    UpdateDatabase --> [*]

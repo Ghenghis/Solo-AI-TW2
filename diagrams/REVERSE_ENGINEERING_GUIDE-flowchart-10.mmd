@@ -1,0 +1,37 @@
+graph TB
+    subgraph "Client Layer"
+        WEB[Web Client]
+        MOBILE[Mobile App]
+    end
+    
+    subgraph "WebSocket Gateway"
+        WS[WebSocket Server]
+        AUTH_WS[Auth Middleware]
+        RATE[Rate Limiter]
+    end
+    
+    subgraph "Message Broker"
+        REDIS_PUB[Redis Pub/Sub]
+        CHANNELS[Channel Manager]
+    end
+    
+    subgraph "Game Services"
+        GAME_SVC[Game Service]
+        BATTLE_SVC[Battle Service]
+        RESOURCE_SVC[Resource Service]
+    end
+    
+    WEB --> WS
+    MOBILE --> WS
+    WS --> AUTH_WS
+    AUTH_WS --> RATE
+    RATE --> REDIS_PUB
+    
+    REDIS_PUB --> CHANNELS
+    CHANNELS --> GAME_SVC
+    CHANNELS --> BATTLE_SVC
+    CHANNELS --> RESOURCE_SVC
+    
+    GAME_SVC --> REDIS_PUB
+    BATTLE_SVC --> REDIS_PUB
+    RESOURCE_SVC --> REDIS_PUB

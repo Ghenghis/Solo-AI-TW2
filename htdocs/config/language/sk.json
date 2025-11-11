@@ -1,0 +1,377 @@
+{
+    "admin": {
+        "logout": "Odhlásenie"
+    },
+    "admin.configeditor": {
+        "reload": "Znova načítať",
+        "save": "Uložiť nastavenia"
+    },
+    "admin.login": {
+        "login": "Prihlásenie",
+        "password": "Heslo"
+    },
+    "buildingBarracks": {
+        "name": "Kasárne"
+    },
+    "buildingChurch": {
+        "name": "Kostol"
+    },
+    "buildingFarm": {
+        "name": "Farma"
+    },
+    "buildingGarage": {
+        "name": "Dielňa"
+    },
+    "buildingIron": {
+        "name": "Železná baňa"
+    },
+    "buildingMain": {
+        "build": "Postaviť",
+        "buildTime": "Čas výstavby",
+        "building": "Budovy",
+        "cancel": "Zrušiť",
+        "changeName": "Zmeniť názov dediny",
+        "eventTime": "Trvanie",
+        "modeBuild": "Postaviť",
+        "modeDestroy": "Búranie",
+        "name": "Hlavná budova"
+    },
+    "buildingMarket": {
+        "name": "Trhovisko"
+    },
+    "buildingPlace": {
+        "all": "Všetky",
+        "arrival": "Príchod",
+        "arrivalIn": "Príchod o",
+        "attack": "útočiť",
+        "attacker": "Útočník",
+        "attackingArmy": "Útočník",
+        "church": "Kostol",
+        "defender": "Obranca",
+        "defendingArmy": "Obranca",
+        "duration": "Trvanie",
+        "losses": "Straty",
+        "moral": "Morálka",
+        "support": "podporiť",
+        "target": "Cieľ",
+        "total": "Celkovo",
+        "units": "Jednotky",
+        "wall": "Hradby",
+        "withdraw": "Stiahnuť"
+    },
+    "buildingPlaceNavi": {
+        "command": "Príkazy"
+    },
+    "buildingRes": {
+        "prod": "Produkcia"
+    },
+    "buildingSmith": {
+        "eventTime": "Trvanie"
+    },
+    "buildingSnob": {
+        "overall": "Celkovo"
+    },
+    "buildingSnobNavi": {
+        "train": "Vytvoriť"
+    },
+    "buildingStable": {
+        "name": "Stajňa"
+    },
+    "buildingStatue": {
+        "doCancel": "Cancel",
+        "modeIndex": "Paladin",
+        "modeInventory": "Inventár",
+        "name": "Socha",
+        "palaName": "Meno"
+    },
+    "buildingStone": {
+        "name": "Hlinisko"
+    },
+    "buildingStorage": {
+        "capacity": "Kapacita skladu",
+        "name": "Sklad",
+        "tableHead": "Sklad je plný"
+    },
+    "buildingWall": {
+        "basicDefense": "Základná obrana",
+        "name": "Hradby"
+    },
+    "buildingWood": {
+        "name": "Drevorubač"
+    },
+    "createVillage": {
+        "submit": "Potvrdiť"
+    },
+    "game": {
+        "None": "Žiadne",
+        "booty": "Korisť",
+        "buddies": "Priatelia",
+        "cancel": "Zrušiť",
+        "confirm": "Potvrdiť",
+        "costs": "Náklady",
+        "current": "Aktuálny stav",
+        "iron": "Železo",
+        "ok": "OK",
+        "options": "Možnosti",
+        "points": "Body",
+        "resources": "Suroviny",
+        "save": "Uložiť",
+        "send": "Poslať",
+        "speed": "Rýchlosť",
+        "stone": "Hlina",
+        "storage": "Kapacita skladu",
+        "support": "Podpora",
+        "text": "Text",
+        "unit": "Jednotka",
+        "village": "Dedina",
+        "wood": "Drevo"
+    },
+    "game.ally": {
+        "date": "Dátum",
+        "doFound": "Otvoriť kmeň",
+        "invitations": "Pozvánky",
+        "leave": "Opustiť kmeň",
+        "nameOfTribe": "Názov kmeňa",
+        "reject": "Odmietnuť",
+        "tribe": "Kmeň"
+    },
+    "game.ally.diplomaty": {
+        "enemy": "Nepriatelia",
+        "partner": "Spojenci"
+    },
+    "game.ally.forum": {
+        "add": "Pridať",
+        "author": "Autor",
+        "close": "Zatvoriť",
+        "confirm": "Potvrdiť",
+        "create": "Vytvoriť",
+        "delete": "Vymazať",
+        "forum": "Fórum",
+        "lastPost": "Posledná pošta",
+        "newpoll": "Nový prieskum",
+        "replies": "Odpovedať",
+        "reply": "Odpoveď",
+        "title": "Názov"
+    },
+    "game.ally.forum.admin": {
+        "action": "Úkon",
+        "loading": "Načítava sa"
+    },
+    "game.ally.invite": {
+        "invitations": "Pozvánky",
+        "invite": "Pozvať",
+        "name": "Meno",
+        "redraw": "Stiahnuť"
+    },
+    "game.ally.navi": {
+        "contracts": "Diplomacia",
+        "forum": "Kmeňové fórum",
+        "invite": "Pozvánky",
+        "members": "Členovia",
+        "overview": "Prehľad",
+        "profile": "Profil",
+        "reservations": "Plánovač šľachticov"
+    },
+    "game.bbcode": {
+        "ally": "Kmeň",
+        "bold": "Tučné",
+        "color": "Farba",
+        "coords": "Súradnice",
+        "italic": "Kurzíva",
+        "main": "Budovy",
+        "player": "Hráč",
+        "report": "Hlásenie",
+        "spoiler": "Skrytý text",
+        "underline": "Podčiarknuté",
+        "units": "Jednotky"
+    },
+    "game.groups": {
+        "all": "Všetky",
+        "delete": "Vymazať skupinu"
+    },
+    "game.mail": {
+        "msgs": "Správy"
+    },
+    "game.mail.modes": {
+        "in": "Správy"
+    },
+    "game.map": {
+        "enemys": "Nepriatelia",
+        "partners": "Spojenci"
+    },
+    "game.market": {
+        "traders": "Obchodníci"
+    },
+    "game.menu": {
+        "logout": "Odhlásiť"
+    },
+    "game.menu.ally": {
+        "contracts": "Diplomacia",
+        "forum": "Kmeňové fórum",
+        "members": "Členovia",
+        "overview": "Prehľad",
+        "profile": "Profil",
+        "reservations": "Plánovač šľachticov",
+        "title": "Kmeň"
+    },
+    "game.menu.mails": {
+        "iNew": "Nová správa",
+        "in": "Správy",
+        "title": "Správy"
+    },
+    "game.menu.overview": {
+        "buildings": "Budovy",
+        "combined": "Kombinované",
+        "commands": "Príkazy",
+        "groups": "Skupiny",
+        "prod": "Produkcia",
+        "title": "Prehľady"
+    },
+    "game.menu.profile": {
+        "friends": "Priatelia",
+        "inventory": "Inventár",
+        "title": "Profil"
+    },
+    "game.menu.ranking": {
+        "ally": "Kmene",
+        "killPlayer": "Protivníci sú porazení",
+        "player": "Hráč",
+        "title": "Hodnotenia"
+    },
+    "game.menu.reports": {
+        "attack": "Útoky",
+        "defense": "Obrana",
+        "filter": "Filter",
+        "forwarded": "Poslané ďalej",
+        "other": "Rôzne",
+        "support": "Podpora",
+        "title": "Hlásenia",
+        "trade": "Obchod"
+    },
+    "game.menu.settings": {
+        "changePasswd": "Zmeniť heslo",
+        "poll": "Prieskumy",
+        "profile": "Profil",
+        "settings": "Nastavenia",
+        "title": "Nastavenia"
+    },
+    "game.overview": {
+        "build": "Vylepšiť budovu"
+    },
+    "game.overview.widgets": {
+        "buildqueue": "Stavebný rad",
+        "newbie": "Ochrana proti útokom",
+        "prod": "Produkcia",
+        "summary": "Budovy",
+        "units": "Jednotky"
+    },
+    "game.report": {
+        "attacker": "Útočník",
+        "badluck": "Nešťastie",
+        "defender": "Obranca",
+        "from": "z",
+        "losses": "Straty",
+        "normalLuck": "Šťastie",
+        "origin": "Pôvod",
+        "target": "Cieľ",
+        "title": "Hlásenia",
+        "units": "Jednotky"
+    },
+    "game.report.navi": {
+        "all": "Všetky",
+        "attack": "Útoky",
+        "defense": "Obrana",
+        "filter": "Filter",
+        "trade": "Obchod"
+    },
+    "game.title": {
+        "close": "Zatvoriť",
+        "village": "Dedina"
+    },
+    "game.train": {
+        "modeTrain": "Pozvánky"
+    },
+    "game.train.queue": {
+        "cancel": "Zrušiť",
+        "duration": "Trvanie",
+        "train": "Pozvánky"
+    },
+    "game.unit": {
+        "attackStrength": "Útočná sila"
+    },
+    "game.village": {
+        "nameLeft": "Barbarská dedina"
+    },
+    "index": {
+        "availableWorlds": "Otvorené svety",
+        "login": "Prihlásenie",
+        "logout": "Odhlásenie",
+        "password": "Heslo",
+        "username": "Používateľské meno"
+    },
+    "knight": {
+        "archer": "Nimrodov dlhý luk",
+        "axe": "Thorgardova bojová sekera",
+        "catapult": "Alethein oheň",
+        "heavy": "Baptistova zástava",
+        "light": "Mieszkova kopija",
+        "marcher": "Nimrodov luk z kompozitných materiálov",
+        "ram": "Carolova ranná hviezda",
+        "snob": "Vascovo žezlo",
+        "spear": "Halapartňa Guan Yu",
+        "sword": "Paracelsusov dlhý meč"
+    },
+    "logout": {
+        "title": "Odhlásenie"
+    },
+    "register": {
+        "password": "Heslo",
+        "passwordConfirm": "Zopakujte heslo",
+        "register": "Registrovať",
+        "title": "Registrovať"
+    },
+    "sidWrong": {
+        "index": "Domov"
+    },
+    "unitArcher": {
+        "name": "Lukostrelec",
+        "short": "Lukostrelec"
+    },
+    "unitAxe": {
+        "name": "Bojovník so sekerou",
+        "plural": "Bojovník so sekerou",
+        "short": "Sekera"
+    },
+    "unitCatapult": {
+        "name": "Katapult"
+    },
+    "unitHeavy": {
+        "name": "Ťažká jazda",
+        "plural": "Ťažká jazda"
+    },
+    "unitKnight": {
+        "name": "Paladin"
+    },
+    "unitLight": {
+        "name": "Ľahká jazda",
+        "plural": "Ľahká jazda"
+    },
+    "unitMarcher": {
+        "name": "Lukostrelec na koni"
+    },
+    "unitRam": {
+        "name": "Baranidlo",
+        "short": "Baranidlo"
+    },
+    "unitSnob": {
+        "name": "Šľachtic"
+    },
+    "unitSpear": {
+        "short": "Kopija"
+    },
+    "unitSword": {
+        "name": "Šermiar",
+        "plural": "Šermiar",
+        "short": "Meč"
+    }
+}

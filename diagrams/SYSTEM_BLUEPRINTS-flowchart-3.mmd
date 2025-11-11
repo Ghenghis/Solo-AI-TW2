@@ -1,0 +1,49 @@
+graph TB
+    subgraph "Docker Swarm Cluster"
+        subgraph "Manager Nodes"
+            M1[Manager 1<br/>Leader]
+            M2[Manager 2<br/>Follower]
+            M3[Manager 3<br/>Follower]
+        end
+        
+        subgraph "Worker Nodes"
+            subgraph "Worker 1"
+                W1_WEB[Web Container]
+                W1_PHP[PHP Container]
+                W1_WORKER[Worker Container]
+            end
+            
+            subgraph "Worker 2"
+                W2_WEB[Web Container]
+                W2_PHP[PHP Container]
+                W2_CACHE[Redis Container]
+            end
+            
+            subgraph "Worker 3"
+                W3_DB[Database Container]
+                W3_BACKUP[Backup Container]
+                W3_MONITOR[Monitor Container]
+            end
+        end
+        
+        subgraph "Overlay Network"
+            INGRESS[Ingress Network]
+            BACKEND[Backend Network]
+            DATA[Data Network]
+        end
+    end
+    
+    M1 --> M2
+    M2 --> M3
+    M3 --> M1
+    
+    M1 --> W1_WEB
+    M1 --> W2_WEB
+    M1 --> W3_DB
+    
+    W1_WEB --> INGRESS
+    W1_PHP --> BACKEND
+    W3_DB --> DATA
+    
+    INGRESS --> BACKEND
+    BACKEND --> DATA

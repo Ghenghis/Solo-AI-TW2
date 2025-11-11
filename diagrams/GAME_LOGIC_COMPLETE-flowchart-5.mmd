@@ -1,0 +1,59 @@
+graph TB
+    subgraph "Pre-Battle"
+        ATT_UNITS[Attacker Units]
+        DEF_UNITS[Defender Units]
+        SUPPORT[Support Units]
+        WALL[Wall Level]
+    end
+    
+    subgraph "Strength Calculation"
+        ATT_STR[Attack Strength]
+        DEF_STR[Defense Strength]
+        RATIO[Strength Ratio]
+    end
+    
+    subgraph "Modifiers"
+        MORALE[Morale: 30-100%]
+        LUCK[Luck: -25% to +25%]
+        NIGHT[Night Bonus: x2 Defense]
+        FAITH[Faith: 50-100%]
+        WALL_BONUS[Wall: 1.037^level]
+    end
+    
+    subgraph "Battle Resolution"
+        CALC[Calculate Losses]
+        WINNER[Determine Winner]
+        LOOT[Calculate Loot]
+        DAMAGE[Building Damage]
+    end
+    
+    subgraph "Post-Battle"
+        SURVIVORS[Surviving Units]
+        REPORT[Battle Report]
+        RETURN[Return Movement]
+        CONQUER[Conquest Check]
+    end
+    
+    ATT_UNITS --> ATT_STR
+    DEF_UNITS --> DEF_STR
+    SUPPORT --> DEF_STR
+    WALL --> WALL_BONUS
+    
+    ATT_STR --> RATIO
+    DEF_STR --> RATIO
+    
+    MORALE --> ATT_STR
+    LUCK --> ATT_STR
+    NIGHT --> DEF_STR
+    FAITH --> ATT_STR
+    WALL_BONUS --> DEF_STR
+    
+    RATIO --> CALC
+    CALC --> WINNER
+    WINNER --> LOOT
+    WINNER --> DAMAGE
+    
+    CALC --> SURVIVORS
+    SURVIVORS --> REPORT
+    SURVIVORS --> RETURN
+    LOOT --> CONQUER

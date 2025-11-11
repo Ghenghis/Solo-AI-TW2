@@ -1,0 +1,30 @@
+graph TB
+    subgraph "Phase 1: Containerization"
+        LEGACY[Legacy Container<br/>Original Binaries]
+        MODERN[Modern Container<br/>PHP 8.4]
+        DB_NEW[MariaDB 10.11]
+    end
+    
+    subgraph "Phase 2: Code Migration"
+        COMPAT[Compatibility Layer]
+        REFACTOR[Refactor Core]
+        API_MOD[API Modernization]
+    end
+    
+    subgraph "Phase 3: Architecture"
+        MICRO[Microservices]
+        EVENT[Event Driven]
+        CLOUD[Cloud Native]
+    end
+    
+    LEGACY --> COMPAT
+    MODERN --> REFACTOR
+    DB_NEW --> API_MOD
+    
+    COMPAT --> MICRO
+    REFACTOR --> EVENT
+    API_MOD --> CLOUD
+    
+    style LEGACY fill:#ffe4b5
+    style MODERN fill:#d4f1d4
+    style CLOUD fill:#e1f5ff

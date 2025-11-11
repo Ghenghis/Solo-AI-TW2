@@ -1,0 +1,43 @@
+graph TB
+    subgraph "Request Security Pipeline"
+        REQ[Incoming Request]
+        SSL[SSL/TLS Termination]
+        RATE[Rate Limiting]
+        AUTH[Authentication]
+        AUTHZ[Authorization]
+        VALID[Input Validation]
+        SANITIZE[Input Sanitization]
+    end
+    
+    subgraph "Security Checks"
+        JWT[JWT Validation]
+        RBAC[Role-Based Access]
+        SCOPE[OAuth Scopes]
+        CSRF[CSRF Token]
+        CORS[CORS Policy]
+    end
+    
+    subgraph "Response Security"
+        ENCRYPT[Response Encryption]
+        HEADERS[Security Headers]
+        AUDIT[Audit Logging]
+    end
+    
+    REQ --> SSL
+    SSL --> RATE
+    RATE --> AUTH
+    AUTH --> JWT
+    AUTH --> AUTHZ
+    AUTHZ --> RBAC
+    AUTHZ --> SCOPE
+    AUTHZ --> VALID
+    VALID --> CSRF
+    VALID --> CORS
+    VALID --> SANITIZE
+    
+    SANITIZE --> API[API Processing]
+    
+    API --> ENCRYPT
+    ENCRYPT --> HEADERS
+    HEADERS --> AUDIT
+    AUDIT --> RESPONSE[Send Response]

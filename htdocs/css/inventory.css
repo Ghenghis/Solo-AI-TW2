@@ -1,0 +1,83 @@
+/* 23706 trunk*/
+.inv_empty {
+    position: absolute;
+    z-index: 3;
+    width: 600px;
+    height: 430px;
+}
+
+.inv_map {
+    position: absolute;
+    z-index: 2;
+}
+
+.inv_archer {
+    top: 157px;
+    left: 198px;
+}
+
+.inv_axe {
+    top: 257px;
+    left: 128px;
+}
+
+.inv_catapult {
+    top: 0px;
+    left: 38px;
+}
+
+.inv_heavy {
+    top: 24px;
+    left: 76px;
+}
+
+.inv_light {
+    top: 56px;
+    left: 245px;
+}
+
+.inv_marcher {
+    top: 217px;
+    left: 485px;
+}
+
+.inv_ram {
+    top: 157px;
+    left: 361px;
+}
+
+.inv_spear {
+    top: 43px;
+    left: 99px;
+}
+
+.inv_snob {
+    top: 276px;
+    left: 398px;
+}
+
+.inv_spy {
+    top: 264px;
+    left: 340px;
+}
+
+.inv_sword {
+    top: 208px;
+    left: 336px;
+}
+
+.tooltip_container {
+    background-color: #F4F0E5;
+    z-index: 9999;
+    width: 250px;
+}
+
+.tip-title {
+    font-weight: bold;
+    background-color: #DED3B9;
+    padding: 3px;
+}
+
+.tip-text {
+    padding: 3px;
+}

@@ -1,0 +1,27 @@
+flowchart LR
+    subgraph "Security Vulnerabilities Found"
+        subgraph "Critical"
+            SQL[SQL Injection<br/>Multiple endpoints]
+            SESS[Session Hijacking<br/>Predictable IDs]
+            AUTH[Weak Auth<br/>MD5 passwords]
+        end
+        
+        subgraph "High"
+            XSS[XSS Vulnerabilities<br/>Unescaped output]
+            CSRF[CSRF Missing<br/>No tokens]
+            PATH[Path Traversal<br/>Include files]
+        end
+        
+        subgraph "Medium"
+            INFO[Information Disclosure<br/>Error messages]
+            BRUTE[Brute Force<br/>No rate limiting]
+            UPLOAD[File Upload<br/>No validation]
+        end
+    end
+    
+    SQL --> FIX1[Prepared Statements]
+    SESS --> FIX2[Secure Sessions]
+    AUTH --> FIX3[BCrypt Hashing]
+    XSS --> FIX4[Output Escaping]
+    CSRF --> FIX5[CSRF Tokens]
+    PATH --> FIX6[Input Validation]

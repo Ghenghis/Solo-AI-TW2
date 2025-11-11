@@ -1,0 +1,48 @@
+graph LR
+    subgraph "Application Metrics"
+        REQ_RATE[Request Rate]
+        RESP_TIME[Response Time]
+        ERROR_RATE[Error Rate]
+        SATURATION[Saturation]
+    end
+    
+    subgraph "Infrastructure Metrics"
+        CPU[CPU Usage]
+        MEM[Memory Usage]
+        DISK[Disk I/O]
+        NET[Network I/O]
+    end
+    
+    subgraph "Database Metrics"
+        QPS[Queries/sec]
+        SLOW[Slow Queries]
+        CONN[Connections]
+        REPL[Replication Lag]
+    end
+    
+    subgraph "Business Metrics"
+        USERS[Active Users]
+        GAMES[Games Started]
+        REVENUE[Revenue]
+        CHURN[Churn Rate]
+    end
+    
+    REQ_RATE --> DASHBOARD[Grafana Dashboard]
+    RESP_TIME --> DASHBOARD
+    ERROR_RATE --> DASHBOARD
+    SATURATION --> DASHBOARD
+    
+    CPU --> DASHBOARD
+    MEM --> DASHBOARD
+    DISK --> DASHBOARD
+    NET --> DASHBOARD
+    
+    QPS --> DASHBOARD
+    SLOW --> DASHBOARD
+    CONN --> DASHBOARD
+    REPL --> DASHBOARD
+    
+    USERS --> DASHBOARD
+    GAMES --> DASHBOARD
+    REVENUE --> DASHBOARD
+    CHURN --> DASHBOARD

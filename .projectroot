@@ -1,0 +1,29 @@
+# TWLan Project Root Marker
+# This file identifies the root directory of the TWLan project
+# All relative paths in documentation, scripts, and configuration
+# should be relative to this directory.
+
+PROJECT_NAME=TWLan-2.A3-linux64
+PROJECT_ROOT_INDICATOR=README.md
+CREATED=2025-11-10
+
+# Root Directory Structure:
+# ./README.md              - Main documentation
+# ./QUICK_START.md         - Quick start guide
+# ./docker-compose.yml     - Container orchestration
+# ./docs/                  - All markdown documentation
+# ./diagrams/              - All .mmd diagram files
+# ./docker/                - Dockerfiles and container scripts
+# ./config/                - All configuration files
+# ./scripts/               - Build and deployment scripts
+# ./utils/                 - Utility scripts (port_manager.py)
+# ./app/                   - Application code directory
+# ./bin/                   - TWLan binaries
+# ./db/                    - Database files
+# ./htdocs/                - Web files
+# ./lib/                   - Libraries
+# ./share/                 - Shared resources
+
+# Path Convention:
+# All scripts and documentation should use paths RELATIVE to this root directory.
+# Example: ./docs/ARCHITECTURE.md NOT /full/path/to/docs/ARCHITECTURE.md

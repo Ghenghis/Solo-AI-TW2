@@ -1,0 +1,45 @@
+graph TB
+    subgraph "TWLan 2.A3 Original Architecture"
+        subgraph "Presentation Layer"
+            HTML[HTML Templates]
+            CSS[CSS Styles]
+            JS[JavaScript]
+            IMG[Image Assets]
+        end
+        
+        subgraph "Application Layer"
+            PHP5[PHP 5.x Engine]
+            GAME[Game Logic]
+            AUTH[Authentication]
+            ADMIN[Admin Panel]
+            API[Internal APIs]
+        end
+        
+        subgraph "Data Layer"
+            MYSQL[MySQL 5.x]
+            FS[File System]
+            CACHE[File Cache]
+        end
+        
+        subgraph "Infrastructure"
+            BIN[Binary Executables]
+            CONFIG[Configuration]
+            SCRIPTS[Shell Scripts]
+        end
+    end
+    
+    HTML --> PHP5
+    CSS --> HTML
+    JS --> HTML
+    PHP5 --> GAME
+    PHP5 --> AUTH
+    PHP5 --> ADMIN
+    GAME --> API
+    API --> MYSQL
+    API --> FS
+    PHP5 --> CACHE
+    
+    MYSQL --> BIN
+    PHP5 --> BIN
+    CONFIG --> BIN
+    SCRIPTS --> BIN

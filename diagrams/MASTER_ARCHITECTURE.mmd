@@ -1,0 +1,152 @@
+```mermaid
+%%{init: {'theme':'dark', 'themeVariables': { 'primaryColor':'#1f2937', 'primaryTextColor':'#fff', 'primaryBorderColor':'#60a5fa', 'lineColor':'#6b7280', 'secondaryColor':'#374151', 'tertiaryColor':'#1e293b', 'background':'#0f172a'}}}%%
+
+graph TB
+    %% Master Architecture Diagram - TWLan 2025 Docker Edition
+    
+    subgraph "User Access Layer"
+        USER[fa:fa-users Users]
+        BROWSER[fa:fa-chrome Browser]
+        MOBILE[fa:fa-mobile Mobile App]
+        API_CLIENT[fa:fa-code API Clients]
+    end
+    
+    subgraph "Edge Services"
+        CDN[fa:fa-globe CDN<br/>CloudFlare]
+        LB[fa:fa-balance-scale Load Balancer<br/>HAProxy/Nginx]
+        WAF[fa:fa-shield-alt WAF<br/>ModSecurity]
+        DDOS[fa:fa-ban DDoS Protection]
+    end
+    
+    subgraph "Docker Infrastructure"
+        subgraph "Container Orchestration"
+            SWARM[fa:fa-docker Docker Swarm<br/>Orchestrator]
+            COMPOSE[fa:fa-layer-group Docker Compose<br/>Service Manager]
+        end
+        
+        subgraph "Service Containers"
+            subgraph "Modern Stack"
+                WEB_MODERN[fa:fa-server Nginx<br/>Web Server<br/>:8080]
+                PHP_MODERN[fa:fa-code PHP 8.4 FPM<br/>Application<br/>:9000]
+                WORKER[fa:fa-cogs Workers<br/>Background Jobs]
+            end
+            
+            subgraph "Legacy Stack"
+                LEGACY_ALL[fa:fa-archive TWLan 2.A3<br/>Original Binary<br/>:8200]
+            end
+            
+            subgraph "Data Services"
+                DB[fa:fa-database MariaDB 10.11<br/>Primary Database<br/>:3307]
+                REDIS[fa:fa-bolt Redis 7<br/>Cache & Queue<br/>:6379]
+                BACKUP[fa:fa-save Backup Service<br/>Automated]
+            end
+            
+            subgraph "Management"
+                PMA[fa:fa-table phpMyAdmin<br/>DB Management<br/>:8100]
+                MONITOR[fa:fa-chart-line Prometheus<br/>Monitoring<br/>:9090]
+                GRAFANA[fa:fa-dashboard Grafana<br/>Dashboards<br/>:3000]
+            end
+        end
+    end
+    
+    subgraph "Intelligent Systems"
+        PORT_MGR[fa:fa-network-wired Port Manager<br/>Dynamic Allocation]
+        HEALTH[fa:fa-heartbeat Health Monitor<br/>Auto-Recovery]
+        SCALER[fa:fa-expand Auto-Scaler<br/>Resource Management]
+    end
+    
+    subgraph "Storage Layer"
+        subgraph "Volumes"
+            VOL_DB[(fa:fa-hdd Database<br/>Persistent)]
+            VOL_UPLOAD[(fa:fa-upload Uploads<br/>User Files)]
+            VOL_LOGS[(fa:fa-file-alt Logs<br/>Audit Trail)]
+            VOL_BACKUP[(fa:fa-archive Backups<br/>Snapshots)]
+        end
+        
+        subgraph "Configuration"
+            ENV[fa:fa-cog Environment<br/>.env files]
+            SECRETS[fa:fa-key Secrets<br/>Encrypted]
+        end
+    end
+    
+    %% Connections - User Flow
+    USER --> BROWSER
+    BROWSER --> CDN
+    MOBILE --> CDN
+    API_CLIENT --> CDN
+    
+    CDN --> WAF
+    WAF --> DDOS
+    DDOS --> LB
+    
+    %% Load Balancer Distribution
+    LB --> WEB_MODERN
+    LB --> LEGACY_ALL
+    
+    %% Modern Stack Flow
+    WEB_MODERN --> PHP_MODERN
+    PHP_MODERN --> DB
+    PHP_MODERN --> REDIS
+    PHP_MODERN --> VOL_UPLOAD
+    
+    %% Worker Processing
+    REDIS --> WORKER
+    WORKER --> DB
+    WORKER --> VOL_LOGS
+    
+    %% Legacy Stack Flow
+    LEGACY_ALL --> DB
+    LEGACY_ALL --> VOL_DB
+    
+    %% Data Persistence
+    DB --> VOL_DB
+    DB --> BACKUP
+    BACKUP --> VOL_BACKUP
+    
+    %% Monitoring Flow
+    MONITOR --> WEB_MODERN
+    MONITOR --> PHP_MODERN
+    MONITOR --> DB
+    MONITOR --> REDIS
+    MONITOR --> GRAFANA
+    
+    %% Management
+    PMA --> DB
+    
+    %% Intelligent Systems
+    PORT_MGR --> COMPOSE
+    HEALTH --> SWARM
+    SCALER --> SWARM
+    
+    COMPOSE --> WEB_MODERN
+    COMPOSE --> PHP_MODERN
+    COMPOSE --> LEGACY_ALL
+    COMPOSE --> DB
+    COMPOSE --> REDIS
+    
+    %% Configuration
+    ENV --> COMPOSE
+    SECRETS --> SWARM
+    
+    %% Logging
+    WEB_MODERN --> VOL_LOGS
+    PHP_MODERN --> VOL_LOGS
+    DB --> VOL_LOGS
+    
+    %% Styling
+    classDef userLayer fill:#818cf8,stroke:#4c1d95,stroke-width:2px,color:#fff
+    classDef edgeLayer fill:#60a5fa,stroke:#1e40af,stroke-width:2px,color:#fff
+    classDef modernStack fill:#34d399,stroke:#047857,stroke-width:2px,color:#fff
+    classDef legacyStack fill:#fbbf24,stroke:#92400e,stroke-width:2px,color:#000
+    classDef dataLayer fill:#f87171,stroke:#991b1b,stroke-width:2px,color:#fff
+    classDef storageLayer fill:#c084fc,stroke:#6b21a8,stroke-width:2px,color:#fff
+    classDef intelligentLayer fill:#2dd4bf,stroke:#0f766e,stroke-width:2px,color:#fff
+    
+    class USER,BROWSER,MOBILE,API_CLIENT userLayer
+    class CDN,LB,WAF,DDOS edgeLayer
+    class WEB_MODERN,PHP_MODERN,WORKER modernStack
+    class LEGACY_ALL legacyStack
+    class DB,REDIS,BACKUP dataLayer
+    class VOL_DB,VOL_UPLOAD,VOL_LOGS,VOL_BACKUP,ENV,SECRETS storageLayer
+    class PORT_MGR,HEALTH,SCALER intelligentLayer
+```

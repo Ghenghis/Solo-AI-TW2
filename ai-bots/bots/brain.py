@@ -554,20 +554,19 @@ async def run_bot_tick(bot: AIBotState, world: WorldSnapshot,
         # Execute final decisions and learn from results
         for decision in final_decisions:
             try:
-                await execute_decision(bot, decision, game_client, db)
+                result = await execute_decision(bot, decision, game_client, db)
                 
-                # ✅ MEMORY LEARNING: Update memory based on action type
+                # ✅ MEMORY LEARNING: Update memory based on action type and results
                 if decision.action_type in ['attack', 'timed_attack']:
-                    # Record attack (actual results would come from game_client)
                     target_id = decision.details.get('to_village')
                     if target_id:
-                        # Placeholder: In production, parse battle report
+                        # Record attack with actual results
                         await memory.record_attack_result(
                             bot_id=bot.player_id,
                             target_village_id=target_id,
-                            loot={'wood': 0, 'clay': 0, 'iron': 0},  # TODO: Parse from result
-                            losses={},  # TODO: Parse from result
-                            success=True  # TODO: Determine from result
+                            loot=result.get('loot', {'wood': 0, 'clay': 0, 'iron': 0}),
+                            losses=result.get('losses', {}),
+                            success=result.get('success', False)
                         )
                 
                 elif decision.action_type == 'support':
@@ -611,15 +610,87 @@ async def run_bot_tick(bot: AIBotState, world: WorldSnapshot,
 
 
 async def execute_decision(bot: AIBotState, decision: Decision, 
-                          game_client: GameClient, db) -> None:
-    """Execute a single decision via HTTP or DB"""
-    # This would call game_client methods
-    # Implementation depends on game_client being fully built
+                          game_client: GameClient, db) -> dict:
+    """
+    Execute a single decision via HTTP GameClient
+    Returns result dict with success status and any parsed data
+    """
     logger.info("executing_decision",
                bot=bot.name,
                action=decision.action_type,
                village=decision.village_id,
                details=decision.details)
     
-    # TODO: Implement actual HTTP calls
-    pass
+    result = {'success': False, 'loot': {}, 'losses': {}, 'error': None}
+    
+    try:
+        # Get or create bot session (simplified - assumes session exists)
+        # In production, manage sessions in orchestrator
+        session = getattr(bot, 'game_session', None)
+        if not session:
+            logger.warning("no_game_session", bot=bot.name)
+            return result
+        
+        # Execute based on action type
+        if decision.action_type == 'build':
+            building = decision.details.get('building')
+            result['success'] = await game_client.build_building(
+                session, decision.village_id, building
+            )
+        
+        elif decision.action_type == 'recruit':
+            units = decision.details.get('units', {})
+            result['success'] = await game_client.recruit_units(
+                session, decision.village_id, units
+            )
+        
+        elif decision.action_type in ['attack', 'timed_attack']:
+            to_village = decision.details.get('to_village')
+            units = decision.details.get('units', {})
+            result['success'] = await game_client.send_attack(
+                session, decision.village_id, to_village, units
+            )
+            # TODO: Parse battle report for loot/losses
+        
+        elif decision.action_type == 'support':
+            to_village = decision.details.get('to_village')
+            units = decision.details.get('units', {})
+            result['success'] = await game_client.send_support(
+                session, decision.village_id, to_village, units
+            )
+        
+        elif decision.action_type == 'scout':
+            to_village = decision.details.get('to_village')
+            spy_count = decision.details.get('units', {}).get('spy', 1)
+            result['success'] = await game_client.send_scout(
+                session, decision.village_id, to_village, spy_count
+            )
+        
+        elif decision.action_type == 'trade':
+            sell = decision.details.get('sell')
+            buy = decision.details.get('buy')
+            amount = decision.details.get('amount')
+            result['success'] = await game_client.trade_resources(
+                session, decision.village_id, sell, buy, amount
+            )
+        
+        elif decision.action_type == 'send_resources':
+            to_village = decision.details.get('to_village')
+            resources = decision.details.get('resources', {})
+            result['success'] = await game_client.send_resources(
+                session, decision.village_id, to_village, resources
+            )
+        
+        else:
+            logger.warning("unknown_action_type", action=decision.action_type)
+        
+        return result
+        
+    except Exception as e:
+        logger.error("execute_decision_exception",
+                    bot=bot.name,
+                    action=decision.action_type,
+                    error=str(e),
+                    exc_info=True)
+        result['error'] = str(e)
+        return result

@@ -1,0 +1,645 @@
+{
+    "spear": {
+        "column": 1,
+        "type": "general",
+        "atk": {
+            "base": 10,
+            "factor": 1.045
+        },
+        "def": {
+            "general": {
+                "base": 15,
+                "factor": 1.045
+            },
+            "cavalry": {
+                "base": 45,
+                "factor": 1.045
+            },
+            "archer": {
+                "base": 20,
+                "factor": 1.045
+            }
+        },
+        "haul": {
+            "base": 25,
+            "factor": 1
+        },
+        "speed": {
+            "base": 18,
+            "factor": 1
+        },
+        "recruitCosts": {
+            "population": 1,
+            "wood": 50,
+            "stone": 30,
+            "iron": 10,
+            "time": 1020
+        },
+        "recruitBuilding": "barracks",
+        "requirements": {
+
+        },
+        "research": {
+            "min": 1,
+            "max": 1,
+            "1": {
+                "time": 3960
+            }
+        },
+        "points": {
+            "attack": 4,
+            "defend": 1
+        }
+    },
+    "sword": {
+        "column": 1,
+        "type": "general",
+        "atk": {
+            "base": 25,
+            "factor": 1.045
+        },
+        "def": {
+            "general": {
+                "base": 50,
+                "factor": 1.045
+            },
+            "cavalry": {
+                "base": 15,
+                "factor": 1.045
+            },
+            "archer": {
+                "base": 40,
+                "factor": 1.045
+            }
+        },
+        "haul": {
+            "base": 15,
+            "factor": 1
+        },
+        "speed": {
+            "base": 22,
+            "factor": 1
+        },
+        "recruitCosts": {
+            "population": 1,
+            "wood": 30,
+            "stone": 30,
+            "iron": 70,
+            "time": 1500
+        },
+        "recruitBuilding": "barracks",
+        "requirements": {
+            "smith": 1
+        },
+        "research": {
+            "min": 1,
+            "max": 1,
+            "1": {
+                "time": 5940
+            }
+        },
+        "points": {
+            "attack": 5,
+            "defend": 2
+        }
+    },
+    "axe": {
+        "column": 1,
+        "type": "general",
+        "atk": {
+            "base": 40,
+            "factor": 1.045
+        },
+        "def": {
+            "general": {
+                "base": 10,
+                "factor": 1.045
+            },
+            "cavalry": {
+                "base": 5,
+                "factor": 1.045
+            },
+            "archer": {
+                "base": 10,
+                "factor": 1.045
+            }
+        },
+        "haul": {
+            "base": 10,
+            "factor": 1
+        },
+        "speed": {
+            "base": 18,
+            "factor": 1
+        },
+        "recruitCosts": {
+            "population": 1,
+            "wood": 60,
+            "stone": 30,
+            "iron": 40,
+            "time": 1320
+        },
+        "recruitBuilding": "barracks",
+        "requirements": {
+            "smith": 2
+        },
+        "research": {
+            "min": 0,
+            "max": 1,
+            "1": {
+                "time": 6930,
+                "wood": 700,
+                "stone": 840,
+                "iron": 820
+            }
+        },
+        "points": {
+            "attack": 1,
+            "defend": 4
+        }
+    },
+    "archer": {
+        "column": 1,
+        "type": "archer",
+        "atk": {
+            "base": 15,
+            "factor": 1.045
+        },
+        "def": {
+            "general": {
+                "base": 50,
+                "factor": 1.045
+            },
+            "cavalry": {
+                "base": 40,
+                "factor": 1.045
+            },
+            "archer": {
+                "base": 5,
+                "factor": 1.045
+            }
+        },
+        "haul": {
+            "base": 10,
+            "factor": 1
+        },
+        "speed": {
+            "base": 18,
+            "factor": 1
+        },
+        "recruitCosts": {
+            "population": 1,
+            "wood": 100,
+            "stone": 30,
+            "iron": 60,
+            "time": 1800
+        },
+        "recruitBuilding": "barracks",
+        "requirements": {
+            "smith": 5,
+            "barracks": 5
+        },
+        "research": {
+            "min": 0,
+            "max": 1,
+            "1": {
+                "time": 7950,
+                "wood": 640,
+                "stone": 560,
+                "iron": 740
+            }
+        },
+        "points": {
+            "attack": 5,
+            "defend": 2
+        }
+    },
+    "spy": {
+        "column": 2,
+        "type": "other",
+        "atk": {
+            "base": 0,
+            "factor": 1
+        },
+        "def": {
+            "general": {
+                "base": 2,
+                "factor": 1.045
+            },
+            "cavalry": {
+                "base": 1,
+                "factor": 1.045
+            },
+            "archer": {
+                "base": 2,
+                "factor": 1.045
+            }
+        },
+        "haul": {
+            "base": 0,
+            "factor": 1
+        },
+        "speed": {
+            "base": 9,
+            "factor": 1
+        },
+        "recruitCosts": {
+            "population": 2,
+            "wood": 50,
+            "stone": 50,
+            "iron": 20,
+            "time": 900
+        },
+        "recruitBuilding": "stable",
+        "requirements": {
+            "stable": 1
+        },
+        "research": {
+            "min": 0,
+            "max": 1,
+            "1": {
+                "time": 3960,
+                "wood": 560,
+                "stone": 480,
+                "iron": 480
+            }
+        },
+        "points": {
+            "attack": 1,
+            "defend": 2
+        }
+    },
+    "light": {
+        "column": 2,
+        "type": "cavalry",
+        "atk": {
+            "base": 130,
+            "factor": 1.045
+        },
+        "def": {
+            "general": {
+                "base": 30,
+                "factor": 1.045
+            },
+            "cavalry": {
+                "base": 40,
+                "factor": 1.045
+            },
+            "archer": {
+                "base": 30,
+                "factor": 1.045
+            }
+        },
+        "haul": {
+            "base": 80,
+            "factor": 1
+        },
+        "speed": {
+            "base": 10,
+            "factor": 1
+        },
+        "recruitCosts": {
+            "population": 4,
+            "wood": 125,
+            "stone": 100,
+            "iron": 250,
+            "time": 1800
+        },
+        "recruitBuilding": "stable",
+        "requirements": {
+            "stable": 3
+        },
+        "research": {
+            "min": 0,
+            "max": 1,
+            "1": {
+                "time": 8910,
+                "wood": 2200,
+                "stone": 2400,
+                "iron": 2000
+            }
+        },
+        "points": {
+            "attack": 5,
+            "defend": 13
+        }
+    },
+    "marcher": {
+        "column": 2,
+        "type": "archer",
+        "atk": {
+            "base": 120,
+            "factor": 1.045
+        },
+        "def": {
+            "general": {
+                "base": 40,
+                "factor": 1.045
+            },
+            "cavalry": {
+                "base": 30,
+                "factor": 1.045
+            },
+            "archer": {
+                "base": 50,
+                "factor": 1.045
+            }
+        },
+        "haul": {
+            "base": 50,
+            "factor": 1
+        },
+        "speed": {
+            "base": 10,
+            "factor": 1
+        },
+        "recruitCosts": {
+            "population": 5,
+            "wood": 250,
+            "stone": 100,
+            "iron": 150,
+            "time": 2700
+        },
+        "recruitBuilding": "stable",
+        "requirements": {
+            "stable": 5
+        },
+        "research": {
+            "min": 0,
+            "max": 1,
+            "1": {
+                "time": 9900,
+                "wood": 3000,
+                "stone": 2400,
+                "iron": 2000
+            }
+        },
+        "points": {
+            "attack": 6,
+            "defend": 12
+        }
+    },
+    "heavy": {
+        "column": 2,
+        "type": "cavalry",
+        "atk": {
+            "base": 150,
+            "factor": 1.045
+        },
+        "def": {
+            "general": {
+                "base": 200,
+                "factor": 1.045
+            },
+            "cavalry": {
+                "base": 80,
+                "factor": 1.045
+            },
+            "archer": {
+                "base": 180,
+                "factor": 1.045
+            }
+        },
+        "haul": {
+            "base": 50,
+            "factor": 1
+        },
+        "speed": {
+            "base": 11,
+            "factor": 1
+        },
+        "recruitCosts": {
+            "population": 6,
+            "wood": 200,
+            "stone": 150,
+            "iron": 600,
+            "time": 3600
+        },
+        "recruitBuilding": "stable",
+        "requirements": {
+            "stable": 10,
+            "smith": 15
+        },
+        "research": {
+            "min": 0,
+            "max": 1,
+            "1": {
+                "time": 9900,
+                "wood": 3000,
+                "stone": 2400,
+                "iron": 2000
+            }
+        },
+        "points": {
+            "attack": 23,
+            "defend": 15
+        }
+    },
+    "ram": {
+        "column": 3,
+        "type": "general",
+        "atk": {
+            "base": 2,
+            "factor": 1.045
+        },
+        "def": {
+            "general": {
+                "base": 20,
+                "factor": 1.045
+            },
+            "cavalry": {
+                "base": 50,
+                "factor": 1.045
+            },
+            "archer": {
+                "base": 20,
+                "factor": 1.045
+            }
+        },
+        "haul": {
+            "base": 0,
+            "factor": 1
+        },
+        "speed": {
+            "base": 30,
+            "factor": 1
+        },
+        "recruitCosts": {
+            "population": 5,
+            "wood": 300,
+            "stone": 200,
+            "iron": 200,
+            "time": 4800
+        },
+        "recruitBuilding": "garage",
+        "requirements": {
+            "garage": 1
+        },
+        "research": {
+            "min": 0,
+            "max": 1,
+            "1": {
+                "time": 7910,
+                "wood": 1200,
+                "stone": 1600,
+                "iron": 800
+            }
+        },
+        "points": {
+            "attack": 4,
+            "defend": 8
+        }
+    },
+    "catapult": {
+        "column": 3,
+        "type": "general",
+        "atk": {
+            "base": 100,
+            "factor": 1.045
+        },
+        "def": {
+            "general": {
+                "base": 100,
+                "factor": 1.045
+            },
+            "cavalry": {
+                "base": 50,
+                "factor": 1.045
+            },
+            "archer": {
+                "base": 100,
+                "factor": 1.045
+            }
+        },
+        "haul": {
+            "base": 0,
+            "factor": 1
+        },
+        "speed": {
+            "base": 30,
+            "factor": 1
+        },
+        "recruitCosts": {
+            "population": 8,
+            "wood": 320,
+            "stone": 400,
+            "iron": 100,
+            "time": 7200
+        },
+        "recruitBuilding": "garage",
+        "requirements": {
+            "garage": 2,
+            "smith": 12
+        },
+        "research": {
+            "min": 0,
+            "max": 1,
+            "1": {
+                "time": 9900,
+                "wood": 1600,
+                "stone": 2000,
+                "iron": 1200
+            }
+        },
+        "points": {
+            "attack": 12,
+            "defend": 10
+        }
+    },
+    "knight": {
+        "column": 4,
+        "type": "general",
+        "atk": {
+            "base": 150,
+            "factor": 1.045
+        },
+        "def": {
+            "general": {
+                "base": 250,
+                "factor": 1.045
+            },
+            "cavalry": {
+                "base": 400,
+                "factor": 1.045
+            },
+            "archer": {
+                "base": 150,
+                "factor": 1.045
+            }
+        },
+        "haul": {
+            "base": 100,
+            "factor": 1
+        },
+        "speed": {
+            "base": 10,
+            "factor": 1
+        },
+        "recruitCosts": {
+            "population": 10,
+            "wood": 20,
+            "stone": 20,
+            "iron": 20,
+            "time": 21600
+        },
+        "recruitBuilding": "statue",
+        "requirements": {
+
+        },
+        "research": false,
+        "recruit": false,
+        "enableIfTrue": "world.knightActive",
+        "points": {
+            "attack": 40,
+            "defend": 20
+        }
+    },
+    "snob": {
+        "column": 4,
+        "type": "general",
+        "atk": {
+            "base": 30,
+            "factor": 1.045
+        },
+        "def": {
+            "general": {
+                "base": 100,
+                "factor": 1.045
+            },
+            "cavalry": {
+                "base": 50,
+                "factor": 1.045
+            },
+            "archer": {
+                "base": 100,
+                "factor": 1.045
+            }
+        },
+        "haul": {
+            "base": 0,
+            "factor": 1
+        },
+        "speed": {
+            "base": 35,
+            "factor": 1
+        },
+        "recruitCosts": {
+            "population": 100,
+            "wood": 40000,
+            "stone": 50000,
+            "iron": 50000,
+            "time": 18000
+        },
+        "recruitBuilding": "snob",
+        "requirements": {
+            "snob": 1
+        },
+        "research": false,
+        "recruit": false,
+        "points": {
+            "attack": 200,
+            "defend": 200
+        },
+        "linkinoverviews": true
+    }
+}

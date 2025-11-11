@@ -1,0 +1,24 @@
+graph LR
+    subgraph "Cache Layers"
+        L1[Browser Cache]
+        L2[CDN Cache]
+        L3[Nginx Cache]
+        L4[OPcache]
+        L5[Redis Cache]
+        L6[Query Cache]
+    end
+    
+    REQUEST[Request] --> L1
+    L1 --> L2
+    L2 --> L3
+    L3 --> L4
+    L4 --> L5
+    L5 --> L6
+    L6 --> DB[(Database)]
+    
+    style L1 fill:#e1f5ff
+    style L2 fill:#e1f5ff
+    style L3 fill:#d4f1d4
+    style L4 fill:#d4f1d4
+    style L5 fill:#ffcccc
+    style L6 fill:#ffcccc

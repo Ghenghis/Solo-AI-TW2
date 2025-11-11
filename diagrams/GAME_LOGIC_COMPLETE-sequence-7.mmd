@@ -1,0 +1,25 @@
+sequenceDiagram
+    participant Player A
+    participant Market A
+    participant Transport
+    participant Market B
+    participant Player B
+    
+    Player A->>Market A: Create Offer
+    Market A->>Market A: List in Marketplace
+    
+    Player B->>Market B: Browse Offers
+    Market B->>Player B: Show Available Trades
+    
+    Player B->>Market B: Accept Offer
+    Market B->>Transport: Send Merchants
+    
+    Transport->>Transport: Travel Time
+    Note over Transport: Resources in Transit
+    
+    Transport->>Market A: Deliver Resources
+    Market A->>Player A: Resources Received
+    
+    Transport->>Transport: Return Journey
+    Transport->>Market B: Merchants Return
+    Market B->>Player B: Merchants Available

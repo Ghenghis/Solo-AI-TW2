@@ -1,0 +1,27 @@
+stateDiagram-v2
+    [*] --> Created: Send Command
+    
+    Created --> Outgoing: Depart Village
+    
+    Outgoing --> Arriving: Travel Time
+    Outgoing --> Cancelled: Player Cancel
+    
+    Arriving --> Processing: Arrival Time
+    
+    Processing --> BattleResolution: Attack
+    Processing --> SupportStationed: Support
+    Processing --> TradeComplete: Trade
+    
+    BattleResolution --> Returning: Has Survivors
+    BattleResolution --> Complete: No Survivors
+    
+    SupportStationed --> Recalled: Player Recall
+    Recalled --> Returning: Leave Station
+    
+    Returning --> HomeArrival: Travel Back
+    HomeArrival --> Complete: Units Return
+    
+    Cancelled --> HomeArrival: Units Return
+    TradeComplete --> Returning: Merchants Return
+    
+    Complete --> [*]

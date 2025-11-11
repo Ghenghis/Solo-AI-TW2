@@ -1,0 +1,36 @@
+sequenceDiagram
+    participant User
+    participant Nginx
+    participant PHP
+    participant Redis
+    participant MariaDB
+    participant Worker
+    
+    User->>Nginx: HTTP Request
+    Nginx->>Nginx: Check Rate Limit
+    Nginx->>PHP: FastCGI Pass
+    
+    PHP->>Redis: Check Session
+    Redis-->>PHP: Session Data
+    
+    PHP->>Redis: Check Cache
+    alt Cache Hit
+        Redis-->>PHP: Cached Data
+        PHP-->>Nginx: Response
+        Nginx-->>User: HTTP Response
+    else Cache Miss
+        PHP->>MariaDB: Query
+        MariaDB-->>PHP: Result Set
+        PHP->>Redis: Store in Cache
+        
+        opt Async Job
+            PHP->>Redis: Queue Job
+            Worker->>Redis: Poll Queue
+            Redis-->>Worker: Job Data
+            Worker->>MariaDB: Process
+            Worker->>Redis: Update Status
+        end
+        
+        PHP-->>Nginx: Response
+        Nginx-->>User: HTTP Response
+    end

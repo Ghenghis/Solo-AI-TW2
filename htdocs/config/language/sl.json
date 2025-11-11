@@ -1,0 +1,383 @@
+{
+    "admin": {
+        "logout": "Odjava"
+    },
+    "admin.configeditor": {
+        "saved": "nastavitve shranjene!"
+    },
+    "admin.login": {
+        "fail": "Napačno geslo!",
+        "password": "Geslo"
+    },
+    "admin.manageVillages": {
+        "createVillages": "Ustvari vasi"
+    },
+    "admin.nav": {
+        "villages": "Vasi"
+    },
+    "buildingBarracks": {
+        "description": "V vojašnici uriš pehoto. Višja kot je stopnja vojašnice, hitreje bodo enote izurjene."
+    },
+    "buildingChurch": {
+        "name": "Cerkev"
+    },
+    "buildingFarm": {
+        "name": "Kmetija"
+    },
+    "buildingHide": {
+        "description": "V skrivališče lahko skriješ surovine, ki jih nasprotniki nato ne morejo upleniti. Koliko surovin je skritih v skrivališču, ne morejo odkriti niti sovražni izvidniki.",
+        "name": "Skrivališče"
+    },
+    "buildingIron": {
+        "name": "Rudnik železa"
+    },
+    "buildingMain": {
+        "building": "Zgradbe",
+        "cancel": "prekliči",
+        "changeName": "Spremeni ime vasi",
+        "eventTime": "Trajanje",
+        "farmTooSmall": "Kmetija ne more več oskrbovati nobene dodatne enote",
+        "hideCompleted": "Skrij zgradbe, ki jih ni mogoče več nadgraditi.",
+        "levelDestroy": "Podri",
+        "modeDestroy": "Rušenje"
+    },
+    "buildingPlace": {
+        "arrival": "Prihod",
+        "arrivalIn": "Prihod v",
+        "attack": "Napad",
+        "attackingArmy": "Napadalec",
+        "defender": "Branilec",
+        "defendingArmy": "Branilec",
+        "duration": "Trajanje",
+        "moral": "Morala",
+        "support": "Podpri",
+        "target": "Cilj",
+        "wall": "Zid",
+        "defenderBonus": "100%  bonus",
+        "night": "Noč"
+    },
+    "buildingPlaceNavi": {
+        "command": "Ukazi",
+        "units": "Čete"
+    },
+    "buildingSmith": {
+        "eventCancel": "Prekliči",
+        "technology": "Tehnologija"
+    },
+    "buildingSnob": {
+        "actionCreateCoin": "Skuj",
+        "createCoins": "Skuj zlatnike",
+        "farmTooSmall": "Kmetija ne more več oskrbovati nobene dodatne enote",
+        "amountStillProducable": "še vedno lahko izšolaš",
+        "limit": "Omejitev plemičev"
+    },
+    "buildingStable": {
+        "description": "V konjušnici uriš konjenico. Višja kot je stopnja konjušnice, hitreje bodo enote izurjene.",
+        "name": "Konjušnica"
+    },
+    "buildingStatue": {
+        "modeInventory": "Inventar",
+        "palaName": "Ime",
+        "doRecruit": "Izuri",
+        "finish": "Dokončanje",
+        "palaDoRename": "Preimenuj",
+        "palaReturn": "Napredek do naslednjega predmeta"
+    },
+    "buildingStone": {
+        "name": "Glinokop"
+    },
+    "buildingStorage": {
+        "capacity": "Kapaciteta skladišča",
+        "full": "polno",
+        "name": "Skladišče",
+        "currentCapacity": "Trenutna kapaciteta skladišča"
+    },
+    "buildingWall": {
+        "basicDefense": "Osnovna obramba",
+        "name": "Zid"
+    },
+    "buildingWood": {
+        "name": "Drvarska koča"
+    },
+    "createVillage": {
+        "dnw": "Severo-zahod",
+        "submit": "Potrdi"
+    },
+    "game": {
+        "buddies": "Prijatelji",
+        "costs": "Potrebe",
+        "current": "Trenutno",
+        "errorWorld": "Svet {world} ne obstaja!",
+        "ok": "Vredu",
+        "options": "možnosti",
+        "points": "Točke",
+        "population": "prebivalci",
+        "save": "Shrani",
+        "send": "Pošlji",
+        "speed": "Hitrost",
+        "stone": "Glina",
+        "storage": "Kapaciteta skladišča",
+        "text": "Besedilo",
+        "unit": "enota",
+        "village": "Vas",
+        "wood": "Les",
+        "important": "pomembno",
+        "page": "Stran",
+        "totalPoints": "Skupne točke"
+    },
+    "game.ally": {
+        "date": "Datum",
+        "doFound": "Ustanovi pleme",
+        "event": "Dogodek",
+        "invalidinput": "Plemena ni bilo mogoče najti",
+        "leave": "Zapusti pleme",
+        "nameOfTribe": "Ime plemena",
+        "reject": "Prekliči"
+    },
+    "game.ally.diplomaty": {
+        "end": "Prekini",
+        "partner": "Zavezniki",
+        "tag": "Oznaka plemena"
+    },
+    "game.ally.forum": {
+        "add": "dodaj",
+        "author": "Autor",
+        "close": "Zapri",
+        "create": "Ustvariti",
+        "delete": "Prekini",
+        "edit": "Uredi",
+        "forum": "Forum",
+        "markallasread": "Označi vse forume kot prebrane",
+        "move": "Premakni",
+        "replies": "Odgovori",
+        "reply": "Odgovor",
+        "title": "Naslov",
+        "vote": "Glasuj"
+    },
+    "game.ally.forum.admin": {
+        "action": "Akcija",
+        "addTribes": "Dodaj Plemena",
+        "loading": "Nalaganje",
+        "rename": "Preimenuj"
+    },
+    "game.ally.invite": {
+        "invitations": "Povabila",
+        "invite": "povabilo",
+        "redraw": "prekliči"
+    },
+    "game.ally.members": {
+        "trustedMember": "Zaupanja vreden član",
+        "kick": "Odslovi",
+        "saveRights": "Shrani pravice"
+    },
+    "game.ally.navi": {
+        "forum": "Plemenski forum",
+        "introIgm": "Dobrodošli",
+        "invite": "Urjenje",
+        "overview": "Pregled",
+        "profile": "Profil",
+        "reservations": "Načrtovalec zavzemanja vasi",
+        "wars": "Vojne"
+    },
+    "game.ally.profile": {
+        "properties": "Lastnosti",
+        "pointsOverall": "Skupne točke",
+        "startpage": "Domača stran",
+        "pointsPerPlayer": "Točke na igralca"
+    },
+    "game.bbcode": {
+        "ally": "Pleme",
+        "bold": "Krepko",
+        "coords": "Koordinate",
+        "italic": "ležeče",
+        "player": "Igralec",
+        "spoiler": "Spoiler",
+        "underline": "Podčrtano",
+        "units": "Enote"
+    },
+    "game.groups": {
+        "all": "vse",
+        "edit": "Uredi skupine",
+        "erroralready": "Skupina z željenim imenom že obstaja."
+    },
+    "game.mail.modes": {
+        "block": "blokiraj pošiljatelja",
+        "in": "Sporočilo",
+        "massOut": "Okrožnice"
+    },
+    "game.map": {
+        "barbarian": "Barbarske vasi",
+        "owntribe": "Lastno pleme",
+        "partners": "Zavezniki"
+    },
+    "game.market": {
+        "traders": "Trgovci"
+    },
+    "game.menu": {
+        "flags": "Zastave",
+        "logout": "Odjava"
+    },
+    "game.menu.ally": {
+        "contracts": "Diplomacija",
+        "forum": "Plemenski forum",
+        "members": "Člani",
+        "profile": "Profil",
+        "reservations": "Načrtovalec zavzemanja vasi"
+    },
+    "game.menu.mails": {
+        "iNew": "Novo sporočilo",
+        "in": "Sporočila",
+        "title": "Sporočila"
+    },
+    "game.menu.overview": {
+        "buildings": "Zgradbe",
+        "commands": "Ukazi",
+        "groups": "Skupine",
+        "incomings": "Prihajajoči",
+        "title": "Pregledi"
+    },
+    "game.menu.profile": {
+        "blockList": "Blokirani igralci",
+        "inventory": "Inventar",
+        "statistics": "Statistika",
+        "title": "Profil"
+    },
+    "game.menu.ranking": {
+        "ally": "Plemena",
+        "killPlayer": "Premagani nasprotniki",
+        "player": "Igralci"
+    },
+    "game.menu.reports": {
+        "attack": "Napadi",
+        "block": "blokiraj pošiljatelja",
+        "defense": "Obramba",
+        "forwarded": "Posredovano",
+        "public": "Obljavljena poročila",
+        "support": "Podpri",
+        "title": "Poročila"
+    },
+    "game.menu.settings": {
+        "changePasswd": "Spremeni geslo",
+        "poll": "Ankete",
+        "quickbar": "Hitra orodna vrstica",
+        "title": "Nastavitve"
+    },
+    "game.overview": {
+        "classicalOverview": "Klasičen pregled vasi",
+        "graphicalOverview": "Prikaži pregled vasi v grafičnem formatu.",
+        "prodHour": "{x} na uro",
+        "prodMinute": "{x} na minuto"
+    },
+    "game.overview.widgets": {
+        "buildqueue": "Čakalna vrsta za gradnjo",
+        "summary": "Zgradbe",
+        "units": "Čete"
+    },
+    "game.ranking": {
+        "pointsPerVillage": "Točke na vas"
+    },
+    "game.report": {
+        "attacker": "Napadalec",
+        "defender": "Branilec",
+        "from": "od",
+        "origin": "Poreklo",
+        "target": "Cilj",
+        "units": "Enote"
+    },
+    "game.report.navi": {
+        "all": "vse",
+        "attack": "Napadi",
+        "defense": "Obramba",
+        "trade": "Trguj"
+    },
+    "game.title": {
+        "village": "Vas"
+    },
+    "game.train": {
+        "modeTrain": "Urjenje"
+    },
+    "game.train.queue": {
+        "cancel": "Prekliči",
+        "cancelAll": "Prekliči vse",
+        "cancelTitle": "Prekliči",
+        "duration": "Trajanje"
+    },
+    "game.unit": {
+        "attackStrength": "Napadalna moč",
+        "notAvailable": "izuri",
+        "defenseArcher": "Lokostrelska obramba"
+    },
+    "index": {
+        "imageTitle": "Vojna plemen",
+        "login": "Prijava",
+        "password": "Geslo",
+        "register": "Registriraj se zdaj!"
+    },
+    "knight": {
+        "light": "Sulica kralja Matjaža",
+        "snob": "Vascovo Žezlo"
+    },
+    "login": {
+        "invalidAccount": "Račun ne obstaja!"
+    },
+    "logout": {
+        "index": "{t} Domača stran",
+        "title": "Odjava"
+    },
+    "register": {
+        "name": "Uporabniško ime",
+        "nameTaken": "Želeno uporabniško ime je že zasedeno!",
+        "passwordTooLong": "Geslo ne sme vsebovati 50 znakov",
+        "register": "Registracija",
+        "title": "Registracija"
+    },
+    "sidWrong": {
+        "link": "{t} Domača stran"
+    },
+    "time": {
+        "days": "dnevi",
+        "onDay": "na {day}",
+        "tomorrow": "jutri"
+    },
+    "unitArcher": {
+        "name": "Lokostrelec",
+        "short": "Lokostrelec"
+    },
+    "unitAxe": {
+        "name": "Bojevnik s sekiro",
+        "plural": "Bojevnik s sekiro",
+        "short": "Bojevnik s sekiro"
+    },
+    "unitCatapult": {
+        "name": "Katapult",
+        "plural": "Katapult"
+    },
+    "unitHeavy": {
+        "name": "Težek konjenik",
+        "plural": "Težek konjenik"
+    },
+    "unitKnight": {
+        "name": "Paladin"
+    },
+    "unitLight": {
+        "plural": "Lahki konjenik"
+    },
+    "unitMarcher": {
+        "name": "Lokostrelec na konju"
+    },
+    "unitRam": {
+        "name": "Oven",
+        "short": "Oven"
+    },
+    "unitSnob": {
+        "name": "Plemič"
+    },
+    "unitSpear": {
+        "desc": "Suličar je najenostavnejša enota. Posebej učinkovit je pri obrambi pred konjeniki.",
+        "short": "Suličar"
+    },
+    "unitSword": {
+        "plural": "Mečevalec",
+        "short": "Mečevalec"
+    }
+}

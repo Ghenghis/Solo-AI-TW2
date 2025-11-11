@@ -1,0 +1,57 @@
+graph TB
+    subgraph "Metrics Collection"
+        PROM[Prometheus]
+        NODE[Node Exporter]
+        CADVISOR[cAdvisor]
+        MYSQL_EXP[MySQL Exporter]
+        REDIS_EXP[Redis Exporter]
+        PHP_FPM_EXP[PHP-FPM Exporter]
+    end
+    
+    subgraph "Log Aggregation"
+        FLUENT[Fluentd]
+        ELASTIC[Elasticsearch]
+        LOGSTASH[Logstash]
+        FILEBEAT[Filebeat]
+    end
+    
+    subgraph "Tracing"
+        JAEGER[Jaeger]
+        ZIPKIN[Zipkin]
+        OTEL[OpenTelemetry]
+    end
+    
+    subgraph "Visualization"
+        GRAFANA[Grafana]
+        KIBANA[Kibana]
+        ALERT[Alert Manager]
+    end
+    
+    subgraph "Notification"
+        SLACK[Slack]
+        EMAIL[Email]
+        PAGER[PagerDuty]
+        WEBHOOK[Webhooks]
+    end
+    
+    NODE --> PROM
+    CADVISOR --> PROM
+    MYSQL_EXP --> PROM
+    REDIS_EXP --> PROM
+    PHP_FPM_EXP --> PROM
+    
+    FLUENT --> ELASTIC
+    LOGSTASH --> ELASTIC
+    FILEBEAT --> ELASTIC
+    
+    OTEL --> JAEGER
+    OTEL --> ZIPKIN
+    
+    PROM --> GRAFANA
+    ELASTIC --> KIBANA
+    PROM --> ALERT
+    
+    ALERT --> SLACK
+    ALERT --> EMAIL
+    ALERT --> PAGER
+    ALERT --> WEBHOOK

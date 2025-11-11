@@ -1,0 +1,44 @@
+graph LR
+    subgraph "Docker Host"
+        subgraph "Network: twlan-network"
+            subgraph "Modern Services"
+                NGINX[nginx:1.27<br/>:8080→80]
+                PHP84[php:8.4-fpm<br/>:9000]
+                MARIADB[mariadb:10.11<br/>:3307→3306]
+                REDIS[redis:7<br/>:6379]
+            end
+            
+            subgraph "Legacy Service"
+                TWLAN[twlan-legacy<br/>debian:12<br/>:8200→80]
+            end
+            
+            subgraph "Admin Services"
+                PMA[phpMyAdmin<br/>:8100→80]
+                GRAFANA[Grafana<br/>:3000]
+                PROMETHEUS[Prometheus<br/>:9090]
+            end
+        end
+        
+        subgraph "Volumes"
+            V1[(twlan-db-data)]
+            V2[(twlan-uploads)]
+            V3[(twlan-sessions)]
+            V4[(twlan-logs)]
+            V5[(twlan-cache)]
+        end
+    end
+    
+    NGINX --> PHP84
+    PHP84 --> MARIADB
+    PHP84 --> REDIS
+    PMA --> MARIADB
+    PROMETHEUS --> NGINX
+    PROMETHEUS --> PHP84
+    PROMETHEUS --> MARIADB
+    GRAFANA --> PROMETHEUS
+    
+    MARIADB --> V1
+    PHP84 --> V2
+    PHP84 --> V3
+    NGINX --> V4
+    REDIS --> V5

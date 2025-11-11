@@ -1,0 +1,43 @@
+graph TB
+    subgraph "Data Collection"
+        VILLAGES[Village Points]
+        USERS[User Points]
+        TRIBES[Tribe Points]
+        ODA[Attack Points]
+        ODD[Defense Points]
+    end
+    
+    subgraph "Aggregation"
+        SUM_USER[Sum User Villages]
+        SUM_TRIBE[Sum Tribe Members]
+        CALC_OD[Calculate OD]
+    end
+    
+    subgraph "Ranking"
+        SORT[Sort by Points]
+        RANK[Assign Ranks]
+        STORE[Store Rankings]
+    end
+    
+    subgraph "Statistics"
+        GROWTH[Growth Rate]
+        HISTORY[History Tracking]
+        TRENDS[Trend Analysis]
+    end
+    
+    VILLAGES --> SUM_USER
+    SUM_USER --> USERS
+    USERS --> SUM_TRIBE
+    SUM_TRIBE --> TRIBES
+    
+    USERS --> SORT
+    TRIBES --> SORT
+    ODA --> SORT
+    ODD --> SORT
+    
+    SORT --> RANK
+    RANK --> STORE
+    
+    STORE --> GROWTH
+    STORE --> HISTORY
+    HISTORY --> TRENDS

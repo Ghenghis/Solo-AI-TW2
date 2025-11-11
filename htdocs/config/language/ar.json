@@ -1,0 +1,377 @@
+{
+    "admin": {
+        "logout": "Cerrá sesión"
+    },
+    "admin.configeditor": {
+        "reload": "Volver a cargar",
+        "save": "Guardar configuración"
+    },
+    "admin.login": {
+        "login": "Iniciar sesión",
+        "password": "Contraseña"
+    },
+    "buildingBarracks": {
+        "name": "Cuartel"
+    },
+    "buildingChurch": {
+        "name": "Iglesia"
+    },
+    "buildingFarm": {
+        "name": "Granja"
+    },
+    "buildingGarage": {
+        "name": "Taller"
+    },
+    "buildingIron": {
+        "name": "Mina de Hierro"
+    },
+    "buildingMain": {
+        "build": "Construir",
+        "buildTime": "Tiempo de construcción",
+        "building": "Edificios",
+        "cancel": "Cancelar",
+        "changeName": "Cambiar nombre del pueblo",
+        "eventTime": "Duración",
+        "modeBuild": "Construir",
+        "modeDestroy": "Demolición",
+        "name": "Edificio Principal"
+    },
+    "buildingMarket": {
+        "name": "Mercado"
+    },
+    "buildingPlace": {
+        "all": "Todas",
+        "arrival": "Arribo",
+        "arrivalIn": "Llegada en",
+        "attack": "Atacar",
+        "attacker": "Atacante",
+        "attackingArmy": "Atacante",
+        "church": "Iglesia",
+        "defender": "Defensor",
+        "defendingArmy": "Defensor",
+        "duration": "Duración",
+        "losses": "Algunas Bajas",
+        "moral": "Moral",
+        "support": "Apoyo",
+        "target": "Objetivo",
+        "total": "Total",
+        "units": "Unidades",
+        "wall": "Muro",
+        "withdraw": "Retirar"
+    },
+    "buildingPlaceNavi": {
+        "command": "Órdenes"
+    },
+    "buildingRes": {
+        "prod": "Producción"
+    },
+    "buildingSmith": {
+        "eventTime": "Duración"
+    },
+    "buildingSnob": {
+        "overall": "Total"
+    },
+    "buildingSnobNavi": {
+        "train": "Crear"
+    },
+    "buildingStable": {
+        "name": "Establo"
+    },
+    "buildingStatue": {
+        "doCancel": "Cancel",
+        "modeIndex": "Paladín",
+        "modeInventory": "Inventario",
+        "name": "Estatua",
+        "palaName": "Nombre"
+    },
+    "buildingStone": {
+        "name": "Cantera de Arcilla"
+    },
+    "buildingStorage": {
+        "capacity": "Capacidad de Almacenamiento",
+        "name": "Almacenamiento",
+        "tableHead": "Almacén completo"
+    },
+    "buildingWall": {
+        "basicDefense": "Defensa base",
+        "name": "Muro"
+    },
+    "buildingWood": {
+        "name": "Aserradero"
+    },
+    "createVillage": {
+        "submit": "Confirmar"
+    },
+    "game": {
+        "None": "Ninguno",
+        "booty": "Botín",
+        "buddies": "Amigos",
+        "cancel": "Cancelar",
+        "confirm": "Confirmar",
+        "costs": "Costo",
+        "current": "Actual",
+        "iron": "Hierro",
+        "ok": "Aceptar",
+        "options": "Opciones",
+        "points": "Puntos",
+        "resources": "Recursos",
+        "save": "Guardar",
+        "send": "Enviar",
+        "speed": "Velocidad",
+        "stone": "Arcilla",
+        "storage": "Capacidad de Almacenamiento",
+        "support": "Ayuda",
+        "text": "Texto",
+        "unit": "Unidad",
+        "village": "Pueblo",
+        "wood": "Madera"
+    },
+    "game.ally": {
+        "date": "Fecha",
+        "doFound": "Abrir la Tribu",
+        "invitations": "Invitaciones",
+        "leave": "Abandonar Tribu",
+        "nameOfTribe": "Nombre de la Tribu",
+        "reject": "Rechazar",
+        "tribe": "Tribu"
+    },
+    "game.ally.diplomaty": {
+        "enemy": "Enemigos",
+        "partner": "Aliados"
+    },
+    "game.ally.forum": {
+        "add": "Agregar",
+        "author": "Autor",
+        "close": "Cerrar",
+        "confirm": "Confirmar",
+        "create": "Crear",
+        "delete": "Eliminar",
+        "forum": "Foro",
+        "lastPost": "Último Post",
+        "newpoll": "Nueva Encuesta",
+        "replies": "Responder",
+        "reply": "Respuesta",
+        "title": "Título"
+    },
+    "game.ally.forum.admin": {
+        "action": "Acción",
+        "loading": "Cargando"
+    },
+    "game.ally.invite": {
+        "invitations": "Invitaciones",
+        "invite": "Invitar",
+        "name": "Nombre",
+        "redraw": "Retirar"
+    },
+    "game.ally.navi": {
+        "contracts": "Diplomacia",
+        "forum": "Foro de la Tribu",
+        "invite": "Reclutar",
+        "members": "Miembros",
+        "overview": "Visión General",
+        "profile": "Perfil",
+        "reservations": "Planificador de Nobles"
+    },
+    "game.bbcode": {
+        "ally": "Tribu",
+        "bold": "Negrita",
+        "color": "Color",
+        "coords": "Coordenadas",
+        "italic": "Cursiva",
+        "main": "Edificios",
+        "player": "Jugador",
+        "report": "Reporte",
+        "spoiler": "Spoiler",
+        "underline": "Subrayado",
+        "units": "Unidades"
+    },
+    "game.groups": {
+        "all": "Todas",
+        "delete": "Eliminar grupo"
+    },
+    "game.mail": {
+        "msgs": "Mensajes"
+    },
+    "game.mail.modes": {
+        "in": "Mensajes"
+    },
+    "game.map": {
+        "enemys": "Enemigos",
+        "partners": "Aliados"
+    },
+    "game.market": {
+        "traders": "Comerciantes"
+    },
+    "game.menu": {
+        "logout": "Cerrar Sesión"
+    },
+    "game.menu.ally": {
+        "contracts": "Diplomacia",
+        "forum": "Foro de la Tribu",
+        "members": "Miembros",
+        "overview": "Visión General",
+        "profile": "Perfil",
+        "reservations": "Planificador de Nobles",
+        "title": "Tribu"
+    },
+    "game.menu.mails": {
+        "iNew": "Nuevo mensaje",
+        "in": "Mensajes",
+        "title": "Mensajes"
+    },
+    "game.menu.overview": {
+        "buildings": "Edificios",
+        "combined": "Combinado",
+        "commands": "Órdenes",
+        "groups": "Grupos",
+        "prod": "Producción",
+        "title": "Visión General"
+    },
+    "game.menu.profile": {
+        "friends": "Amigos",
+        "inventory": "Inventario",
+        "title": "Perfil"
+    },
+    "game.menu.ranking": {
+        "ally": "Tribus",
+        "killPlayer": "Enemigos Derrotados",
+        "player": "Jugador",
+        "title": "Clasificación"
+    },
+    "game.menu.reports": {
+        "attack": "Ataques",
+        "defense": "Defensa",
+        "filter": "Filtro",
+        "forwarded": "Reenviado",
+        "other": "Otros",
+        "support": "Apoyo",
+        "title": "Reportes",
+        "trade": "Comercio"
+    },
+    "game.menu.settings": {
+        "changePasswd": "Cambiar contraseña",
+        "poll": "Encuestas",
+        "profile": "Perfil",
+        "settings": "Configuración",
+        "title": "Configuración"
+    },
+    "game.overview": {
+        "build": "Mejorar Edificio"
+    },
+    "game.overview.widgets": {
+        "buildqueue": "Cola",
+        "newbie": "Protección contra Ataques",
+        "prod": "Producción",
+        "summary": "Edificios",
+        "units": "Unidades"
+    },
+    "game.report": {
+        "attacker": "Atacante",
+        "badluck": "Mala Suerte",
+        "defender": "Defensor",
+        "from": "de",
+        "losses": "Algunas Bajas",
+        "normalLuck": "Suerte",
+        "origin": "Origen",
+        "target": "Objetivo",
+        "title": "Reportes",
+        "units": "Unidades"
+    },
+    "game.report.navi": {
+        "all": "Todas",
+        "attack": "Ataques",
+        "defense": "Defensa",
+        "filter": "Filtro",
+        "trade": "Comercio"
+    },
+    "game.title": {
+        "close": "Cerrar",
+        "village": "Pueblo"
+    },
+    "game.train": {
+        "modeTrain": "Reclutar"
+    },
+    "game.train.queue": {
+        "cancel": "Cancelar",
+        "duration": "Duración",
+        "train": "Reclutar"
+    },
+    "game.unit": {
+        "attackStrength": "Poder de Ataque"
+    },
+    "game.village": {
+        "nameLeft": "Pueblo Bárbaro"
+    },
+    "index": {
+        "availableWorlds": "Mundos Abiertos",
+        "login": "Iniciar sesión",
+        "logout": "Cerrá sesión",
+        "password": "Contraseña",
+        "username": "Nombre de Usuario"
+    },
+    "knight": {
+        "archer": "Arco Largo de Nimrod",
+        "axe": "Hacha de Combate de Thorgard",
+        "catapult": "Antorcha de Aletheia",
+        "heavy": "Estandarte de Baptiste",
+        "light": "Lanza de Mieszko",
+        "marcher": "Arco Compuesto de Nimrod",
+        "ram": "Lucero de Carol",
+        "snob": "Cetro de Vasco",
+        "spear": "Alabarda de Guan Yu",
+        "sword": "Espada Larga de Paracelsus"
+    },
+    "logout": {
+        "title": "Cerrá sesión"
+    },
+    "register": {
+        "password": "Contraseña",
+        "passwordConfirm": "Repetir contraseña",
+        "register": "Registrarme",
+        "title": "Registrarme"
+    },
+    "sidWrong": {
+        "index": "Inicio"
+    },
+    "unitArcher": {
+        "name": "Arquero",
+        "short": "Arquero"
+    },
+    "unitAxe": {
+        "name": "Hachero",
+        "plural": "Hachero",
+        "short": "Hacha"
+    },
+    "unitCatapult": {
+        "name": "Catapulta"
+    },
+    "unitHeavy": {
+        "name": "Caballería Pesada",
+        "plural": "Caballería Pesada"
+    },
+    "unitKnight": {
+        "name": "Paladín"
+    },
+    "unitLight": {
+        "name": "Caballería Ligera",
+        "plural": "Caballería Ligera"
+    },
+    "unitMarcher": {
+        "name": "Arquero a Caballo"
+    },
+    "unitRam": {
+        "name": "Ariete",
+        "short": "Ariete"
+    },
+    "unitSnob": {
+        "name": "Noble"
+    },
+    "unitSpear": {
+        "short": "Lanza"
+    },
+    "unitSword": {
+        "name": "Espadachín",
+        "plural": "Espadachín",
+        "short": "Espada"
+    }
+}

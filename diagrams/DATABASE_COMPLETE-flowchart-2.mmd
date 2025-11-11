@@ -1,0 +1,57 @@
+graph TB
+    subgraph "User Domain"
+        USER[Users Table]
+        SESSION[Sessions]
+        LOGIN[Login Attempts]
+        SETTINGS[User Settings]
+    end
+    
+    subgraph "Village Domain"
+        VILLAGE[Villages]
+        BUILDING[Buildings]
+        UNITS[Units]
+        RESOURCES[Resources]
+    end
+    
+    subgraph "Combat Domain"
+        MOVEMENT[Movements]
+        BATTLE[Battles]
+        REPORT[Reports]
+        SUPPORT[Support]
+    end
+    
+    subgraph "Social Domain"
+        TRIBE[Tribes]
+        MESSAGE[Messages]
+        FORUM[Forums]
+        DIPLOMACY[Diplomacy]
+    end
+    
+    subgraph "Queue Domain"
+        BUILD_Q[Build Queue]
+        TRAIN_Q[Train Queue]
+        RESEARCH_Q[Research Queue]
+        EVENT_Q[Event Queue]
+    end
+    
+    USER --> SESSION
+    USER --> VILLAGE
+    USER --> TRIBE
+    USER --> MESSAGE
+    
+    VILLAGE --> BUILDING
+    VILLAGE --> UNITS
+    VILLAGE --> RESOURCES
+    VILLAGE --> BUILD_Q
+    VILLAGE --> TRAIN_Q
+    
+    UNITS --> MOVEMENT
+    MOVEMENT --> BATTLE
+    BATTLE --> REPORT
+    
+    TRIBE --> DIPLOMACY
+    TRIBE --> FORUM
+    
+    BUILD_Q --> EVENT_Q
+    TRAIN_Q --> EVENT_Q
+    MOVEMENT --> EVENT_Q

@@ -1,0 +1,30 @@
+sequenceDiagram
+    participant APP as Application
+    participant CACHE as Query Cache
+    participant PARSER as SQL Parser
+    participant OPTIMIZER as Query Optimizer
+    participant ENGINE as Storage Engine
+    participant DISK as Disk I/O
+    
+    APP->>CACHE: Check Query Cache
+    alt Cache Hit
+        CACHE-->>APP: Return Cached Result
+    else Cache Miss
+        APP->>PARSER: Parse SQL Query
+        PARSER->>OPTIMIZER: Analyze Query
+        
+        OPTIMIZER->>OPTIMIZER: Choose Execution Plan
+        Note over OPTIMIZER: Index Selection<br/>Join Order<br/>Access Method
+        
+        OPTIMIZER->>ENGINE: Execute Plan
+        
+        ENGINE->>DISK: Read Data Pages
+        DISK-->>ENGINE: Data Blocks
+        
+        ENGINE->>ENGINE: Apply WHERE
+        ENGINE->>ENGINE: Perform JOINs
+        ENGINE->>ENGINE: GROUP BY/ORDER BY
+        
+        ENGINE-->>CACHE: Store in Cache
+        ENGINE-->>APP: Return Result Set
+    end

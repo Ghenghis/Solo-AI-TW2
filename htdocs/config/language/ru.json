@@ -1,0 +1,377 @@
+{
+    "admin": {
+        "logout": "Выйти"
+    },
+    "admin.configeditor": {
+        "reload": "Перезагрузить",
+        "save": "Сохранить настройки"
+    },
+    "admin.login": {
+        "login": "Вход",
+        "password": "Пароль"
+    },
+    "buildingBarracks": {
+        "name": "Казарма"
+    },
+    "buildingChurch": {
+        "name": "Церковь"
+    },
+    "buildingFarm": {
+        "name": "Ферма"
+    },
+    "buildingGarage": {
+        "name": "Мастерская"
+    },
+    "buildingIron": {
+        "name": "Железный рудник"
+    },
+    "buildingMain": {
+        "build": "Строить",
+        "buildTime": "Время строительства",
+        "building": "Здания",
+        "cancel": "Отменить",
+        "changeName": "Изменить название деревни",
+        "eventTime": "Длительность",
+        "modeBuild": "Строить",
+        "modeDestroy": "Снос",
+        "name": "Ратуша"
+    },
+    "buildingMarket": {
+        "name": "Рынок"
+    },
+    "buildingPlace": {
+        "all": "Все",
+        "arrival": "Прибытие",
+        "arrivalIn": "Прибытие через",
+        "attack": "атака",
+        "attacker": "Нападающий",
+        "attackingArmy": "Нападающий",
+        "church": "Церковь",
+        "defender": "Обороняющийся",
+        "defendingArmy": "Обороняющийся",
+        "duration": "Длительность",
+        "losses": "Потери",
+        "moral": "Мораль",
+        "support": "подкрепление",
+        "target": "Цель",
+        "total": "Всего",
+        "units": "Войска",
+        "wall": "Стена",
+        "withdraw": "Отозвать"
+    },
+    "buildingPlaceNavi": {
+        "command": "Команды"
+    },
+    "buildingRes": {
+        "prod": "Производство"
+    },
+    "buildingSmith": {
+        "eventTime": "Длительность"
+    },
+    "buildingSnob": {
+        "overall": "Всего"
+    },
+    "buildingSnobNavi": {
+        "train": "Создать"
+    },
+    "buildingStable": {
+        "name": "Конюшня"
+    },
+    "buildingStatue": {
+        "doCancel": "Cancel",
+        "modeIndex": "Паладин",
+        "modeInventory": "Инвентарь",
+        "name": "Статуя",
+        "palaName": "Имя"
+    },
+    "buildingStone": {
+        "name": "Глиняный карьер"
+    },
+    "buildingStorage": {
+        "capacity": "Вместимость",
+        "name": "Хранилище",
+        "tableHead": "Склад заполнен"
+    },
+    "buildingWall": {
+        "basicDefense": "Базовая защита",
+        "name": "Стена"
+    },
+    "buildingWood": {
+        "name": "Лесопилка"
+    },
+    "createVillage": {
+        "submit": "Подтвердить"
+    },
+    "game": {
+        "None": "Нет",
+        "booty": "Добыча",
+        "buddies": "Друзья",
+        "cancel": "Отменить",
+        "confirm": "Подтвердить",
+        "costs": "Стоимость",
+        "current": "Текущий",
+        "iron": "Железо",
+        "ok": "ОК",
+        "options": "Опции",
+        "points": "Очки",
+        "resources": "Ресурсы",
+        "save": "Сохранить",
+        "send": "Отправить",
+        "speed": "Скорость",
+        "stone": "Глина",
+        "storage": "Вместимость",
+        "support": "Поддержка",
+        "text": "Текст",
+        "unit": "Воин",
+        "village": "Деревня",
+        "wood": "Дерево"
+    },
+    "game.ally": {
+        "date": "Дата",
+        "doFound": "Открытое племя",
+        "invitations": "Приглашения",
+        "leave": "Покинуть племя",
+        "nameOfTribe": "Имя племени",
+        "reject": "Отклонить",
+        "tribe": "Племя"
+    },
+    "game.ally.diplomaty": {
+        "enemy": "Враги",
+        "partner": "Союзники"
+    },
+    "game.ally.forum": {
+        "add": "Добавить",
+        "author": "Автор",
+        "close": "Закрыть",
+        "confirm": "Подтвердить",
+        "create": "Создать",
+        "delete": "Удалить",
+        "forum": "Форум",
+        "lastPost": "Последнее сообщение",
+        "newpoll": "Новый опрос",
+        "replies": "Ответить",
+        "reply": "Ответ",
+        "title": "Название"
+    },
+    "game.ally.forum.admin": {
+        "action": "Действие",
+        "loading": "Загрузка"
+    },
+    "game.ally.invite": {
+        "invitations": "Приглашения",
+        "invite": "Пригласить",
+        "name": "Имя",
+        "redraw": "Отозвать"
+    },
+    "game.ally.navi": {
+        "contracts": "Дипломатия",
+        "forum": "Форум племени",
+        "invite": "Вербовка",
+        "members": "Участники",
+        "overview": "Обзор",
+        "profile": "Профиль",
+        "reservations": "Планировщик захватов"
+    },
+    "game.bbcode": {
+        "ally": "Племя",
+        "bold": "Жирный",
+        "color": "Цвет",
+        "coords": "Координаты",
+        "italic": "Курсив",
+        "main": "Здания",
+        "player": "Игрок",
+        "report": "Отчет",
+        "spoiler": "Спойлер",
+        "underline": "Подчеркнутый",
+        "units": "Войска"
+    },
+    "game.groups": {
+        "all": "Все",
+        "delete": "Удалить группу"
+    },
+    "game.mail": {
+        "msgs": "Сообщения"
+    },
+    "game.mail.modes": {
+        "in": "Сообщения"
+    },
+    "game.map": {
+        "enemys": "Враги",
+        "partners": "Союзники"
+    },
+    "game.market": {
+        "traders": "Торговцы"
+    },
+    "game.menu": {
+        "logout": "Выйти"
+    },
+    "game.menu.ally": {
+        "contracts": "Дипломатия",
+        "forum": "Форум племени",
+        "members": "Участники",
+        "overview": "Обзор",
+        "profile": "Профиль",
+        "reservations": "Планировщик захватов",
+        "title": "Племя"
+    },
+    "game.menu.mails": {
+        "iNew": "Создать сообщение",
+        "in": "Сообщения",
+        "title": "Сообщения"
+    },
+    "game.menu.overview": {
+        "buildings": "Здания",
+        "combined": "Совместный",
+        "commands": "Команды",
+        "groups": "Группы",
+        "prod": "Производство",
+        "title": "Обзоры"
+    },
+    "game.menu.profile": {
+        "friends": "Друзья",
+        "inventory": "Инвентарь",
+        "title": "Профиль"
+    },
+    "game.menu.ranking": {
+        "ally": "Племена",
+        "killPlayer": "Побеждено противников",
+        "player": "Игрок",
+        "title": "Рейтинг"
+    },
+    "game.menu.reports": {
+        "attack": "Атаки",
+        "defense": "Защита",
+        "filter": "Фильтр",
+        "forwarded": "Переслано",
+        "other": "Разное",
+        "support": "Поддержка",
+        "title": "Отчеты",
+        "trade": "Торговля"
+    },
+    "game.menu.settings": {
+        "changePasswd": "Сменить пароль",
+        "poll": "Опросы",
+        "profile": "Профиль",
+        "settings": "Настройки",
+        "title": "Настройки"
+    },
+    "game.overview": {
+        "build": "Улучшить здание"
+    },
+    "game.overview.widgets": {
+        "buildqueue": "Очередь",
+        "newbie": "Защита от атак",
+        "prod": "Производство",
+        "summary": "Здания",
+        "units": "Войска"
+    },
+    "game.report": {
+        "attacker": "Нападающий",
+        "badluck": "Неудача",
+        "defender": "Обороняющийся",
+        "from": "из",
+        "losses": "Потери",
+        "normalLuck": "Удача",
+        "origin": "Происхождение",
+        "target": "Цель",
+        "title": "Отчеты",
+        "units": "Войска"
+    },
+    "game.report.navi": {
+        "all": "Все",
+        "attack": "Атаки",
+        "defense": "Защита",
+        "filter": "Фильтр",
+        "trade": "Торговля"
+    },
+    "game.title": {
+        "close": "Закрыть",
+        "village": "Деревня"
+    },
+    "game.train": {
+        "modeTrain": "Вербовка"
+    },
+    "game.train.queue": {
+        "cancel": "Отменить",
+        "duration": "Длительность",
+        "train": "Вербовка"
+    },
+    "game.unit": {
+        "attackStrength": "Сила атаки"
+    },
+    "game.village": {
+        "nameLeft": "Деревня варваров"
+    },
+    "index": {
+        "availableWorlds": "Другие миры",
+        "login": "Вход",
+        "logout": "Выйти",
+        "password": "Пароль",
+        "username": "Имя пользователя"
+    },
+    "knight": {
+        "archer": "Длинный лук Нимрода",
+        "axe": "Секира Торгарда",
+        "catapult": "Маяк Алетеи",
+        "heavy": "Знамя Баптиста",
+        "light": "Пика Мешко",
+        "marcher": "Составной лук Нимрода",
+        "ram": "Утренняя звезда Кэрол",
+        "snob": "Скипетр Васко",
+        "spear": "Алебарда Гуань Юя",
+        "sword": "Длинный меч Парацельса"
+    },
+    "logout": {
+        "title": "Выйти"
+    },
+    "register": {
+        "password": "Пароль",
+        "passwordConfirm": "Повторите пароль",
+        "register": "Регистрация",
+        "title": "Регистрация"
+    },
+    "sidWrong": {
+        "index": "Главная"
+    },
+    "unitArcher": {
+        "name": "Лучник",
+        "short": "Лучник"
+    },
+    "unitAxe": {
+        "name": "Топорник",
+        "plural": "Топорник",
+        "short": "Топор"
+    },
+    "unitCatapult": {
+        "name": "Катапульта"
+    },
+    "unitHeavy": {
+        "name": "Тяжелый кавалерист",
+        "plural": "Тяжелый кавалерист"
+    },
+    "unitKnight": {
+        "name": "Паладин"
+    },
+    "unitLight": {
+        "name": "Легкий кавалерист",
+        "plural": "Легкий кавалерист"
+    },
+    "unitMarcher": {
+        "name": "Конный лучник"
+    },
+    "unitRam": {
+        "name": "Таран",
+        "short": "Таран"
+    },
+    "unitSnob": {
+        "name": "Дворянин"
+    },
+    "unitSpear": {
+        "short": "Копье"
+    },
+    "unitSword": {
+        "name": "Мечник",
+        "plural": "Мечник",
+        "short": "Меч"
+    }
+}

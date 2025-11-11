@@ -1,0 +1,36 @@
+stateDiagram-v2
+    [*] --> LoginPage
+    
+    LoginPage --> SubmitCredentials
+    SubmitCredentials --> ValidateInput
+    
+    ValidateInput --> CheckRateLimit
+    CheckRateLimit --> VerifyCredentials: Not Limited
+    CheckRateLimit --> BlockedIP: Rate Limited
+    
+    VerifyCredentials --> CheckPassword: User Exists
+    VerifyCredentials --> LoginFailed: User Not Found
+    
+    CheckPassword --> Check2FA: Password Valid
+    CheckPassword --> LoginFailed: Invalid Password
+    
+    Check2FA --> VerifyTOTP: 2FA Enabled
+    Check2FA --> CreateSession: 2FA Disabled
+    
+    VerifyTOTP --> CreateSession: Valid Code
+    VerifyTOTP --> LoginFailed: Invalid Code
+    
+    CreateSession --> GenerateJWT
+    GenerateJWT --> SetCookies
+    SetCookies --> LogActivity
+    LogActivity --> RedirectDashboard
+    
+    RedirectDashboard --> [*]
+    
+    LoginFailed --> IncrementFailCount
+    IncrementFailCount --> CheckLockout
+    CheckLockout --> LoginPage: Not Locked
+    CheckLockout --> BlockedAccount: Account Locked
+    
+    BlockedIP --> [*]
+    BlockedAccount --> [*]

@@ -1,0 +1,123 @@
+# docker/Dockerfile.modern
+# TWLan 2.A3 Modern Stack - PHP 8.4+ & MariaDB 10.11 LTS
+FROM php:8.4-fpm-bookworm
+
+# Metadata labels for enterprise compliance
+LABEL maintainer="TWLan DevOps <devops@twlan.local>" \
+      version="2.A3-modern" \
+      description="TWLan 2.A3 Modern Stack - PHP 8.4 + FPM with modern architecture" \
+      org.opencontainers.image.title="TWLan Modern (PHP-FPM)" \
+      org.opencontainers.image.version="2.A3-modern" \
+      org.opencontainers.image.vendor="TWLan Project" \
+      org.opencontainers.image.description="Modernized TWLan 2.A3 with PHP 8.4, supervisor, and optimizations"
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    TWLAN_DIR=/opt/twlan \
+    PHP_MEMORY_LIMIT=256M \
+    PHP_MAX_EXECUTION_TIME=300 \
+    PHP_UPLOAD_MAX_SIZE=100M \
+    PHP_POST_MAX_SIZE=100M \
+    TZ=UTC
+
+# Install system dependencies and PHP extensions
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libpng-dev \
+        libjpeg-dev \
+        libfreetype6-dev \
+        libzip-dev \
+        libicu-dev \
+        libonig-dev \
+        libxml2-dev \
+        libcurl4-openssl-dev \
+        libssl-dev \
+        zlib1g-dev \
+        nginx \
+        supervisor \
+        curl \
+        wget \
+        git \
+        unzip \
+        python3 \
+        python3-pip \
+        mariadb-client \
+        redis-tools \
+    && docker-php-ext-configure gd \
+        --with-freetype \
+        --with-jpeg \
+    && docker-php-ext-install -j$(nproc) \
+        gd \
+        mysqli \
+        pdo \
+        pdo_mysql \
+        zip \
+        intl \
+        opcache \
+        bcmath \
+        sockets \
+        pcntl \
+        mbstring \
+        xml \
+        curl \
+    && pecl install redis apcu \
+    && docker-php-ext-enable redis apcu \
+    # Note: xdebug removed for production - add in dev override if needed
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/pear
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
+# Configure PHP
+RUN { \
+        echo 'opcache.memory_consumption=256'; \
+        echo 'opcache.interned_strings_buffer=16'; \
+        echo 'opcache.max_accelerated_files=20000'; \
+        echo 'opcache.revalidate_freq=2'; \
+        echo 'opcache.enable_cli=1'; \
+        echo 'opcache.jit_buffer_size=100M'; \
+        echo 'opcache.jit=1255'; \
+    } > /usr/local/etc/php/conf.d/opcache.ini \
+    && { \
+        echo 'memory_limit=${PHP_MEMORY_LIMIT}'; \
+        echo 'max_execution_time=${PHP_MAX_EXECUTION_TIME}'; \
+        echo 'upload_max_filesize=${PHP_UPLOAD_MAX_SIZE}'; \
+        echo 'post_max_size=${PHP_POST_MAX_SIZE}'; \
+        echo 'expose_php=Off'; \
+        echo 'display_errors=Off'; \
+        echo 'log_errors=On'; \
+        echo 'error_log=/var/log/php/error.log'; \
+        echo 'date.timezone=${TZ}'; \
+    } > /usr/local/etc/php/conf.d/twlan.ini
+
+# Configure Nginx
+COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY docker/nginx/sites-available/twlan.conf /etc/nginx/sites-available/default
+
+# Configure Supervisor
+COPY docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Create directories
+RUN mkdir -p /var/log/php /var/log/supervisor /var/run \
+    && mkdir -p ${TWLAN_DIR}/{app,config,logs,cache,sessions,uploads,backup} \
+    && chown -R www-data:www-data ${TWLAN_DIR} /var/log/php
+
+# Copy application files (modernized)
+COPY --chown=www-data:www-data app/ ${TWLAN_DIR}/app/
+
+# Copy utilities
+COPY --chown=www-data:www-data utils/ ${TWLAN_DIR}/utils/
+COPY docker/entrypoint-modern.sh /usr/local/bin/entrypoint.sh
+
+# Fix line endings (Windows CRLF → Linux LF) and make executable
+RUN sed -i 's/\r$//' /usr/local/bin/entrypoint.sh && \
+    chmod +x /usr/local/bin/entrypoint.sh
+
+WORKDIR ${TWLAN_DIR}
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost/health || exit 1
+
+EXPOSE 80 9000
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

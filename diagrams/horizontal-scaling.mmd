@@ -1,0 +1,25 @@
+graph TB
+    subgraph "Auto-Scaling Group"
+        METRICS[Metrics<br/>CPU, Memory, Requests]
+        SCALER[Auto Scaler]
+        
+        METRICS --> SCALER
+        
+        subgraph "PHP Workers"
+            W1[Worker 1]
+            W2[Worker 2]
+            W3[Worker 3]
+            WN[Worker N]
+        end
+        
+        SCALER --> W1
+        SCALER --> W2
+        SCALER --> W3
+        SCALER --> WN
+    end
+    
+    SCALER --> SPAWN[Spawn New Container]
+    SCALER --> TERM[Terminate Container]
+    
+    style METRICS fill:#ffcccc
+    style SCALER fill:#d4f1d4

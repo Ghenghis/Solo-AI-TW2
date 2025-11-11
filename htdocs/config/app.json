@@ -1,0 +1,9 @@
+{
+    "db": {
+        "user": "twlan",
+        "password": "peter hat haare",
+        "database": "twlan"
+    },
+    "lang": "en",
+    "sidTimeout": 720
+}

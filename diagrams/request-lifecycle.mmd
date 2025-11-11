@@ -1,0 +1,19 @@
+stateDiagram-v2
+    [*] --> Request
+    Request --> RateLimit
+    RateLimit --> Auth
+    Auth --> Validation
+    Validation --> Cache
+    
+    Cache --> CacheHit: Found
+    Cache --> Business: Miss
+    
+    CacheHit --> Response
+    
+    Business --> Database
+    Database --> Transform
+    Transform --> CacheWrite
+    CacheWrite --> Response
+    
+    Response --> Logging
+    Logging --> [*]

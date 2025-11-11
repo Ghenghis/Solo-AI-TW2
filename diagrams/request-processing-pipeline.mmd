@@ -1,0 +1,53 @@
+sequenceDiagram
+    participant C as Client
+    participant LB as Load Balancer
+    participant W as Web Server
+    participant P as PHP-FPM
+    participant R as Redis
+    participant D as Database
+    participant Q as Queue
+    
+    C->>LB: HTTPS Request
+    LB->>LB: SSL Termination
+    LB->>W: HTTP Request
+    
+    W->>W: Check Static Cache
+    alt Static Content
+        W-->>C: Return Cached
+    else Dynamic Content
+        W->>P: FastCGI Request
+        
+        P->>R: Check Session
+        R-->>P: Session Data
+        
+        P->>P: Validate Request
+        P->>P: CSRF Check
+        P->>P: Rate Limit Check
+        
+        P->>R: Check Data Cache
+        alt Cache Hit
+            R-->>P: Cached Data
+        else Cache Miss
+            P->>D: Query Database
+            D-->>P: Result Set
+            P->>R: Update Cache
+        end
+        
+        P->>P: Process Business Logic
+        
+        opt Async Operation
+            P->>Q: Queue Job
+            Q-->>P: Job ID
+        end
+        
+        P->>P: Render Response
+        P-->>W: HTML Response
+        W-->>C: HTTP Response
+    end
+    
+    opt Background Processing
+        Q->>Worker: Process Job
+        Worker->>D: Update Data
+        Worker->>R: Clear Cache
+        Worker->>Q: Mark Complete
+    end
