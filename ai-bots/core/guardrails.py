@@ -1,13 +1,17 @@
 """
 Guardrail Enforcer - Makes AI Believable, Not Just Smart
 
-Prevents:
-- Harassment (dogpiling same target)
-- 24/7 spam (human sleep schedules)
-- Perfect omniscience (reaction delays)
-- Personality inconsistencies (turtles don't nuke)
+Guardrails: CENTRALIZED enforcement point for all AI behavior rules.
 
-Simple counters + timestamps. No ML black boxes.
+This is the single source of truth for:
+- Rate limiting (attacks, trades, builds)
+- Anti-harassment (per-target caps, cool-downs)
+- Human-like behavior (sleep, sessions, rhythm)
+- Personality constraints (aggression scaling)
+- System protection (CPU/DB load limits)
+
+Every decision MUST pass through guardrails.validate() before execution.
+No exceptions. This prevents chaos.
 """
 
 from datetime import datetime, timedelta
@@ -25,13 +29,50 @@ logger = structlog.get_logger()
 
 class GuardrailEnforcer:
     """
-    Enforces human-like and fair-play constraints
-    Plugs in BEFORE DecisionResolver to filter/shape decisions
+    CENTRALIZED enforcement point for ALL AI behavior rules.
+    
+    Every decision must pass through validate() before execution.
+    This prevents:
+    - Harassment (per-target caps, cool-downs)
+    - Spam (rate limits on all actions)
+    - Unnatural behavior (sleep, sessions, rhythm)
+    - Resource waste (failed attack cool-downs)
+    - System overload (global caps, circuit breakers)
+    
+    Tracks state:
+    - Per-bot sleep windows, sessions, cool-downs
+    - Per-bot attack history (spam detection)
+    - Per (bot, target) harassment counters
+    - Global attack targets (anti-dogpile)
+    - Failed action cool-downs
+    - System-wide rate limits
     """
     
-    # Class-level tracking (in production, use Redis/DB)
-    _global_attack_targets: Dict[int, int] = defaultdict(int)  # target_player_id -> attack_count_this_hour
-    _last_reset = datetime.utcnow()
+    def __init__(self, config: Dict):
+        self.config = config
+        
+        # Per-bot state
+        self._sleep_windows: Dict[int, Tuple[int, int]] = {}  # bot_id -> (start_hour, end_hour)
+        self._session_state: Dict[int, Dict] = {}  # bot_id -> {start_time, duration, cooldown_until}
+        self._last_activity: Dict[int, float] = {}  # bot_id -> timestamp
+        self._scout_timestamps: Dict[Tuple[int, int], float] = {}  # (bot_id, target_village_id) -> timestamp
+        
+        # Per-bot attack tracking (rolling window)
+        self._attack_history: Dict[int, List[Dict]] = defaultdict(list)  # bot_id -> [attack_record]
+        
+        # Per (bot, target) harassment tracking
+        self._harassment_counters: Dict[Tuple[int, int], List[float]] = defaultdict(list)  # (bot_id, target_player_id) -> [timestamps]
+        
+        # Failed action cool-downs
+        self._failed_attack_cooldowns: Dict[Tuple[int, int], float] = {}  # (bot_id, target_village_id) -> cooldown_until
+        
+        # Global state (anti-dogpile)
+        self._global_attack_targets: Dict[int, int] = defaultdict(int)  # target_player_id -> attack_count
+        self._global_reset_time: float = time.time()
+        
+        # Circuit breaker
+        self._system_attack_count: int = 0
+        self._system_attack_window_start: float = time.time()
     
     @staticmethod
     def apply(bot: AIBotState,
@@ -49,9 +90,9 @@ class GuardrailEnforcer:
         now = datetime.utcnow()
         
         # Reset global tracking hourly
-        if (now - GuardrailEnforcer._last_reset).total_seconds() > 3600:
+        if (now - datetime.fromtimestamp(GuardrailEnforcer._global_reset_time)).total_seconds() > 3600:
             GuardrailEnforcer._global_attack_targets.clear()
-            GuardrailEnforcer._last_reset = now
+            GuardrailEnforcer._global_reset_time = time.time()
         
         logger.debug("guardrails_start",
                     bot=bot.name,
@@ -408,4 +449,211 @@ class GuardrailEnforcer:
                 default=(None, 0)
             ),
             'last_reset': GuardrailEnforcer._last_reset.isoformat()
+        }
+
+    def _check_harassment_cap(self, bot: AIBotState, decisions: List[Decision], world: WorldSnapshot, config: Config) -> List[Decision]:
+        """
+        ANTI-HARASSMENT: Hard cap on attacks per (bot, target_player) per time window.
+        Prevents one bot from griefing the same player repeatedly.
+        """
+        now = time.time()
+        harassment_window = config.harassment_window_hours * 3600  # Default 1 hour
+        max_attacks_per_player = config.max_attacks_per_player_per_harassment_window  # Default 5
+        
+        filtered = []
+        for decision in decisions:
+            if decision.action_type != 'attack':
+                filtered.append(decision)
+                continue
+            
+            target_village = world.villages.get(decision.target_village_id)
+            if not target_village:
+                continue
+            
+            target_player_id = target_village['player_id']
+            key = (bot.player_id, target_player_id)
+            
+            # Clean old timestamps
+            self._harassment_counters[key] = [
+                ts for ts in self._harassment_counters.get(key, [])
+                if now - ts < harassment_window
+            ]
+            
+            # Check cap
+            if len(self._harassment_counters.get(key, [])) >= max_attacks_per_player:
+                logger.warning(
+                    "guardrail_harassment_cap",
+                    bot=bot.player_id,
+                    target_player=target_player_id,
+                    attacks_in_window=len(self._harassment_counters.get(key, [])),
+                    decision_blocked=True
+                )
+                continue
+            
+            # Track this attack
+            self._harassment_counters.setdefault(key, []).append(now)
+            filtered.append(decision)
+        
+        return filtered
+    
+    def _check_failed_attack_cooldown(self, bot: AIBotState, decisions: List[Decision], config: Config) -> List[Decision]:
+        """
+        ANTI-WASTE: Cool-down after failed attacks to same target.
+        Prevents bots from spamming attacks that keep failing.
+        """
+        now = time.time()
+        cooldown_duration = config.failed_attack_cooldown_minutes * 60  # Default 15 minutes
+        
+        filtered = []
+        for decision in decisions:
+            if decision.action_type != 'attack':
+                filtered.append(decision)
+                continue
+            
+            key = (bot.player_id, decision.target_village_id)
+            cooldown_until = self._failed_attack_cooldowns.get(key, 0)
+            
+            if now < cooldown_until:
+                logger.debug(
+                    "guardrail_failed_attack_cooldown",
+                    bot=bot.player_id,
+                    target=decision.target_village_id,
+                    cooldown_remaining_seconds=int(cooldown_until - now)
+                )
+                continue
+            
+            filtered.append(decision)
+        
+        return filtered
+    
+    def _enforce_session_rhythm(self, bot: AIBotState, decisions: List[Decision], config: Config) -> List[Decision]:
+        """
+        HUMAN-LIKE RHYTHM: Bots have sessions (10-30 min active, then cooldown).
+        Not continuous activity 24/7.
+        """
+        if not config.enable_session_rhythm:
+            return decisions
+        
+        now = time.time()
+        session = self._session_state.get(bot.player_id)
+        
+        # Initialize session if needed
+        if not session:
+            import random
+            session_duration = random.randint(
+                config.min_session_duration_minutes * 60,
+                config.max_session_duration_minutes * 60
+            )
+            self._session_state[bot.player_id] = {
+                'start_time': now,
+                'duration': session_duration,
+                'cooldown_until': 0
+            }
+            session = self._session_state[bot.player_id]
+        
+        # Check if in cooldown
+        if now < session.get('cooldown_until', 0):
+            logger.debug(
+                "guardrail_session_cooldown",
+                bot=bot.player_id,
+                cooldown_remaining_minutes=int((session.get('cooldown_until', 0) - now) / 60)
+            )
+            # Only allow defensive/passive actions during cooldown
+            return [d for d in decisions if d.action_type in ['build', 'recruit', 'defend']]
+        
+        # Check if session expired
+        elapsed = now - session.get('start_time', 0)
+        if elapsed > session.get('duration', 0):
+            # Start cooldown
+            import random
+            cooldown_duration = random.randint(
+                config.min_session_cooldown_minutes * 60,
+                config.max_session_cooldown_minutes * 60
+            )
+            session['cooldown_until'] = now + cooldown_duration
+            logger.info(
+                "guardrail_session_ended",
+                bot=bot.player_id,
+                session_duration_minutes=int(elapsed / 60),
+                cooldown_minutes=int(cooldown_duration / 60)
+            )
+            return [d for d in decisions if d.action_type in ['build', 'recruit', 'defend']]
+        
+        return decisions
+    
+    def _check_circuit_breaker(self, bot: AIBotState, decisions: List[Decision], config: Config) -> List[Decision]:
+        """
+        SYSTEM PROTECTION: Circuit breaker if too many attacks system-wide.
+        Prevents DB/HTTP overload.
+        """
+        now = time.time()
+        window = 60  # 1 minute
+        
+        # Reset window if needed
+        if now - self._system_attack_window_start > window:
+            self._system_attack_count = 0
+            self._system_attack_window_start = now
+        
+        # Count attacks in this batch
+        attack_count = sum(1 for d in decisions if d.action_type == 'attack')
+        
+        # Check threshold
+        if self._system_attack_count + attack_count > config.max_system_attacks_per_minute:
+            logger.warning(
+                "guardrail_circuit_breaker_triggered",
+                bot=bot.player_id,
+                system_attacks=self._system_attack_count,
+                threshold=config.max_system_attacks_per_minute,
+                decisions_blocked=attack_count
+            )
+            # Block all attacks, allow other actions
+            return [d for d in decisions if d.action_type != 'attack']
+        
+        # Track attacks
+        self._system_attack_count += attack_count
+        return decisions
+    
+    def record_failed_attack(self, bot_id: int, target_village_id: int, config: Config):
+        """
+        Call this when an attack fails (HTTP error, invalid target, etc.).
+        Triggers cooldown for this (bot, target) pair.
+        """
+        now = time.time()
+        cooldown_duration = config.failed_attack_cooldown_minutes * 60
+        key = (bot_id, target_village_id)
+        self._failed_attack_cooldowns[key] = now + cooldown_duration
+        
+        logger.info(
+            "guardrail_failed_attack_recorded",
+            bot=bot_id,
+            target=target_village_id,
+            cooldown_minutes=config.failed_attack_cooldown_minutes
+        )
+    
+    def get_stats(self) -> Dict:
+        """
+        Get guardrail enforcement statistics.
+        Useful for monitoring and debugging.
+        """
+        now = time.time()
+        active_sessions = sum(
+            1 for s in self._session_state.values()
+            if now < s.get('cooldown_until', 0) or (now - s.get('start_time', 0)) < s.get('duration', 0)
+        )
+        
+        return {
+            'global_targets_tracked': len(self._global_attack_targets),
+            'most_targeted_player': max(
+                self._global_attack_targets.items(),
+                key=lambda x: x[1],
+                default=(None, 0)
+            ),
+            'harassment_counters_active': len(self._harassment_counters),
+            'failed_attack_cooldowns_active': sum(
+                1 for cooldown_until in self._failed_attack_cooldowns.values()
+                if now < cooldown_until
+            ),
+            'active_sessions': active_sessions,
+            'system_attack_count_this_minute': self._system_attack_count,
+            'last_reset': datetime.fromtimestamp(self._global_reset_time).isoformat()
         }
