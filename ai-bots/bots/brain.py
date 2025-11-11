@@ -13,6 +13,8 @@ from bots.state import AIBotState, VillageState, Decision, UnitComposition, Rela
 from bots.personalities_enhanced import PersonalityProfile, get_personality
 from core.world import WorldSnapshot, VillageInfo
 from core.game_client import GameClient
+from bots.advanced_features import AdvancedFeaturesIntegrator
+from bots.decision_resolver import DecisionResolver
 
 logger = structlog.get_logger()
 
@@ -533,16 +535,52 @@ async def run_bot_tick(bot: AIBotState, world: WorldSnapshot,
             all_decisions.extend(
                 DiplomacyPlanner.plan_supports(bot, village, personality, world)
             )
+            
+            # ✅ ADVANCED FEATURES: 7 game-changing features with memory
+            all_decisions.extend(
+                await AdvancedFeaturesIntegrator.run_advanced_features(
+                    bot, village, personality, world, memory
+                )
+            )
         
-        # Sort by priority (highest first)
-        all_decisions.sort(key=lambda d: d.priority, reverse=True)
+        # ✅ DECISION RESOLVER: Validate resources, resolve conflicts, apply caps
+        final_decisions = DecisionResolver.resolve_decisions(
+            all_decisions, bot, config
+        )
         
-        # Execute top decisions (rate limited)
-        max_actions_per_tick = int(3 * (1 + personality.randomness))
+        # Log decision summary
+        DecisionResolver.log_decision_summary(final_decisions, bot)
         
-        for decision in all_decisions[:max_actions_per_tick]:
+        # Execute final decisions and learn from results
+        for decision in final_decisions:
             try:
                 await execute_decision(bot, decision, game_client, db)
+                
+                # ✅ MEMORY LEARNING: Update memory based on action type
+                if decision.action_type in ['attack', 'timed_attack']:
+                    # Record attack (actual results would come from game_client)
+                    target_id = decision.details.get('to_village')
+                    if target_id:
+                        # Placeholder: In production, parse battle report
+                        await memory.record_attack_result(
+                            bot_id=bot.player_id,
+                            target_village_id=target_id,
+                            loot={'wood': 0, 'clay': 0, 'iron': 0},  # TODO: Parse from result
+                            losses={},  # TODO: Parse from result
+                            success=True  # TODO: Determine from result
+                        )
+                
+                elif decision.action_type == 'support':
+                    # Update relations for support
+                    target_id = decision.details.get('to_village')
+                    if target_id:
+                        target_village = world.get_village(target_id)
+                        if target_village and target_village.owner_id:
+                            await memory.process_relation_event(
+                                bot.player_id,
+                                target_village.owner_id,
+                                'sent_support'
+                            )
                 
                 # Human-like delay between actions
                 delay = random.uniform(
