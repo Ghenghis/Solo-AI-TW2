@@ -475,9 +475,17 @@ class DiplomacyPlanner:
 
 
 async def run_bot_tick(bot: AIBotState, world: WorldSnapshot, 
-                      game_client: GameClient, db, config) -> None:
+                      game_client: GameClient, memory, db, config) -> None:
     """
     Main bot decision loop - called each orchestrator tick
+    
+    Args:
+        bot: Bot state with villages and personality
+        world: Current world snapshot
+        game_client: HTTP client for game actions
+        memory: AIMemory instance for learning
+        db: Database connection
+        config: Configuration object
     This is where EVERYTHING comes together
     """
     try:

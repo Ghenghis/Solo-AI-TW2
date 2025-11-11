@@ -17,6 +17,7 @@ from core.config import Config
 from core.database import Database
 from core.world import WorldSnapshot
 from core.game_client import GameClient
+from core.memory import AIMemory
 from bots.state import AIBotState, VillageState, UnitComposition
 from bots.personalities_enhanced import get_personality, PERSONALITIES
 from bots.brain import run_bot_tick
@@ -214,6 +215,7 @@ class EnhancedOrchestrator:
         self.config = config
         self.db = Database(config)
         self.game_client = GameClient(config)
+        self.memory = AIMemory(self.db)  # ← Add memory system
         self.bots: List[AIBotState] = []
         self.running = False
     
@@ -223,6 +225,10 @@ class EnhancedOrchestrator:
         
         # Connect to database
         # await self.db.connect()  # Assumes Database has connect method
+        
+        # Initialize memory schema
+        await self.memory.initialize_schema()
+        logger.info("memory_system_initialized")
         
         # Load bots
         self.bots = await load_bots(self.db, self.config)
@@ -265,7 +271,8 @@ class EnhancedOrchestrator:
                 # 3. Run all bots (with concurrency limit)
                 tasks = []
                 for bot in self.bots:
-                    task = run_bot_tick(bot, world, self.game_client, self.db, self.config)
+                    # ✅ Pass memory to bot tick for learning
+                    task = run_bot_tick(bot, world, self.game_client, self.memory, self.db, self.config)
                     tasks.append(task)
                     
                     # Batch execution to avoid overwhelming server
