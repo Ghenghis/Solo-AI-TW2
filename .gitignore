@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Docker
+.dockerignore
+
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+
+# TWLan specific
+htdocs/var/
+htdocs/cache/
+htdocs/sessions/
+*.bak
+*.old
+
+# Build artifacts
+dist/
+build/
+*.tar.gz
+*.zip
+
+# Sensitive data
+config/database.php
+config/secrets.php
+*.key
+*.pem
+*.cert
